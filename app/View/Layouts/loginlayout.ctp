@@ -28,17 +28,8 @@ echo $scripts_for_layout;
 		<div id="border">
 			<!-- Start Header -->
 			<div class="header">
-				<div style="float: left; padding: 0px 0px 0px 6px;">
-					<p>&nbsp;</p>
-					<a href="http://www.myspace.com/paydirtau/radio">
-					<?php echo $this->Html->image('k10387380.jpg', array('style' => 'height:90px; border: 0px;')); ?>
-					</a>
-				</div>
-				<div style="float: right; padding: 0px 0px 0px 0px;">
-					<font
-						style="font-size: 48.0pt; font-weight: bold; color: #dc9e38">www</font><font
-						style="font-size: 72.0pt; font-weight: bold; color: #dc9e38">.PayDirtDollars.</font><font
-						style="font-size: 48.0pt; font-weight: bold; color: #dc9e38">com</font>
+				<div style="width:100%;margin-left:10px;">
+					<?php echo $this->Html->image('main/topbanner.png', array('style' => 'border:0px;width:100%;'));?>
 				</div>
 			</div>
 			<!-- End Header -->
@@ -64,7 +55,7 @@ echo $scripts_for_layout;
 		<!-- End Border -->
 		<!-- Start Footer -->
 		<div id="footer">
-			<font size="2" color="white"><b>Copyright &copy; 2010 PayDirtDollars All
+			<font size="2" color="#b80f16"><b>Copyright &copy; 2015 www.NinjasChatClub.com All
 					Rights Reserved.&nbsp;&nbsp;</b> </font>
 		</div>
 		<!-- End Footer -->

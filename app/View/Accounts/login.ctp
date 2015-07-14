@@ -26,7 +26,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 		</td>
 	</tr>
 	<tr>
-		<td align="right"><b><font color="white" size="2">Username :</font> </b>
+		<td align="right"><b><font style="color:#b80f16;margin-right:6px;" size="2">User name:</font> </b>
 		</td>
 		<td align="left">
 			<?php
@@ -43,7 +43,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td align="right">
-			<b><font color="white" size="2">Password :</font></b>
+			<b><font style="color:#b80f16;margin-right:6px;" size="2">Password:</font></b>
 		</td>
 		<td align="left">
 			<?php
@@ -57,7 +57,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td align="right">
-			<b><font color="white" size="2">Code verification :</font></b>
+			<b><font style="color:#b80f16;margin-right:6px;" size="2">Captcha:</font></b>
 		</td>
 		<td align="left">
 			<div style="float: left; margin-right: 10px;">
@@ -109,26 +109,32 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td style="color: #dddddd;">Example: 9x4=36, please enter 36.</td>
+		<td style="color:#b80f16;">Example: 3x3=9, Captcha answer is 9.</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
 		<br/>
+		<div style="width:220px;height:45px;">
 		<?php
-		echo $this->Form->submit('login-button.png', array('style' => 'border:0px;width:160px;height:45px;'));
+		echo $this->Html->image("ninjastar.png", array('style' => "border:0;margin-top:7px;float:left;"));
+		echo $this->Form->submit('login-button.png', array('style' => 'border:0px;width:160px;height:45px;float:left;'));
 		?>
+		</div>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2"><br /> 
 			<?php
 			echo $this->Html->link(
-					'<b><font size="2">Lost password?</font></b>',
+					'<b><font size="2">Lost your password?</font></b>',
 					array('controller' => 'accounts', 'action' => 'forgotpwd'),
 					array('escape' => false), false
 			);
 			?>
-			<br /> <br /> <font color="#ccba4c">We must have your email on our account.</font>
+			<br/><br/>
+			<font color="#b80f16">Contact your account manager, to retreave your password,</font>
+			<br/>
+			<font color="#b80f16">we do not have agent's REAL email address.</font>
 		</td>
 	</tr>
 </table>
