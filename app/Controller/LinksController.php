@@ -23,7 +23,7 @@ class LinksController extends AppController {
 	
 	/*callbacks*/
 	function beforeFilter() {
-		$this->set('title_for_layout', 'PayDirtDollars.[LINKS]');
+		$this->set('title_for_layout', 'Ninja\'s Chat Club.[LINKS]');
 		if ($this->Session->check("Auth")) {
 			$u = $this->Session->read("Auth");
 			$u = array_values($u);

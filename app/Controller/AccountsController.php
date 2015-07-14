@@ -38,7 +38,7 @@ class AccountsController extends AppController {
 
 	function beforeFilter() {
 		//Configure::write('debug', 2);
-		$this->set('title_for_layout', 'PayDirtDollars');
+		$this->set('title_for_layout', 'Ninja\'s Chat Club');
 		//$this->Auth->authenticate = ClassRegistry::init('Account');
 		//$this->Auth->userModel = 'Account'; 
 		//$this->Auth->loginAction = array('controller' => 'accounts', 'action' => 'login');
