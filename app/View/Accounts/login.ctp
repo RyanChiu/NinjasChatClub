@@ -8,21 +8,10 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 <table style="border: 0; width: 100%">
 	<tr>
 		<td rowspan="10" width="195px">
-			<?php
-			//echo $this->Html->image('loginLeft.png', array('width' => '180px'));
-			?>
 		</td>
 		<td colspan="2" align="center">
 		</td>
 		<td rowspan="10" width="185px" style="vertical-align: top;">
-			<div style="float: right; text-align: right; display: none;">
-				<?php echo $this->Html->link("Register for account", "/../NinjasChatClubReg/MerchantRegistration.htm"); ?>
-				<br/>
-				<?php echo $this->Html->link("Contact us", array("controller" => "accounts", "action" => "contactus")); ?>
-			</div>
-			<?php
-			//echo $this->Html->image('loginRight.png', array('width' => '120px'));
-			?>
 		</td>
 	</tr>
 	<tr>
