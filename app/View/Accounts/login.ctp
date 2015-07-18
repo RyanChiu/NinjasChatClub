@@ -121,7 +121,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			);
 			?>
 			<br/><br/>
-			<font color="#b80f16">Contact your account manager, to retreave your password,</font>
+			<font color="#b80f16">Contact your account manager, to retrieve your password,</font>
 			<br/>
 			<font color="#b80f16">we do not have agent's REAL email address.</font>
 		</td>
