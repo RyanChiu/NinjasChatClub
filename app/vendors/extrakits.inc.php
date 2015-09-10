@@ -10,6 +10,7 @@
 	define("CAMS3_CHS", "4,5,6,7");
 	define("BBRD_CHS", "5,6");
 	define("ADC_CHS", "10");
+	define("BLDS_CHS", "11");
 	/*
 	 * routines area
 	 */
