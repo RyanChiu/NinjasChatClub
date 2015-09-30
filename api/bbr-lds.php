@@ -53,7 +53,7 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 	$agent = (isset($_GET['agent']) ? trim($_GET['agent']) : (isset($_POST['agent']) ? trim($_POST['agent']) : ''));
 	$unique = (isset($_GET['unique']) ? trim($_GET['unique']) : (isset($_POST['unique']) ? trim($_POST['unique']) : ''));//not for sure
 	$unique = strtolower($unique);
-	$ch = (isset($_GET['site_id']) ? trim($_GET['site_id']) : (isset($_POST['site_id']) ? trim($_POST['site_id']) : ''));
+	$ch = (isset($_GET['ch']) ? trim($_GET['ch']) : (isset($_POST['ch']) ? trim($_POST['ch']) : ''));
 	$ch = intval($ch);
 	$trxid = (isset($_GET['client_id']) ? trim($_GET['client_id']) : (isset($_POST['client_id']) ? trim($_POST['client_id']) : ''));
 	$trxid = intval($trxid);
