@@ -19,6 +19,17 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 		</td>
 	</tr>
 	<tr>
+		<td width="15%">Type Alias:</td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Type.typealias', array('label' => '', 'style' => 'width:590px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
 		<td width="15%">Type URL:</td>
 		<td>
 		<div style="float:left">
