@@ -508,6 +508,7 @@ if (!empty($rs)) {
 				break;
 		}
 		?>
+		<td class="totals"></td>
 		<td class="totals">
 		<?php
 		$sales_total = $totals['sales_type1'] + $totals['sales_type2'] + $totals['sales_type3'] + $totals['sales_type4']
@@ -520,7 +521,6 @@ if (!empty($rs)) {
 		}
 		?>
 		</td>
-		<td class="totals"></td>
 		<!--<td class="totals"></td>-->
 		<td class="totals"></td>
 		<td class="totals"></td>
@@ -573,6 +573,7 @@ if (!empty($rs)) {
 				break;
 		}
 		?>
+		<td class="totals"></td>
 		<td class="totals">
 		<?php
 		if ($sales_total) {
@@ -582,7 +583,6 @@ if (!empty($rs)) {
 		}
 		?>
 		</td>
-		<td class="totals"></td>
 		<!--<td class="totals"></td>-->
 		<td class="totals"></td>
 		<td class="totals"></td>
