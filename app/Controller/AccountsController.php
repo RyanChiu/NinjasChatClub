@@ -1918,12 +1918,12 @@ class AccountsController extends AppController {
 						$subject = "Request For New Agent";
 						$content .= "\n\n(Request from office manager \"" . $data['Requestchg']['offiname']
 							. "\", with email address \"" . $data['Requestchg']['from'] . "\").";
-						$issent = $this->__sendemail($subject, $content);
+						$issent = $this->__sendemail($subject, $content, "SUPPORT@ninjaschatclub.com", "NOREPLY@ninjaschatclub.com");
 					} else if ($data['Requestchg']['type'] == 'upd') {//means an updating request
 						$subject = "Request For Updating Agent";
 						$content .= "\n\n(Request from office manager \"" . $data['Requestchg']['offiname']
 							. "\", with email address \"" . $data['Requestchg']['from'] . "\").";
-						$issent = $this->__sendemail($subject, $content);
+						$issent = $this->__sendemail($subject, $content, "SUPPORT@ninjaschatclub.com", "NOREPLY@ninjaschatclub.com");
 					}
 					
 					if ($issent) {
@@ -1987,8 +1987,7 @@ class AccountsController extends AppController {
 				if ($this->__sendemail(
 						$subject, $content,
 						'SUPPORT@ninjaschatclub.com',
-						//'qa@cleanchattersinc.com'
-						'SUPPORT@ninjaschatclub.com'
+						'NOREPLY@ninjaschatclub.com'
 					) != true) {
 					$fmsg = '(Failed to email out.<1>)';
 				};
