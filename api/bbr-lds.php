@@ -10,7 +10,7 @@ $ip = __getclientip();
 $tz = "EST";
 $now = new DateTime("now", new DateTimeZone($tz));
 
-$bname = basename($_SERVER["REQUEST_URI"], ".php");
+$bname = basename($_SERVER["PHP_SELF"], ".php");
 /*
  * just log every POST/GET at the very beginning
 */
