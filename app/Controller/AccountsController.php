@@ -835,6 +835,9 @@ class AccountsController extends AppController {
 	function updadmin() {
 		$this->layout = 'defaultlayout';
 		
+		//TEMPORERALY  DISABLED
+		$this->render("tempdisinfo");
+		
 		if (empty($this->request->data)) {
 			$this->Account->id = $this->Auth->user('Account.id');
 			$account = $this->Account->read();
@@ -884,6 +887,10 @@ class AccountsController extends AppController {
 	
 	function regcompany($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		//TEMPORERALY  DISABLED
+		$this->render("tempdisinfo");
+		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
 		}
@@ -1014,6 +1021,10 @@ class AccountsController extends AppController {
 
 	function regagent($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		//TEMPORERALY  DISABLED
+		$this->render("tempdisinfo");
+		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
 		}
@@ -1183,6 +1194,10 @@ class AccountsController extends AppController {
 	
 	function updcompany($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		//TEMPORERALY  DISABLED
+		$this->render("tempdisinfo");
+		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
 		}
@@ -1313,6 +1328,10 @@ class AccountsController extends AppController {
 	
 	function updagent($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		//TEMPORERALY  DISABLED
+		$this->render("tempdisinfo");
+		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
 		}
