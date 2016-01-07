@@ -24,7 +24,7 @@ echo $this->Form->create(
 				'id' => 'selPeriod',
 				'label' => '', 'type' => 'select',
 				'options' => $periods,
-				'selected' => $weekstart . ',' . $weekend,
+				'selected' => $start . ',' . $end,
 				'style' => 'width:190px;'
 			)
 		);
@@ -40,11 +40,11 @@ echo $this->Form->create(
 </table>
 </div>
 <?php
-if (!empty($weekrs)) {
+if (!empty($rs)) {
 ?>
 	<table style="font-size:90%;width:100%;">
 		<caption style="font-style:italic;">
-		The Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
+		The Period (From <?php echo $start; ?> To <?php echo $end; ?>)
 		</caption>
 		<thead>
 		<tr>
@@ -56,7 +56,7 @@ if (!empty($weekrs)) {
 		</thead>
 		<?php
 		$i = 0;
-		foreach ($weekrs as $r) {
+		foreach ($rs as $r) {
 			$i++;
 		?>
 		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
@@ -74,13 +74,13 @@ if (!empty($weekrs)) {
 	</div>
 <?php
 }
-echo $this->Form->input('Top10.weekstart', array('type' => 'hidden', 'id' => 'iptWeekstart', 'value' => $weekstart));
-echo $this->Form->input('Top10.weekend', array('type' => 'hidden', 'id' => 'iptWeekend', 'value' => $weekend));
+echo $this->Form->input('Top10.start', array('type' => 'hidden', 'id' => 'iptStart', 'value' => $start));
+echo $this->Form->input('Top10.end', array('type' => 'hidden', 'id' => 'iptEnd', 'value' => $end));
 echo $this->Form->end();
 ?>
 
 <script type="text/javascript">
 jQuery("#selPeriod").change(function() {
-	__zSetFromTo("selPeriod", "iptWeekstart", "iptWeekend");
+	__zSetFromTo("selPeriod", "iptStart", "iptEnd");
 });
 </script>

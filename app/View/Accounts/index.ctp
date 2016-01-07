@@ -122,9 +122,26 @@ if (!empty($notes)) {
 <table style="width:100%">
 <caption><font size="5" color="#bb2222">Best sellers</font></caption>
 <tr>
+	<td colspan=2>
+	<div style="float: right;">
+		<?php
+		if ($userinfo['role'] == 0) {
+			echo $this->Html->link('<font size="1">Choose another pay period or another month</font>',
+				array('controller' => 'accounts', 'action' => 'top10'),
+				array('escape' => false),
+				false
+			);
+		}
+		?>
+		</div>
+	</td>
+</tr>
+<tr>
 	<td width="50%">
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">All times</caption>
+		<caption style="font-style:italic;">
+		This Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
+		</caption>
 		<thead>
 		<tr>
 			<th>Rank</th>
@@ -135,7 +152,7 @@ if (!empty($notes)) {
 		</thead>
 		<?php
 		$i = 0;
-		foreach ($rs as $r) {
+		foreach ($weekrs as $r) {
 			$i++;
 		?>
 		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
@@ -163,20 +180,9 @@ if (!empty($notes)) {
 		</table>
 	</td>
 	<td>
-		<div style="float: right;">
-		<?php
-		if ($userinfo['role'] == 0) {
-			echo $this->Html->link('<font size="1">Choose another pay period</font>',
-				array('controller' => 'accounts', 'action' => 'top10'),
-				array('escape' => false),
-				false
-			);
-		}
-		?>
-		</div>
 		<table style="width:100%" style="font-size:90%;">
 		<caption style="font-style:italic;">
-		This Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
+		This Month (From <?php echo $monthstart; ?> To <?php echo $monthend; ?>)		
 		</caption>
 		<thead>
 		<tr>
@@ -188,7 +194,49 @@ if (!empty($notes)) {
 		</thead>
 		<?php
 		$i = 0;
-		foreach ($weekrs as $r) {
+		foreach ($monthrs as $r) {
+			$i++;
+		?>
+		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
+			<td align="center"><?php echo $i; ?></td>
+			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
+			<td align="center">
+				<font style="font-size: 9pt;">
+				<?php
+				echo $r['Top10']['sales'] > 0 ? $r['Top10']['username'] : $r['Top10']['username'];
+				?>
+				</font>
+				<font style="font-size: 10pt;">(
+				<?php
+				//$showname = $r['Top10']['ag1stname'] . " " . $r['Top10']['aglastname'];
+				$showname = $r['Top10']['ag1stname'];
+				echo strlen($showname) > 20 ? (substr($showname, 0, 17) . "...") : $showname;
+				?>
+				)</font>
+			</td>
+			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
+		</tr>
+		<?php
+		}
+		?>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan=2>
+		<table style="width:100%" style="font-size:90%;">
+		<caption style="font-style:italic;">All the time</caption>
+		<thead>
+		<tr>
+			<th>Rank</th>
+			<th>Office</th>
+			<th>Agent</th>
+			<th>Sales</th>
+		</tr>
+		</thead>
+		<?php
+		$i = 0;
+		foreach ($rs as $r) {
 			$i++;
 		?>
 		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>

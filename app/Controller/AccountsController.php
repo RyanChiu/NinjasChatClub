@@ -296,19 +296,29 @@ class AccountsController extends AppController {
 			}
 			$periods += array($oneweek => $v);
 		}
+		$monthstart = date("Y-m-01");
+		$monthend = date("Y-m-d", strtotime($monthstart . " + 1 month - 1 day"));
+		for ($i = -6; $i < 6; $i++) {
+			$mv = date("Y-M", strtotime($monthstart . sprintf(" %d", $i) . "  months"));
+			$onemonth = date("Y-m-01", strtotime($monthstart . sprintf(" %d", $i) . " months"))
+				. ','
+				. date("Y-m-d", strtotime($monthstart . sprintf(" %d", $i + 1) . " months - 1 day"));
+			$periods += array($onemonth => $mv);
+		}
 		
-		$weekrs = array();
+		$rs = array();
 		if (!empty($this->request->data)) {
 			$conds = array();
-			$weekstart = $this->request->data['Top10']['weekstart'];
-			$weekend = $this->request->data['Top10']['weekend'];
-			$conds['startdate'] = $weekstart;
-			$conds['enddate'] = $weekend;
-			$weekrs = $this->__top10($conds);
+			$start = $this->request->data['Top10']['start'];
+			$end = $this->request->data['Top10']['end'];
+			$conds['startdate'] = $start;
+			$conds['enddate'] = $end;
+			$rs = $this->__top10($conds);
 		}
-		$this->set(compact('weekrs'));
-		$this->set(compact('weekstart'));
-		$this->set(compact('weekend'));
+		
+		$this->set(compact('rs'));
+		$this->set(compact('start'));
+		$this->set(compact('end'));
 		$this->set(compact('periods'));
 	}
 	
@@ -403,6 +413,8 @@ class AccountsController extends AppController {
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));
+		$monthstart = date("Y-m-01");
+		$monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
 		$conds['startdate'] = $weekstart;
 		$conds['enddate'] = $weekend;
 		$weekrs = $this->Top10->find('all',
@@ -411,9 +423,20 @@ class AccountsController extends AppController {
 				'order' => 'sales desc'
 			)
 		);
+		$conds['startdate'] = $monthstart;
+		$conds['enddate'] = $monthend;
+		$monthrs = $this->Top10->find('all',
+			array(
+				'conditions' => array('flag' => 2),
+				'order' => 'sales desc'
+			)
+		);
 		$this->set(compact('weekrs'));
 		$this->set(compact('weekstart'));
 		$this->set(compact('weekend'));
+		$this->set(compact('monthrs'));
+		$this->set(compact('monthstart'));
+		$this->set(compact('monthend'));
 				
 		/*prepare the totals demo data*/
 		/*## for accounts overview*/
