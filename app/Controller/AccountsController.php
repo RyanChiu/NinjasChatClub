@@ -283,7 +283,7 @@ class AccountsController extends AppController {
 			$oneweek = date("Y-m-d", strtotime($lastday . " - " . (7 * $i + 6) . " days"))
 				. ','
 				. date("Y-m-d", strtotime($lastday . " - " . (7 * $i) . " days"));
-			$v = $oneweek;
+			$v = "[W]$oneweek";
 			switch ($i) {
 				case 0:
 					$v = 'THIS WEEK';
@@ -296,14 +296,14 @@ class AccountsController extends AppController {
 			}
 			$periods += array($oneweek => $v);
 		}
-		$monthstart = date("Y-m-01");
+		$monthstart = date("Y-m-16");
 		$monthend = date("Y-m-d", strtotime($monthstart . " + 1 month - 1 day"));
 		for ($i = -6; $i < 6; $i++) {
-			$mv = date("Y-M", strtotime($monthstart . sprintf(" %d", $i) . "  months"));
-			$onemonth = date("Y-m-01", strtotime($monthstart . sprintf(" %d", $i) . " months"))
+			//$mv = date("Y-M", strtotime($monthstart . sprintf(" %d", $i) . "  months"));
+			$onemonth = date("Y-m-16", strtotime($monthstart . sprintf(" %d", $i) . " months"))
 				. ','
 				. date("Y-m-d", strtotime($monthstart . sprintf(" %d", $i + 1) . " months - 1 day"));
-			$periods += array($onemonth => $mv);
+			$periods += array($onemonth => "[M]$onemonth");
 		}
 		
 		$rs = array();
@@ -413,7 +413,7 @@ class AccountsController extends AppController {
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));
-		$monthstart = date("Y-m-01");
+		$monthstart = date("Y-m-16");
 		$monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
 		$conds['startdate'] = $weekstart;
 		$conds['enddate'] = $weekend;

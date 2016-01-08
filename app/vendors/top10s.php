@@ -15,7 +15,7 @@ if (date("w") == 0) {
 $weekend = $lastday;
 $weekstart = date("Y-m-d", strtotime($lastday . " - 6 days"));
 
-$monthstart = date("Y-m-01");
+$monthstart = date("Y-m-16");
 $monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
 
 $zconn = new zmysqlConn();

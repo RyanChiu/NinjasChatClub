@@ -25,7 +25,7 @@ echo $this->Form->create(
 				'label' => '', 'type' => 'select',
 				'options' => $periods,
 				'selected' => $start . ',' . $end,
-				'style' => 'width:190px;'
+				'style' => 'width:210px;'
 			)
 		);
 		?>
