@@ -720,9 +720,9 @@ class AccountsController extends AppController {
 					 * then we can use the email logic send the password with $_r['Company']['manemail']
 					 */
 					$issent = $this->__sendemail(
-						'Your PayDirtDollars Password',
-						"Hi,\nYour PayDirtDollars password is:" . $r['Account']['originalpwd'] . "\n"
-						. "\nThanks,\nPayDirtDollars webmaster.",//must use " instead of ' at this $content parameter
+						'Your NinjasChatClub Password',
+						"Hi,\nYour NinjasChatClub password is:" . $r['Account']['originalpwd'] . "\n"
+						. "\nThanks,\nNinjasChatClub webmaster.",//must use " instead of ' at this $content parameter
 						'SUPPORT@ninjaschatclub.com',
 						$_r['Company']['manemail']
 					);
@@ -753,9 +753,9 @@ class AccountsController extends AppController {
 					 * then we can use the email logic send the password with $_r['Agent']['email']
 					 */
 					$issent = $this->__sendemail(
-						'Your PayDirtDollars Password',
-						"Hi,\nYour PayDirtDollars password is:" . $r['Account']['originalpwd'] . "\n"
-						. "\nThanks,\nPayDirtDollars webmaster.",//must use " instead of ' at this $content parameter
+						'Your NinjasChatClub Password',
+						"Hi,\nYour NinjasChatClub password is:" . $r['Account']['originalpwd'] . "\n"
+						. "\nThanks,\nNinjasChatClub webmaster.",//must use " instead of ' at this $content parameter
 						'SUPPORT@ninjaschatclub.com',
 						$_r['Agent']['email']
 					);
