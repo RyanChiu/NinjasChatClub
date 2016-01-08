@@ -1011,6 +1011,7 @@ class AccountsController extends AppController {
 					}
 					
 					/*send out an email to inform that a new agent created*/
+					/*
 					$this->__sendemail(
 						"A new office '"
 						. $this->request->data['Account']['username']
@@ -1019,6 +1020,7 @@ class AccountsController extends AppController {
 						"SUPPORT@ninjaschatclub.com",
 						"NOREPLY@ninjaschatclub.com"
 					);
+					*/
 
 					/*redirect to some page*/
 					$this->Session->setFlash(
@@ -1187,6 +1189,7 @@ class AccountsController extends AppController {
 					} 
 
 					/*send out an email to inform that a new agent created*/
+					/*
 					$this->__sendemail(
 						"A new agent '" 
 							. $this->request->data['Account']['username'] 
@@ -1195,6 +1198,8 @@ class AccountsController extends AppController {
 						"SUPPORT@ninjaschatclub.com",
 						"NOREPLY@ninjaschatclub.com"
 					);
+					*/
+					
 					/*redirect to some page*/ 
 					$this->Session->setFlash('Agent "' 
 					  . $this->request->data['Account']['username'] . '" added.' 
