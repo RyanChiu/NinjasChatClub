@@ -108,7 +108,7 @@ class LinksController extends AppController {
 		$this->layout = "defaultlayout";
 
 		//TEMPORARILY DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
@@ -149,7 +149,7 @@ class LinksController extends AppController {
 		$this->layout = "defaultlayout";
 
 		//TEMPORARILY DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (!empty($this->request->data)) {
 			if ($this->Site->save($this->request->data)) {
@@ -164,7 +164,7 @@ class LinksController extends AppController {
 		$this->layout = "defaultlayout";
 
 		//TEMPORARILY DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
@@ -213,7 +213,7 @@ class LinksController extends AppController {
 		$this->layout = "defaultlayout";
 		
 		//TEMPORARILY DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
