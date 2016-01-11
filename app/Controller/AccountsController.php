@@ -858,7 +858,7 @@ class AccountsController extends AppController {
 	function updadmin() {
 		$this->layout = 'defaultlayout';
 		
-		//TEMPORERALY  DISABLED
+		//TEMPORERALY DISABLED
 		$this->render("tempdisinfo");
 		
 		if (empty($this->request->data)) {
