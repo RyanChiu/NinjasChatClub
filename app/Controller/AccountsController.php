@@ -859,7 +859,7 @@ class AccountsController extends AppController {
 		$this->layout = 'defaultlayout';
 		
 		//TEMPORERALY DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (empty($this->request->data)) {
 			$this->Account->id = $this->Auth->user('Account.id');
@@ -912,7 +912,7 @@ class AccountsController extends AppController {
 		$this->layout = 'defaultlayout';
 		
 		//TEMPORERALY  DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
@@ -1048,7 +1048,7 @@ class AccountsController extends AppController {
 		$this->layout = 'defaultlayout';
 		
 		//TEMPORERALY  DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
@@ -1224,7 +1224,7 @@ class AccountsController extends AppController {
 		$this->layout = 'defaultlayout';
 		
 		//TEMPORERALY  DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
@@ -1358,7 +1358,7 @@ class AccountsController extends AppController {
 		$this->layout = 'defaultlayout';
 		
 		//TEMPORERALY  DISABLED
-		$this->render("tempdisinfo");
+		//$this->render("tempdisinfo");
 		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
