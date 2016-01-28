@@ -27,7 +27,8 @@ $_sql_ =
 	WHERE %s
 		and stats.agentid = accounts.id and agents.id = stats.agentid 
 		and agents.companyid = companies.id 
-		AND agentid > 0  
+		AND agentid > 0 
+		AND companies.id != 98 
 	GROUP BY agentid  ORDER BY `sales` desc  LIMIT 10;";
 $sql = sprintf($_sql_, 0, $today, "convert(trxtime, date) <= '$today'");
 $rs = mysql_query("delete from top10s where flag = 0", $zconn->dblink)
