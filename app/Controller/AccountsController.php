@@ -414,7 +414,7 @@ class AccountsController extends AppController {
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));
-		$monthstart = date("Y-m-16");
+		$monthstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
 		$monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
 		$conds['startdate'] = $weekstart;
 		$conds['enddate'] = $weekend;
