@@ -9,7 +9,7 @@ if (($argc - 1) != 1) {//if there is 1 parameter and it must mean a date like '2
 /*
  * the following line will make the whole script exit if date string format is wrong
  */
-$time_step = -5.05;
+$time_step = -6.05;
 if (is_dst() != 1) $time_step -= 1; 
 $date = __get_remote_date($argv[1], "America/New_York", $time_step);
 $date_l = __get_remote_date($argv[1], "America/New_York", $time_step, "America/New_York", true);
