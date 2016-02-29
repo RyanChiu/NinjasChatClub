@@ -19,13 +19,10 @@ if (($argc - 1) == 2) {
 	exit("It must take 2 parameters, please try again.\n");
 }
 $path_parts = pathinfo($argv[0]);
-$date = __get_remote_date($argv[2]);
-if ($date === false) {
-	exit("The 2nd param must be like this: 2010-05-01, please try again.\n");
-}
 $arydt = explode(",", $argv[2]);
 $ymd = explode("-", $arydt[0]);
 $his = explode(":", $arydt[1]);
+$date = $arydt[0];
 
 $dates = array();
 if ($argv[1] == 'daily') {
