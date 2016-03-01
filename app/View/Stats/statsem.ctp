@@ -143,11 +143,6 @@ if (!empty($rs)) {
 		<th <?php echo !in_array($selsite, array(-1, -2)) ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques'); ?>
 		</th>
-		<!--
-		<th <?php //echo !in_array($selsite, array(6, 7, 8)) ? '' : 'class="naClassHide"'; ?>>
-		<?php //echo $this->ExPaginator->sort('ViewTStats.chargebacks', 'Fraud'); ?>
-		</th>
-		-->
 		<th <?php echo $selsite != 7 ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*'); ?>
 		</th>
@@ -344,7 +339,6 @@ if (!empty($rs)) {
 		?>
 		<td><?php echo $r['ViewTStats']['raws']; ?></td>
 		<td><?php echo $r['ViewTStats']['uniques']; ?></td>
-		<!--<td><?php //echo $r['ViewTStats']['chargebacks']; ?></td>-->
 		<td><?php echo $r['ViewTStats']['signups']; ?></td>
 		<td><?php echo $r['ViewTStats']['frauds']; ?></td>
 		<td><?php echo $r['ViewTStats']['chargebacks']; ?></td>
@@ -402,7 +396,6 @@ if (!empty($rs)) {
 		?>
 		<td class="totals"><?php echo $pagetotals['raws']; ?></td>
 		<td class="totals"><?php echo $pagetotals['uniques']; ?></td>
-		<!--<td class="totals"><?php //echo $pagetotals['chargebacks']; ?></td>-->
 		<td class="totals"><?php echo $pagetotals['signups']; ?></td>
 		<td class="totals"><?php echo $pagetotals['frauds']; ?></td>
 		<td class="totals"><?php echo $pagetotals['chargebacks']; ?></td>
@@ -456,7 +449,6 @@ if (!empty($rs)) {
 		?>
 		<td class="totals"><?php echo $totals['raws']; ?></td>
 		<td class="totals"><?php echo $totals['uniques']; ?></td>
-		<!--<td class="totals"><?php //echo $totals['chargebacks']; ?></td>-->
 		<td class="totals"><?php echo $totals['signups']; ?></td>
 		<td class="totals"><?php echo $totals['frauds']; ?></td>
 		<td class="totals"><?php echo $totals['chargebacks']; ?></td>
