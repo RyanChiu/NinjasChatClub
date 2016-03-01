@@ -719,12 +719,12 @@ echo $scripts_for_layout;
 			<div style="margin: 12px 2px 2px 2px; font-weight: bolder;">REASONS
 				FOR TEMPORARY SUSPENSION</div>
 			<p style="font-size: 14px; color: red;">
-				1.SENDING LOW QUALITY SALES, CUSTOMERS WHO DO NOT SPEND MONEY ON THE
-				SITE.<br /> <br /> 2.TOO MANY SALES, ON THE SAME SITE, SAME DAY. WE
-				NEED TO MAKE SURE AGENT IS NOT GETTING IN ANY TROUBLE.3 OR MORE
-				SALES, CAN BE FLAGGED, AGENT MAYBE CHEATING. IF HE IS SELLING TOO
-				FAST.<br /> <br /> 3.LYING TO THE CUSTOMER THAT THE SITE IS FREE.<br />
-				<br /> 4.TELLING CUSTOMER YOU WILL MEET HIM.<br />
+				<br/>
+				1.SENDING LOW QUALITY SALES,  CUSTOMERS WHO DO NOT SPEND MONEY.<br/><br/>
+				2.CREATING FAKE ACCOUNTS.<br/><br/>
+				3.USING STOLEN CARDS.<br/><br/>
+				4.TELLING CUSTOMER SITE IS FREE.<br/><br/>
+				5.TELLING CUSTOMER YOU WILL MEET HIM.<br/>
 			</p>
 			<?php
 			}
