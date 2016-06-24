@@ -155,7 +155,7 @@ if (!empty($rs)) {
 			echo '<br/><font size="1">(for revise)</font>';
 		?>
 		</th>
-		<th <?php echo $userinfo['role'] != -1 ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo $selsite == 2 ? '' : 'class="naClassHide"'; ?>>
 		<?php
 			echo $this->ExPaginator->sort('ViewTStats.chargebacks', 'Frauds');
 		?>
