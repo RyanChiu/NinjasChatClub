@@ -146,7 +146,7 @@ if (!empty($rs)) {
 		<th <?php echo $selsite != 7 ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*'); ?>
 		</th>
-		<th <?php echo $userinfo['role'] == 0 ? 'class="naClassHide"' : 'class="naClassHide"'; ?>>
+		<th class="naClassHide">
 		<?php //echo $this->ExPaginator->sort('Frauds', 'ViewTStats.frauds'); ?>
 		<?php
 			echo '<font size="1">'; 
