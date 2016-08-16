@@ -40,7 +40,7 @@ class Account extends AppModel {
 		return true;
 	}
 	
-	var $status = array('-1' => 'unapproved', '0' => 'suspended', '1' => 'activated');
+	var $status = array('-1' => 'unapproved', '0' => 'suspended', '1' => 'activated', '-2' => 'hidden');
 	var $online = array('0' => 'offline', '1' => 'online');
 	
 	function isCaseInsensitiveUnique($check) {

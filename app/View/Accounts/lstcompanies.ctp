@@ -181,6 +181,24 @@ foreach ($rs as $r):
 		array('title' => 'Click to suspend the user.', 'escape' => false),
 		"Are you sure?"
 	);
+	$iconEye = '';
+	$statusEye = -2;
+	$styleEye = 'hide';
+	if ($r['ViewCompany']['status'] != -2) {
+		$iconEye = 'eye-half-icon.png';
+		$statusEye = -2;
+		$styleEye = 'hide';
+	} else {
+		$iconEye = 'eye-icon.png';
+		$statusEye = 1;
+		$styleEye = 'show';
+	}
+	echo $this->Html->link(
+		$this->Html->image($iconEye, array('border' => 0, 'width' => 20, 'height' => 20)) . '&nbsp;',
+		array('controller' => 'accounts', 'action' => 'activatem', 'ids' => $r['ViewCompany']['companyid'], 'status' => $statusEye, 'from' => 0),
+		array('title' => 'Click to ' . $styleEye . ' the office.', 'escape' => false),
+		"Are you sure to " . $styleEye . " this one?"
+	);
 	?>
 	</td>
 </tr>
