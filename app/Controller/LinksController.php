@@ -118,10 +118,13 @@ class LinksController extends AppController {
 			$this->Type->id = $id;
 			$this->request->data = $this->Type->read();
 			if (empty($this->request->data)) {
-				$this->Session->setFlash('Sorry, no such type.');
+				$this->Session->setFlash('Sorry, no such a type.');
 				$this->redirect(array('controller' => 'links', 'action' => 'lsttypes'));
 			}
 		} else {
+			if (empty($this->request->data['Type']['url'])) {
+				$this->request->data['Type']['url'] = null;
+			}
 			if ($this->Type->save($this->request->data)) {
 				$this->ViewType->id = $this->request->data['Type']['id'];
 				$data = $this->ViewType->read();
@@ -366,8 +369,11 @@ class LinksController extends AppController {
 				$types = $this->Type->find('all',
 					array(
 						'conditions' => array(
-							'siteid' => $this->request->data['Site']['id'],
-							'status' => '1'
+							'AND' => array(
+								'siteid' => $this->request->data['Site']['id'],
+								'status' => '1',
+								'NOT' => array('url' => 'NULL')
+							)
 						)
 					)
 				);

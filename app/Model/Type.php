@@ -19,7 +19,8 @@ class Type extends AppModel {
 		),
 		'url' => array(
 			'rule' => 'url',
-			'message' => 'Please fill out a valid url.'
+			'message' => 'Please fill out a valid url.',
+			'allowEmpty' => true
 		)
 	);
 }

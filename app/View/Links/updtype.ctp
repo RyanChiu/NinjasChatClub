@@ -37,6 +37,12 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 		echo $this->Form->input('Type.url', array('label' => '', 'style' => 'width:590px;'));
 		?>
 		</div>
+		<div style="float:left;margin-left:12px;">
+		<?php 
+		echo $this->Form->checkbox('Type.url_null', array('style' => 'border:0px;width:16px;'));
+		echo "NULL";
+		?>
+		</div>
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
@@ -82,3 +88,26 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 echo $this->Form->input('Type.id', array('type' => 'hidden'));
 echo $this->Form->end();
 ?>
+<script type="text/javascript">
+jQuery(":checkbox").attr({
+	style: "border: 0px; width: 16px; margin-left: 2px; vertical-align: middle;"
+});
+if (jQuery.trim(jQuery("#TypeUrl").val()).length > 0) {
+	jQuery("#TypeUrl").attr("style", "width:590px;");
+	jQuery("#TypeUrlNull").attr("checked", false);
+} else {
+	jQuery("#TypeUrl").attr("readonly", true);
+	jQuery("#TypeUrl").attr("style", "width:590px;background:grey;");
+	jQuery("#TypeUrlNull").attr("checked", true);
+}
+jQuery("#TypeUrlNull").click(function() {
+	if (jQuery("#TypeUrlNull").attr("checked")) {
+		jQuery("#TypeUrl").val("");
+		jQuery("#TypeUrl").attr("readonly", true);
+		jQuery("#TypeUrl").attr("style", "width:590px;background:grey;");
+	} else {
+		jQuery("#TypeUrl").attr("readonly", false);
+		jQuery("#TypeUrl").attr("style", "width:590px;");
+	}
+});
+</script>
