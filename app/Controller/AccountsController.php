@@ -1646,7 +1646,7 @@ class AccountsController extends AppController {
 		}
 		
 		$coms = array();
-		if ($this->Auth->user('Account.role') == 0) {
+		if ($this->Auth->user('Account.role') <= 1) {
 			$coms = $this->ViewCompany->find('list',
 				array(
 					'fields' => array('companyid', 'officename'),
