@@ -1060,6 +1060,7 @@ class AccountsController extends AppController {
 		$cps = $this->ViewCompany->find('list',
 			array(
 				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
 				'order' => 'username4m'
 			)
 		);
@@ -1370,6 +1371,7 @@ class AccountsController extends AppController {
 		$cps = $this->ViewCompany->find('list',
 			array(
 				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
 				'order' => 'username4m'
 			)
 		);
@@ -1643,6 +1645,32 @@ class AccountsController extends AppController {
 			$id = $this->request->params['named']['id'];
 		}
 		
+		$coms = array();
+		if ($this->Auth->user('Account.role') == 0) {
+			$coms = $this->ViewCompany->find('list',
+				array(
+					'fields' => array('companyid', 'officename'),
+					'conditions' => array('status >= 0'),
+					'order' => 'officename'
+				)
+			);
+		}
+		$coms = array('0' => 'All') + $coms;
+		$this->set(compact('coms'));
+		
+		$sites = $this->Site->find('list',
+			array(
+				'fields' => array('id', 'sitename'),
+				'conditions' => array('status' => 1)
+			)
+		);
+		$sites = array('-1' => '-----------------------') + $sites;
+		$this->set(compact('sites'));
+		
+		$this->set('status', $this->Account->status);
+		$this->set('online', $this->Account->online);
+		$this->set('limit', $this->__limit);
+		
 		/*prepare for the searching part*/
 		if (!empty($this->request->data)) {// if there are any POST data
 			$conditions = array(
@@ -1707,11 +1735,16 @@ class AccountsController extends AppController {
 					$conditions = array('1' => '1');
 				}
 			}
-			
 		}
-
-		$this->Session->write('conditions_ag', $conditions);
 		
+		$conditions = array(
+			'AND' => array(
+				'companyid' => array_keys($coms),
+				'status >=' => 0
+			)
+		) + $conditions;
+		$this->Session->write('conditions_ag', $conditions);
+
 		$this->paginate = array(
 			'ViewAgent' => array(
 				'conditions' => $conditions,
@@ -1719,31 +1752,6 @@ class AccountsController extends AppController {
 				'order' => 'username4m'
 			)
 		);
-		
-		$coms = array();
-		if ($this->Auth->user('Account.role') == 0) {
-			$coms = $this->Company->find('list',
-				array(
-					'fields' => array('id', 'officename'),
-					'order' => 'officename'
-				)
-			);
-		}
-		$coms = array('0' => 'All') + $coms;
-		$this->set(compact('coms'));
-
-		$sites = $this->Site->find('list',
-			array(
-				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
-			)
-		);
-		$sites = array('-1' => '-----------------------') + $sites;
-		$this->set(compact('sites'));
-		
-		$this->set('status', $this->Account->status);
-		$this->set('online', $this->Account->online);
-		$this->set('limit', $this->__limit);
 		$this->set('rs',
 			$this->paginate('ViewAgent')
 		);
@@ -1810,11 +1818,11 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 1) {
 			$conditions = array('id' => $this->Auth->user("Account.id"));
 		}
-		$coms = $this->Company->find('list',
+		$coms = $this->ViewCompany->find('list',
 			array(
-				'fields' => array('id', 'officename'),
+				'fields' => array('companyid', 'officename'),
 				'order' => 'officename',
-				'conditions' => $conditions 
+				'conditions' => array('status >= 0') + $conditions
 			)
 		);
 		if (count($coms) > 1) $coms = array('0' => 'All') + $coms;
@@ -1939,7 +1947,7 @@ class AccountsController extends AppController {
 				AND c.id in ($ids_str)";
 				$result = mysql_query($sql, $conn->dblink);
 			}
-			$this->Session->setFlash('The selected all have been ' . $this->Account->status[$status] . '.' . $sql);
+			$this->Session->setFlash('The selected all have been ' . $this->Account->status[$status] . '.');
 		};
 		
 		$this->redirect(array('controller' => 'accounts', 'action' => $action));
@@ -2143,11 +2151,11 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 1) {
 			$conditions = array('id' => $this->Auth->user('Account.id'));
 		}
-		$coms = $this->Company->find('list',
+		$coms = $this->ViewCompany->find('list',
 			array(
-				'fields' => array('id', 'officename'),
+				'fields' => array('companyid', 'officename'),
 				'order' => 'officename',
-				'conditions' => $conditions 
+				'conditions' => array('status >= 0') + $conditions
 			)
 		);
 		if (count($coms) > 1) $coms = array('0' => 'All') + $coms;

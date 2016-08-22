@@ -222,6 +222,15 @@ class LinksController extends AppController {
 			$id = $this->request->params['named']['id'];
 		}
 		
+		/*find out not "hidden" companies*/
+		$coms = $this->ViewCompany->find('list',
+			array(
+				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
+				'order' => 'officename'
+			)
+		);
+		
 		/*prepare the agents for this view from DB*/
 		/*prepare the sites for the view from DB*/
 		$ags = array();
@@ -238,13 +247,16 @@ class LinksController extends AppController {
 			)
 		);
 		if ($this->curuser['role'] == 0) {//means an administrator
-			$ags = $this->Account->find('list',
+			$ags = $this->ViewAgent->find('list',
 				array(
 					'fields' =>	array(
 						'id',
 						'username'
 					),
-					'conditions' => array('role' => 2),
+					'conditions' => array(
+						'status >=' => 0,
+						'AND' => array('companyid' => array_keys($coms))
+					),
 					'order' => 'username4m'
 				)
 			);
@@ -434,10 +446,13 @@ class LinksController extends AppController {
 			}
 		}
 		
-		$coms = $this->Company->find('list',
+		$coms = $this->ViewCompany->find('list',
 			array(
-				'fields' => array('id', 'officename'),
-				'conditions' => ($selcom == 0 ? array('1' => '1') : array('id' => $selcom)),
+				'fields' => array('companyid', 'officename'),
+				'conditions' =>  array(
+					($selcom == 0 ? array('1' => '1') : array('id' => $selcom)),
+					'status >= 0'
+				),
 				'order' => array('officename')
 			)
 		);
@@ -445,7 +460,7 @@ class LinksController extends AppController {
 		$ags = $this->ViewAgent->find('list',
 			array(
 				'fields' => array('id', 'username'),
-				'conditions' => ($selcom == 0 ? array('1' => '1') : array('companyid' => $selcom)),
+				'conditions' => ($selcom == 0 ? array('companyid' => array_keys($coms)) : array('companyid' => $selcom)),
 				'order' => array('username4m')
 			)
 		);
@@ -459,6 +474,7 @@ class LinksController extends AppController {
 		);
 		$sites = array('0' => 'All') + $sites;
 		
+		$conditions = array();
 		if (empty($this->request->data)) {
 			$conditions = array(
 					'convert(clicktime, date) >=' => $startdate,
@@ -511,6 +527,13 @@ class LinksController extends AppController {
 		}
 		
 		if ($selcom != 0) $conditions['companyid'] = array(-1, $selcom);
+		else {
+			$concoms = array();
+			if (key_exists('companyid', $conditions)){
+				$concoms = $conditions['companyid'];
+			}
+			$conditions['companyid'] = array_keys($coms) + $concoms;
+		}
 		if ($selagent != 0) $conditions['agentid'] = array(-1, $selagent);
 		if ($selsite != 0) $conditions['siteid'] = array(-1, $selsite);
 		

@@ -87,8 +87,7 @@ class StatsController extends AppController {
 	
 	function ___getwhere_4statsby_only() {
 		$where = 'where false';
-		if ($this->curuser) {
-		}
+		if ($this->curuser) {}
 		else return $where;
 		$where = 'where trxtime >= "' . $this->request->data['Stats']['startdate'] . ' 00:00:00"'
 		. ' and trxtime <= "' . $this->request->data['Stats']['enddate'] . ' 23:59:59"';
@@ -115,6 +114,16 @@ class StatsController extends AppController {
 		} else if ($this->curuser['role'] == 2) {//means an agent
 			$where .= ' and agentid = ' . $this->curuser['id'];
 		}
+		
+		//don't show hidden ones stats
+		$coms = $this->ViewCompany->find('list',
+			array(
+				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0')
+			)
+		);
+		$where .= ' and companyid in (' . implode(",", array_keys($coms)) . ')';
+						
 		return $where;
 	}
 	
@@ -252,6 +261,7 @@ class StatsController extends AppController {
 			$coms = $this->ViewCompany->find('list',
 				array(
 					'fields' => array('companyid', 'officename'),
+					'conditions' => array('status >= 0'),
 					'order' => 'officename'
 				)
 			);
@@ -263,7 +273,7 @@ class StatsController extends AppController {
 				array(
 					'fields' => array('id', 'username'),
 					'conditions' => array(/*'status' => 1*/)
-						+ (empty($selcoms) || in_array('0', $selcoms) ? array('1' => '1') : array('companyid' => $selcoms)),
+						+ (empty($selcoms) || in_array('0', $selcoms) ? array('companyid' => array_keys($coms)) : array('companyid' => $selcoms)),
 					'order' => 'username4m'
 				)
 			);
