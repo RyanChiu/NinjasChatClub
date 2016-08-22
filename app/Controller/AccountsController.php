@@ -566,15 +566,15 @@ class AccountsController extends AppController {
 				if (!empty($userinfo)) {
 					if ($userinfo['Account']['status'] == 0) {
 						$this->Session->setFlash(
-							'(Your account for this site is temporarily suspended for fraud review.)',
+							'(Your account is temporarily suspended for fraud review.)',
 							'default',
 							array('class' => 'suspended-warning')
 						);
 					} else if ($userinfo['Account']['status'] == -1) {
 						$this->Session->setFlash(
-								'(Your account for this site is not approved for the moment.)',
-								'default',
-								array('class' => 'suspended-warning')
+							'(Your account is not approved for the moment.)',
+							'default',
+							array('class' => 'suspended-warning')
 						);
 					} else {
 						/*try to find the new username by searching the mappings table*/
