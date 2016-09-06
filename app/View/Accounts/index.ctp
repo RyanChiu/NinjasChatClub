@@ -225,7 +225,7 @@ if (!empty($notes)) {
 <tr>
 	<td colspan=2>
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">All the time</caption>
+		<caption style="font-style:italic;">All the time (Start from 2016-08-14)</caption>
 		<thead>
 		<tr>
 			<th>Rank</th>
