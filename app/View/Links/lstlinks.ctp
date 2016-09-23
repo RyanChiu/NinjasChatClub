@@ -108,14 +108,19 @@ if (!empty($rs)) {
 				}
 			}
 			
-			echo $sites[$r['AgentSiteMapping']['siteid']] . '_' . $type['Type']['typealias'] 
-				. $typealias . ':&nbsp;&nbsp;&nbsp;';
-			echo '<b>';
-			echo $this->Html->url(array('controller' => 'accounts', 'action' => 'go'), true) . '/'
-				. $r['AgentSiteMapping']['siteid'] . '/'
-				. $type['Type']['id']. '/'
-				. $ags[$r['AgentSiteMapping']['agentid']];
-			echo '</b>';
+			/**
+			 * if it's a "bonus" type, we don't repeatedly show the generated links
+			 */
+			if (strpos($type['Type']['typealias'], 'bonus') !== false) {
+				echo $sites[$r['AgentSiteMapping']['siteid']] . '_' . $type['Type']['typealias'] 
+					. $typealias . ':&nbsp;&nbsp;&nbsp;';
+				echo '<b>';
+				echo $this->Html->url(array('controller' => 'accounts', 'action' => 'go'), true) . '/'
+					. $r['AgentSiteMapping']['siteid'] . '/'
+					. $type['Type']['id']. '/'
+					. $ags[$r['AgentSiteMapping']['agentid']];
+				echo '</b>';
+			}
 			?>
 			</td>
 		</tr>
