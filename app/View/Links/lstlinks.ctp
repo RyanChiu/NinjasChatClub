@@ -111,7 +111,7 @@ if (!empty($rs)) {
 			/**
 			 * if it's a "bonus" type, we don't repeatedly show the generated links
 			 */
-			if (strpos($type['Type']['typealias'], 'bonus') !== false) {
+			if (strpos($type['Type']['typealias'], 'Bonus') === false) {
 				echo $sites[$r['AgentSiteMapping']['siteid']] . '_' . $type['Type']['typealias'] 
 					. $typealias . ':&nbsp;&nbsp;&nbsp;';
 				echo '<b>';
