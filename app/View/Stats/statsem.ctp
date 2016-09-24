@@ -166,51 +166,9 @@ if (!empty($rs)) {
 		reset($typesv);
 		$typesv = array_values($typesv);
 		?>
-		<th <?php echo count($typesv) > 10 ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo count($typesv) > 1 ? '' : 'class="naClassHide"'; ?>>
 		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type10', (count($typesv) > 10 ? $typesv[10] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 9 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type9', (count($typesv) > 9 ? $typesv[9] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 8 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type8', (count($typesv) > 8 ? $typesv[8] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 7 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type7', (count($typesv) > 7 ? $typesv[7] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 6 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type6', (count($typesv) > 6 ? $typesv[6] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 5 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type5', (count($typesv) > 5 ? $typesv[5] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 4 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type4', (count($typesv) > 4 ? $typesv[4] : 'N/A'))
-		?>
-		<br/><i style="font-size:12px;">Sale</i>
-		</th>
-		<th <?php echo count($typesv) > 3 ? '' : 'class="naClassHide"'; ?>>
-		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type3', (count($typesv) > 3 ? $typesv[3] : 'N/A'))
+		echo $this->ExPaginator->sort('ViewTStats.sales_type1', (count($typesv) > 1 ? $typesv[1] : 'N/A'))
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
@@ -220,9 +178,51 @@ if (!empty($rs)) {
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
-		<th <?php echo count($typesv) > 1 ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo count($typesv) > 3 ? '' : 'class="naClassHide"'; ?>>
 		<?php
-		echo $this->ExPaginator->sort('ViewTStats.sales_type1', (count($typesv) > 1 ? $typesv[1] : 'N/A'))
+		echo $this->ExPaginator->sort('ViewTStats.sales_type3', (count($typesv) > 3 ? $typesv[3] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 4 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type4', (count($typesv) > 4 ? $typesv[4] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 5 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type5', (count($typesv) > 5 ? $typesv[5] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 6 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type6', (count($typesv) > 6 ? $typesv[6] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 7 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type7', (count($typesv) > 7 ? $typesv[7] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 8 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type8', (count($typesv) > 8 ? $typesv[8] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 9 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type9', (count($typesv) > 9 ? $typesv[9] : 'N/A'))
+		?>
+		<br/><i style="font-size:12px;">Sale</i>
+		</th>
+		<th <?php echo count($typesv) > 10 ? '' : 'class="naClassHide"'; ?>>
+		<?php
+		echo $this->ExPaginator->sort('ViewTStats.sales_type10', (count($typesv) > 10 ? $typesv[10] : 'N/A'))
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
@@ -342,16 +342,16 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['signups']; ?></td>
 		<td><?php echo $r['ViewTStats']['frauds']; ?></td>
 		<td><?php echo $r['ViewTStats']['chargebacks']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type9']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type8']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type7']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type6']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type5']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type4']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type3']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type2']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type1']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type2']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type3']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type4']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type5']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type6']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type7']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type8']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type9']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
 		<td><?php echo $r['ViewTStats']['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -399,16 +399,16 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['signups']; ?></td>
 		<td class="totals"><?php echo $pagetotals['frauds']; ?></td>
 		<td class="totals"><?php echo $pagetotals['chargebacks']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type9']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type8']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type7']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type6']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type5']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type4']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type3']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type2']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type1']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type2']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type3']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type4']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type5']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type6']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type7']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type8']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type9']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $pagetotals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -452,16 +452,16 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['signups']; ?></td>
 		<td class="totals"><?php echo $totals['frauds']; ?></td>
 		<td class="totals"><?php echo $totals['chargebacks']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type9']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type8']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type7']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type6']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type5']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type4']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type3']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type2']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type1']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type2']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type3']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type4']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type5']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type6']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type7']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type8']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type9']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $totals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
