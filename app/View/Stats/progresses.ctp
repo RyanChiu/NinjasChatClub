@@ -28,7 +28,7 @@ echo $this->element('timezoneblock');
 </table>
 
 <?php 
-if (!empty($ra0)) {
+if (isset($ra0) && !empty($ra0)) {
 ?>
 	<table style="width:100%">
 		<thead>
@@ -90,7 +90,7 @@ jQuery("#selPeriods").change(function(){
 		copv = jQuery("#selPeriods").get(0).options[seli + 1].value;
 	}
 	if (seli > 0 && seli < selimax) {
-		jQuery("#linkGo").text("GO>>!");
+		jQuery("#linkGo").text("GO!>>");
 		jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/periods:" + copv + "," + selv);
 		jQuery("#tdPeriods").html(
 			"Get a chart with:"
@@ -102,6 +102,11 @@ jQuery("#selPeriods").change(function(){
 			jQuery("#linkGo").text("");
 			jQuery("#linkGo").attr("href", "#");
 		} else {
+			jQuery("#linkGo").text("GO>>!");
+			jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/y,e,a,r");
+			jQuery("#tdPeriods").html(
+				"Get a chart within a whole year month by month."
+			);
 		}
 	}
 });

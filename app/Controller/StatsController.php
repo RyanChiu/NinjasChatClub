@@ -668,7 +668,7 @@ class StatsController extends AppController {
 			'raws' => 0, 'uniques' => 0, 'chargebacks' => 0, 'signups' => 0, 'frauds' => 0,
 			'sales_type1' => 0, 'sales_type2' => 0, 'sales_type3' => 0, 'sales_type4' => 0,
 			'sales_type5' => 0, 'sales_type6' => 0, 'sales_type7' => 0, 'sales_type8' => 0,
-			'sales_type9' => 0, 'sales_type10' => 0,
+			'sales_type9' => 0, 'sales_type10' => 0, 'tr_tot' => 0, 'bo_tot' => 0,
 			'net' => 0, 'payouts' => 0, 'earnings' => 0
 		);
 		$rs = $this->ViewTStats->find('all',
@@ -715,7 +715,7 @@ class StatsController extends AppController {
 			$totals['sales_type9'] = $rs[0][0]['sales_type9'];
 			$totals['sales_type10'] = $rs[0][0]['sales_type10'];
 			$totals['tr_tot'] = $rs[0][0]['sales_type1'] + $rs[0][0]['sales_type3'];
-			$totals['gr_tot'] = $rs[0][0]['sales_type1'] + $rs[0][0]['sales_type2'] + $rs[0][0]['sales_type3'] + $rs[0][0]['sales_type4'];
+			$totals['bo_tot'] = $rs[0][0]['sales_type2'] + $rs[0][0]['sales_type4'];
 			$totals['net'] = $rs[0][0]['net'];
 			$totals['payouts'] = $rs[0][0]['payouts'];
 			$totals['earnings'] = $rs[0][0]['earnings'];
@@ -869,6 +869,11 @@ class StatsController extends AppController {
 		$this->set(compact("periods"));
 		
 		$sel_periods = __getPeriods();
+		$last_period = array_keys($sel_periods);
+		$last_period = array_pop($last_period);
+		$last_period = array($last_period => "THIS YEAR");
+		array_pop($sel_periods);
+		$sel_periods += $last_period;
 		$this->set(compact("sel_periods"));
 
 		$start0 = $periods[0];
@@ -881,37 +886,46 @@ class StatsController extends AppController {
 			 * means group by office
 			 */
 			case 0:
-				$sql = "select d.companyid, c.officename, sum(d.total) as total
-					from daily_stats d, companies c
-					where d.day >= '$start0' and d.day <= '$end0'
-						and d.companyid = c.id
-					group by d.companyid
-				";
-				$rs0 = mysql_query($sql, $conn->dblink);
-				$sql = "select d.companyid, c.officename, sum(d.total) as total
-					from daily_stats d, companies c
-					where d.day >= '$start1' and d.day <= '$end1'
-						and d.companyid = c.id
-					group by d.companyid
+				if ($start0 != 'y') {
+					/*
+					 * weekly or monthly, one by one only once
+					 */
+					$sql = "select d.companyid, c.officename, sum(d.total) as total
+						from daily_stats d, companies c
+						where d.day >= '$start0' and d.day <= '$end0'
+							and d.companyid = c.id
+						group by d.companyid
 					";
-				$rs1 = mysql_query($sql, $conn->dblink);
-				$ra0 = $ra1 = array();
-				while ($r = mysql_fetch_assoc($rs0)) {
-					$ra0[$r['companyid']] = array($r['officename'], $r['total']);
-				};
-				while ($r = mysql_fetch_assoc($rs1)) {
-					$ra1[$r['companyid']] = array($r['officename'], $r['total']);
+					$rs0 = mysql_query($sql, $conn->dblink);
+					$sql = "select d.companyid, c.officename, sum(d.total) as total
+						from daily_stats d, companies c
+						where d.day >= '$start1' and d.day <= '$end1'
+							and d.companyid = c.id
+						group by d.companyid
+					";
+					$rs1 = mysql_query($sql, $conn->dblink);
+					$ra0 = $ra1 = array();
+					while ($r = mysql_fetch_assoc($rs0)) {
+						$ra0[$r['companyid']] = array($r['officename'], $r['total']);
+					};
+					while ($r = mysql_fetch_assoc($rs1)) {
+						$ra1[$r['companyid']] = array($r['officename'], $r['total']);
+					}
+					$rd0 = array_diff_key($ra0, $ra1);
+					$rd1 = array_diff_key($ra1, $ra0);
+					foreach ($rd1 as $k => $v) {
+						$ra0 += array($k => array($v[0], 0));
+					}
+					foreach ($rd0 as $k => $v) {
+						$ra1 += array($k => array($v[0], 0));
+					}
+					$this->set(compact("ra0"));
+					$this->set(compact("ra1"));
+				} else {
+					/*
+					 * 12 month one by one in the whole year
+					 */
 				}
-				$rd0 = array_diff_key($ra0, $ra1);
-				$rd1 = array_diff_key($ra1, $ra0);
-				foreach ($rd1 as $k => $v) {
-					$ra0 += array($k => array($v[0], 0));
-				}
-				foreach ($rd0 as $k => $v) {
-					$ra1 += array($k => array($v[0], 0));
-				}
-				$this->set(compact("ra0"));
-				$this->set(compact("ra1"));
 				break;
 			default:
 				break;
