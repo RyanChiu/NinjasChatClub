@@ -714,6 +714,8 @@ class StatsController extends AppController {
 			$totals['sales_type8'] = $rs[0][0]['sales_type8'];
 			$totals['sales_type9'] = $rs[0][0]['sales_type9'];
 			$totals['sales_type10'] = $rs[0][0]['sales_type10'];
+			$totals['tr_tot'] = $rs[0][0]['sales_type1'] + $rs[0][0]['sales_type3'];
+			$totals['gr_tot'] = $rs[0][0]['sales_type1'] + $rs[0][0]['sales_type2'] + $rs[0][0]['sales_type3'] + $rs[0][0]['sales_type4'];
 			$totals['net'] = $rs[0][0]['net'];
 			$totals['payouts'] = $rs[0][0]['payouts'];
 			$totals['earnings'] = $rs[0][0]['earnings'];
