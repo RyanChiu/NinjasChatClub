@@ -226,11 +226,17 @@ if (!empty($rs)) {
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
-		<th <?php echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; // just do show for the site SXUP&NTCP?>>
+		<th style="color:#aa2200;"
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
+			// just do show for the site SXUP&NTCP?>>
 		Tr-TOT
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
-		<th <?php echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; // just do show for the site SXUP&NTCP?>>
+		<th style="color:#aa2200;"
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
+			// just do show for the site SXUP&NTCP?>>
 		Gr-ALL
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
@@ -362,8 +368,8 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['sales_type8']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type9']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type3']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type2'] + $r['ViewTStats']['sales_type3'] + $r['ViewTStats']['sales_type4']; ?></td>
+		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type3']; ?></td>
+		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type2'] + $r['ViewTStats']['sales_type3'] + $r['ViewTStats']['sales_type4']; ?></td>
 		<td><?php echo $r['ViewTStats']['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -421,8 +427,8 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['sales_type8']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type9']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
-		<td class="totals"><?php echo $pagetotals['tr_tot']; ?></td>
-		<td class="totals"><?php echo $pagetotals['gr_tot']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['tr_tot']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['gr_tot']; ?></td>
 		<td class="totals"><?php echo $pagetotals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -476,8 +482,8 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['sales_type8']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type9']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
-		<td class="totals"><?php echo $totals['tr_tot']; ?></td>
-		<td class="totals"><?php echo $totals['gr_tot']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $totals['tr_tot']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $totals['gr_tot']; ?></td>
 		<td class="totals"><?php echo $totals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {

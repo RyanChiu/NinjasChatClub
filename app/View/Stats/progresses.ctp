@@ -86,7 +86,7 @@ jQuery("#selPeriods").change(function(){
 	var seli = jQuery("#selPeriods").get(0).selectedIndex;
 	var selimax = jQuery("#selPeriods option:last").attr("index");
 	var copv = "";
-	if (seli + 1 < selimax) {
+	if (seli + 1 <= selimax) {
 		copv = jQuery("#selPeriods").get(0).options[seli + 1].value;
 	}
 	if (seli > 0 && seli < selimax) {
