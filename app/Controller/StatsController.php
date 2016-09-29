@@ -11,7 +11,7 @@ class StatsController extends AppController {
 		'Stats', 'Site', 'Type',
 		'ViewStats', 'TmpStats', 'RunStats', 'ViewTStats'
 	);
-	var $components = array('RequestHandler');
+	var $components = array('RequestHandler', 'Auth');
 	var $helpers = array(
 		'Form', 'Html', 'Js',
 		'ExPaginator'
@@ -854,6 +854,12 @@ class StatsController extends AppController {
 	 * 	"[[2016-01-01,2016-01-07], [2016-01-08,2016-01-14]]"
 	 */
 	function progresses() {
+		if ($this->Auth->user('Account.role') != 0) {
+			$this->Session->setFlash('Sorry, the page you try to reach is not allowed.');
+			$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+			return;
+		}
+		
 		$this->layout = "defaultlayout";
 		$bywhat = array_key_exists('bywhat', $this->passedArgs) ? $this->passedArgs['bywhat'] : null;
 		$periods = array_key_exists('periods', $this->passedArgs) ? $this->passedArgs['periods'] : null;
