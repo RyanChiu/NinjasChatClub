@@ -845,5 +845,69 @@ class StatsController extends AppController {
 		}
 		$this->set(compact('frauds'));
 	}
+	
+	/**
+	 * $bywhat: 0 means group by office, etc.
+	 * $periods: should be 2 arrays in an array like the following
+	 * 	"[[2016-01-01,2016-01-07], [2016-01-08,2016-01-14]]"
+	 */
+	function progresses() {
+		$this->layout = "defaultlayout";
+		$bywhat = array_key_exists('bywhat', $this->passedArgs) ? $this->passedArgs['bywhat'] : null;
+		$periods = array_key_exists('periods', $this->passedArgs) ? $this->passedArgs['periods'] : null;
+		
+		$this->set(compact("bywhat"));		
+		$periods = explode(",", $periods);
+		$this->set(compact("periods"));
+		
+		$sel_periods = __getPeriods();
+		$this->set(compact("sel_periods"));
+
+		$start0 = $periods[0];
+		$end0 = $periods[1];
+		$start1 = $periods[2];
+		$end1 = $periods[3];
+		$conn = new zmysqlConn();
+		switch ($bywhat) {
+			/*
+			 * means group by office
+			 */
+			case 0:
+				$sql = "select d.companyid, c.officename, sum(d.total) as total
+					from daily_stats d, companies c
+					where d.day >= '$start0' and d.day <= '$end0'
+						and d.companyid = c.id
+					group by d.companyid
+				";
+				$rs0 = mysql_query($sql, $conn->dblink);
+				$sql = "select d.companyid, c.officename, sum(d.total) as total
+					from daily_stats d, companies c
+					where d.day >= '$start1' and d.day <= '$end1'
+						and d.companyid = c.id
+					group by d.companyid
+					";
+				$rs1 = mysql_query($sql, $conn->dblink);
+				$ra0 = $ra1 = array();
+				while ($r = mysql_fetch_assoc($rs0)) {
+					$ra0[$r['companyid']] = array($r['officename'], $r['total']);
+				};
+				while ($r = mysql_fetch_assoc($rs1)) {
+					$ra1[$r['companyid']] = array($r['officename'], $r['total']);
+				}
+				$rd0 = array_diff_key($ra0, $ra1);
+				$rd1 = array_diff_key($ra1, $ra0);
+				foreach ($rd1 as $k => $v) {
+					$ra0 += array($k => array($v[0], 0));
+				}
+				foreach ($rd0 as $k => $v) {
+					$ra1 += array($k => array($v[0], 0));
+				}
+				$this->set(compact("ra0"));
+				$this->set(compact("ra1"));
+				break;
+			default:
+				break;
+		}
+	}
 }
 ?>

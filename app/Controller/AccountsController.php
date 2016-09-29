@@ -272,41 +272,7 @@ class AccountsController extends AppController {
 	function top10() {
 		$this->layout = 'defaultlayout';
 		
-		$lastday = date("Y-m-d", strtotime(date('Y-m-d') . " Sunday"));
-		if (date("w") == 0) {
-			$lastday = date("Y-m-d", strtotime($lastday . " + 6 days"));
-		} else {
-			$lastday = date("Y-m-d", strtotime($lastday . " - 1 days"));
-		}
-		$weekend = $lastday;
-		$weekstart = date("Y-m-d", strtotime($lastday . " - 6 days"));
-		$periods = array();
-		for ($i = 0; $i < 52; $i++) {
-			$oneweek = date("Y-m-d", strtotime($lastday . " - " . (7 * $i + 6) . " days"))
-				. ','
-				. date("Y-m-d", strtotime($lastday . " - " . (7 * $i) . " days"));
-			$v = "[W]$oneweek";
-			switch ($i) {
-				case 0:
-					$v = 'THIS WEEK';
-					break;
-				case 1:
-					$v = 'LAST WEEK';
-					break;
-				default:
-					break;
-			}
-			$periods += array($oneweek => $v);
-		}
-		$monthstart = date("Y-m-16");
-		$monthend = date("Y-m-d", strtotime($monthstart . " + 1 month - 1 day"));
-		for ($i = -6; $i < 6; $i++) {
-			//$mv = date("Y-M", strtotime($monthstart . sprintf(" %d", $i) . "  months"));
-			$onemonth = date("Y-m-16", strtotime($monthstart . sprintf(" %d", $i) . " months"))
-				. ','
-				. date("Y-m-d", strtotime($monthstart . sprintf(" %d", $i + 1) . " months - 1 day"));
-			$periods += array($onemonth => "[M]$onemonth");
-		}
+		$periods = __getPeriods();
 		
 		$rs = array();
 		if (!empty($this->request->data)) {
