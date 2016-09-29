@@ -143,7 +143,7 @@ if (!empty($rs)) {
 		<th <?php echo !in_array($selsite, array(-1, -2)) ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.uniques', 'Uniques'); ?>
 		</th>
-		<th <?php echo $selsite != 7 ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo $selsite == 2 ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*'); ?>
 		</th>
 		<th class="naClassHide">
@@ -233,8 +233,8 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.earnings', 'Earnings'); ?></th>
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.payouts', 'Payouts'); ?></th>
+		<th><?php echo $this->ExPaginator->sort('ViewTStats.earnings', 'Earn'); ?></th>
+		<th><?php echo $this->ExPaginator->sort('ViewTStats.payouts', 'Pay'); ?></th>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
