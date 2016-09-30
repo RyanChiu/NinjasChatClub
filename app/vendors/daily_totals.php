@@ -16,7 +16,7 @@ if (($argc - 1) == 2) {
 	$day = $argv[1];
 	$bywhat = $argv[2];
 } else {
-	exit("It must take 2 parameters, please try again.\n");
+	exit("It must take 2 parameters (like 2016-01-01 0), please try again.\n");
 }
 
 function byoffice($comid, $day, &$dbconn) {
