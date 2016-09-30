@@ -690,6 +690,12 @@ class StatsController extends AppController {
 					'sum(sales_type8) as sales_type8',
 					'sum(sales_type9) as sales_type9',
 					'sum(sales_type10) as sales_type10',
+					'sum(sales_type1_3) as sales_type1_3',
+					'sum(sales_type2_4) as sales_type2_4',
+					'sum(sales_type1_3_payout) as sales_type1_3_payout',
+					'sum(sales_type1_3_earning) as sales_type1_3_earning',
+					'sum(sales_type2_4_payout) as sales_type2_4_payout',
+					'sum(sales_type2_4_earning) as sales_type2_4_earning',
 					'sum(net) as net',
 					'sum(payouts) as payouts',
 					'sum(earnings) as earnings'
@@ -714,8 +720,12 @@ class StatsController extends AppController {
 			$totals['sales_type8'] = $rs[0][0]['sales_type8'];
 			$totals['sales_type9'] = $rs[0][0]['sales_type9'];
 			$totals['sales_type10'] = $rs[0][0]['sales_type10'];
-			$totals['tr_tot'] = $rs[0][0]['sales_type1'] + $rs[0][0]['sales_type3'];
-			$totals['bo_tot'] = $rs[0][0]['sales_type2'] + $rs[0][0]['sales_type4'];
+			$totals['sales_type1_3'] = $rs[0][0]['sales_type1_3'];
+			$totals['sales_type2_4'] = $rs[0][0]['sales_type2_4'];
+			$totals['sales_type1_3_payout'] = $rs[0][0]['sales_type1_3_payout'];
+			$totals['sales_type1_3_earning'] = $rs[0][0]['sales_type1_3_earning'];
+			$totals['sales_type2_4_payout'] = $rs[0][0]['sales_type2_4_payout'];
+			$totals['sales_type2_4_earning'] = $rs[0][0]['sales_type2_4_earning'];
 			$totals['net'] = $rs[0][0]['net'];
 			$totals['payouts'] = $rs[0][0]['payouts'];
 			$totals['earnings'] = $rs[0][0]['earnings'];

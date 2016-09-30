@@ -226,29 +226,58 @@ if (!empty($rs)) {
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
-		<th style="color:#aa2200;"
+		<th
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
 			// just do show for the site SXUP&NTCP?>>
-		Tr sales
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type1_3', 'Tr sales'); ?>
 		<br/><i style="font-size:12px;">Tot all</i>
 		</th>
-		<th style="color:#aa2200;"
+		<th
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
 			// just do show for the site SXUP&NTCP?>>
-		Bonus
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4', 'Bonus'); ?>
 		<br/><i style="font-size:12px;">Tot all</i>
 		</th>
-		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for the some site?>>
+		<th 
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.net', 'Net'); ?>
 		<br/><i style="font-size:12px;">Sale</i>
 		</th>
 		<?php
 		if ($_show_pay_) {
 		?>
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.earnings', 'Earn'); ?></th>
-		<th><?php echo $this->ExPaginator->sort('ViewTStats.payouts', 'Pay'); ?></th>
+		<th>
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type1_3_earning', 'Tr'); ?>
+		<br/><i style="font-size:12px;">Earn all</i>
+		</th>
+		<th>
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4_earning', 'Bonus'); ?>
+		<br/><i style="font-size:12px;">Earn all</i>
+		</th>
+		<th>
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type1_3_payout', 'Tr'); ?>
+		<br/><i style="font-size:12px;">Pay all</i>
+		</th>
+		<th>
+		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4_payout', 'Bonus'); ?>
+		<br/><i style="font-size:12px;">Pay all</i>
+		</th>
+		<th
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
+		<?php echo $this->ExPaginator->sort('ViewTStats.earnings', 'Earn'); ?>
+		</th>
+		<th
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
+		<?php echo $this->ExPaginator->sort('ViewTStats.payouts', 'Pay'); ?>
+		</th>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
@@ -263,7 +292,10 @@ if (!empty($rs)) {
 		'raws' => 0, 'uniques' => 0, 'chargebacks' => 0, 'signups' => 0, 'frauds' => 0,
 		'sales_type1' => 0, 'sales_type2' => 0, 'sales_type3' => 0, 'sales_type4' => 0,
 		'sales_type5' => 0, 'sales_type6' => 0, 'sales_type7' => 0, 'sales_type8' => 0,
-		'sales_type9' => 0, 'sales_type10' => 0, 'tr_tot' => 0, 'bo_tot' => 0,
+		'sales_type9' => 0, 'sales_type10' => 0, 
+		'sales_type1_3' => 0, 'sales_type2_4' => 0,
+		'sales_type1_3_payout' => 0, 'sales_type1_3_earning' => 0,
+		'sales_type2_4_payout' => 0, 'sales_type2_4_earning' => 0,
 		'net' => 0, 'payouts' => 0, 'earnings' => 0
 	);
 	$i = 0;
@@ -283,8 +315,12 @@ if (!empty($rs)) {
 		$pagetotals['sales_type8'] += $r['ViewTStats']['sales_type8'];
 		$pagetotals['sales_type9'] += $r['ViewTStats']['sales_type9'];
 		$pagetotals['sales_type10'] += $r['ViewTStats']['sales_type10'];
-		$pagetotals['tr_tot'] += $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type3'];
-		$pagetotals['bo_tot'] += $r['ViewTStats']['sales_type2'] + $r['ViewTStats']['sales_type4'];
+		$pagetotals['sales_type1_3'] += $r['ViewTStats']['sales_type1_3'];
+		$pagetotals['sales_type2_4'] += $r['ViewTStats']['sales_type2_4'];
+		$pagetotals['sales_type1_3_payout'] += $r['ViewTStats']['sales_type1_3_payout'];
+		$pagetotals['sales_type1_3_earning'] += $r['ViewTStats']['sales_type1_3_earning'];
+		$pagetotals['sales_type2_4_payout'] += $r['ViewTStats']['sales_type2_4_payout'];
+		$pagetotals['sales_type2_4_earning'] += $r['ViewTStats']['sales_type2_4_earning'];
 		$pagetotals['net'] += $r['ViewTStats']['net'];
 		$pagetotals['payouts'] += $r['ViewTStats']['payouts'];
 		$pagetotals['earnings'] += $r['ViewTStats']['earnings'];
@@ -368,12 +404,16 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['sales_type8']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type9']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
-		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type1'] + $r['ViewTStats']['sales_type3']; ?></td>
-		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type2'] + $r['ViewTStats']['sales_type4']; ?></td>
+		<td><?php echo $r['ViewTStats']['sales_type1_3']; ?></td>
+		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type2_4']; ?></td>
 		<td><?php echo $r['ViewTStats']['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
 		?>
+		<td><?php echo '$' . $r['ViewTStats']['sales_type1_3_earning']; ?></td>
+		<td style="color:#aa2200;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_earning']; ?></td>
+		<td><?php echo '$' . $r['ViewTStats']['sales_type1_3_payout']; ?></td>
+		<td style="color:#aa2200;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_payout']; ?></td>
 		<td><?php echo '$' . $r['ViewTStats']['earnings']; ?></td>
 		<td><?php echo '$' . $r['ViewTStats']['payouts']; ?></td>
 		<?php
@@ -427,12 +467,16 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['sales_type8']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type9']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
-		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['tr_tot']; ?></td>
-		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['bo_tot']; ?></td>
+		<td class="totals"><?php echo $pagetotals['sales_type1_3']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['sales_type2_4']; ?></td>
 		<td class="totals"><?php echo $pagetotals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
 		?>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $pagetotals['sales_type1_3_earning']); ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo '$' . sprintf('%.2f', $pagetotals['sales_type2_4_earning']); ?></td>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $pagetotals['sales_type1_3_payout']); ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo '$' . sprintf('%.2f', $pagetotals['sales_type2_4_payout']); ?></td>
 		<td class="totals"><?php echo '$' . sprintf('%.2f', $pagetotals['earnings']); ?></td>
 		<td class="totals"><?php echo '$' . sprintf('%.2f', $pagetotals['payouts']); ?></td>
 		<?php
@@ -482,12 +526,16 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['sales_type8']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type9']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
-		<td class="totals" style="color:#aa2200;"><?php echo $totals['tr_tot']; ?></td>
-		<td class="totals" style="color:#aa2200;"><?php echo $totals['bo_tot']; ?></td>
+		<td class="totals"><?php echo $totals['sales_type1_3']; ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo $totals['sales_type2_4']; ?></td>
 		<td class="totals"><?php echo $totals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
 		?>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $totals['sales_type1_3_earning']); ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo '$' . sprintf('%.2f', $totals['sales_type2_4_earning']); ?></td>
+		<td class="totals"><?php echo '$' . sprintf('%.2f', $totals['sales_type1_3_payout']); ?></td>
+		<td class="totals" style="color:#aa2200;"><?php echo '$' . sprintf('%.2f', $totals['sales_type2_4_payout']); ?></td>
 		<td class="totals"><?php echo '$' . sprintf('%.2f', $totals['earnings']); ?></td>
 		<td class="totals"><?php echo '$' . sprintf('%.2f', $totals['payouts']); ?></td>
 		<?php
@@ -557,6 +605,10 @@ if (!empty($rs)) {
 		?>
 		<td class="totals"></td>
 		<td class="totals"></td>
+		<td class="totals"></td>
+		<td class="totals"></td>
+		<td class="totals"></td>
+		<td class="totals"></td>
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
@@ -619,6 +671,10 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
+		<td class="totals"></td>
+		<td class="totals"></td>
+		<td class="totals"></td>
+		<td class="totals"></td>
 		<td class="totals"></td>
 		<td class="totals"></td>
 		<?php
