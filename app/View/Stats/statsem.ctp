@@ -407,9 +407,9 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['frauds']; ?></td>
 		<td><?php echo $r['ViewTStats']['chargebacks']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type1']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type2']; ?></td>
+		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type2']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type3']; ?></td>
-		<td><?php echo $r['ViewTStats']['sales_type4']; ?></td>
+		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type4']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type5']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type6']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type7']; ?></td>
@@ -470,9 +470,9 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['frauds']; ?></td>
 		<td class="totals"><?php echo $pagetotals['chargebacks']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type1']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type2']; ?></td>
+		<td class="totals" <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $pagetotals['sales_type2']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type3']; ?></td>
-		<td class="totals"><?php echo $pagetotals['sales_type4']; ?></td>
+		<td class="totals" <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $pagetotals['sales_type4']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type5']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type6']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type7']; ?></td>
@@ -529,9 +529,9 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['frauds']; ?></td>
 		<td class="totals"><?php echo $totals['chargebacks']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type1']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type2']; ?></td>
+		<td class="totals" <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $totals['sales_type2']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type3']; ?></td>
-		<td class="totals"><?php echo $totals['sales_type4']; ?></td>
+		<td class="totals" <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $totals['sales_type4']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type5']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type6']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type7']; ?></td>
