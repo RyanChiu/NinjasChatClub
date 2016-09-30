@@ -239,7 +239,7 @@ echo $scripts_for_layout;
 						<?php
 						echo $this->Html->link('<span><font>STATS</font></span>',
 							array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
-							array('escape' => false), 
+							array('rel' => ($role == 0 ? 'dropmenu_stats' : ''), 'escape' => false), 
 							false
 						);
 						?>
@@ -439,6 +439,15 @@ echo $scripts_for_layout;
 							false
 						);
 					}
+					?>
+				</div>
+				<div id="dropmenu_stats" class="dropmenudiv_e" style="width: 80px;">
+					<?php
+					echo $this->Html->link('<font><b>Charts</b></font>',
+						array('controller' => 'stats', 'action' => 'progresses'),
+						array('escape' => false), 
+						false
+					);
 					?>
 				</div>
 				<div id="dropmenu_admin_agent" class="dropmenudiv_e"

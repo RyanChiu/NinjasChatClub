@@ -105,7 +105,7 @@ jQuery("#selPeriods").change(function(){
 			jQuery("#linkGo").text("GO>>!");
 			jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/y,e,a,r");
 			jQuery("#tdPeriods").html(
-				"Get a chart within a whole year month by month."
+				"Get a chart within a whole year (month by month)."
 			);
 		}
 	}
