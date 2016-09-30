@@ -250,19 +250,31 @@ if (!empty($rs)) {
 		<?php
 		if ($_show_pay_) {
 		?>
-		<th>
+		<th 
+		<?php 
+			echo !in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type1_3_earning', 'Tr'); ?>
 		<br/><i style="font-size:12px;">Earn all</i>
 		</th>
-		<th>
+		<th 
+		<?php 
+			echo !in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4_earning', 'Bonus'); ?>
 		<br/><i style="font-size:12px;">Earn all</i>
 		</th>
-		<th>
+		<th 
+		<?php 
+			echo !in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type1_3_payout', 'Tr'); ?>
 		<br/><i style="font-size:12px;">Pay all</i>
 		</th>
-		<th>
+		<th 
+		<?php 
+			echo !in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
+			// just do not show for site SXUP&NTCP?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4_payout', 'Bonus'); ?>
 		<br/><i style="font-size:12px;">Pay all</i>
 		</th>
