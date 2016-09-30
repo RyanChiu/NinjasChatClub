@@ -230,15 +230,15 @@ if (!empty($rs)) {
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
 			// just do show for the site SXUP&NTCP?>>
-		Tr-TOT
-		<br/><i style="font-size:12px;">Sale</i>
+		Tr sales
+		<br/><i style="font-size:12px;">Tot all</i>
 		</th>
 		<th style="color:#aa2200;"
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
 			// just do show for the site SXUP&NTCP?>>
-		Bo-TOT
-		<br/><i style="font-size:12px;">Bonus</i>
+		Bonus
+		<br/><i style="font-size:12px;">Tot all</i>
 		</th>
 		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for the some site?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.net', 'Net'); ?>
