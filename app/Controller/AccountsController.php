@@ -227,6 +227,7 @@ class AccountsController extends AppController {
 					'convert(trxtime, date) >=' => $conds['startdate'],
 					'typeid' => $tps,
 					'agentid >' => '0',//avoid those data that don't belog to any agent
+					'siteid' => $conds['siteids'],
 					'companyid !=' => '98'//don't show office "TESTING"'s sales
 				),
 				'group' => array('agentid'),
@@ -274,13 +275,22 @@ class AccountsController extends AppController {
 		
 		$periods = __getPeriods();
 		
+		$sites = $this->Site->find('list',
+			array('fields' => array('id', 'sitename'))
+		);
 		$rs = array();
 		if (!empty($this->request->data)) {
 			$conds = array();
+			$selsitenum = $this->request->data['Top10']['selsitenum'];
 			$start = $this->request->data['Top10']['start'];
 			$end = $this->request->data['Top10']['end'];
 			$conds['startdate'] = $start;
 			$conds['enddate'] = $end;
+			if ($selsitenum == 1) {
+				$conds['siteids'] = array(12, 13);
+			} else {
+				$conds['siteids'] = array_keys($sites);
+			}
 			$rs = $this->__top10($conds);
 		}
 		
@@ -288,6 +298,8 @@ class AccountsController extends AppController {
 		$this->set(compact('start'));
 		$this->set(compact('end'));
 		$this->set(compact('periods'));
+		$this->set(compact('sites'));
+		$this->set(compact('conds'));
 	}
 	
 	function pass() {

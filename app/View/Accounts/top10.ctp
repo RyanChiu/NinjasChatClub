@@ -30,6 +30,18 @@ echo $this->Form->create(
 		);
 		?>
 		</div>
+		<div style="float:left;margin:0px 5px 0px 0px;">
+		<?php 
+		echo $this->Form->input('Top10.selsitenum',
+			array(
+				'label' => '', 'type' => 'select',
+				'options' => array('All sties', 'Only ' . $sites[12] . '&' . $sites[13]),
+				'selected' => isset($conds) && $conds['siteids'][0] == 12 && $conds['siteids'][1] == 13 ? 1 : 0,
+				'style' => 'width:136px;'
+			)
+		);
+		?>
+		</div>
 		<div style="float:left;">
 		<?php
 		echo $this->Form->submit('>>', array('style' => 'width:30px;'));
@@ -45,6 +57,11 @@ if (!empty($rs)) {
 	<table style="font-size:90%;width:100%;">
 		<caption style="font-style:italic;">
 		The Period (From <?php echo $start; ?> To <?php echo $end; ?>)
+		<?php 
+		if ($conds['siteids'][0] == 12 && $conds['siteids'][1] == 13) {
+			echo sprintf(" [Only for site %s&%s]", $sites[$conds['siteids'][0]], $sites[$conds['siteids'][1]]);
+		}
+		?>
 		</caption>
 		<thead>
 		<tr>
