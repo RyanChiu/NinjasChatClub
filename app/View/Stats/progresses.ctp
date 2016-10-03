@@ -27,7 +27,7 @@ echo $this->element('timezoneblock');
 </tr>
 </table>
 
-<?php 
+<?php
 if (isset($ra0) && !empty($ra0)) {
 ?>
 	<table style="width:100%">
@@ -71,6 +71,48 @@ if (isset($ra0) && !empty($ra0)) {
 	?>
 	</table>
 <?php 
+} else if (isset($comd) && !empty($comd)) {
+?>
+	<?php 
+	foreach ($comd as $ck => $cv) {
+	?>
+		<div id="chartContainer_<?php echo $ck; ?>" style="height:300px;width:100%;margin:2px 0 2px 0;"></div>
+	<?php 
+	}
+	?>
+	<script type="text/javascript">
+	window.onload = function () {
+		var chart;
+		<?php 
+		foreach ($comd as $ck => $cv) {
+		?>
+		chart = new CanvasJS.Chart("chartContainer_<?php echo $ck; ?>", {
+			title:{
+				text: "Office <?php echo $ck; ?>"              
+			},
+			data: [              
+				{
+					// Change type to "doughnut", "line", "splineArea", etc.
+					type: "column",
+					dataPoints: [
+						<?php 
+						foreach ($cv as $cvk => $cvv) {
+						?>
+						{ label: "<?php echo $cvk; ?>",  y: <?php echo $cvv; ?>  },
+						<?php 
+						}
+						?>
+					]
+				}
+			]
+		});
+		chart.render();
+		<?php 
+		}
+		?>
+	}
+	</script>
+<?php 
 } else {
 ?>
 	<script type="text/javascript">
@@ -80,6 +122,7 @@ if (isset($ra0) && !empty($ra0)) {
 <?php 
 }
 ?>
+
 <script type="text/javascript">
 jQuery("#selPeriods").change(function(){
 	var selv = jQuery("#selPeriods").find("option:selected").val();
@@ -103,7 +146,7 @@ jQuery("#selPeriods").change(function(){
 			jQuery("#linkGo").attr("href", "#");
 		} else {
 			jQuery("#linkGo").text("GO>>!");
-			jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/y,e,a,r");
+			jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/periods:y,e,a,r");
 			jQuery("#tdPeriods").html(
 				"Get a chart within a whole year (month by month)."
 			);

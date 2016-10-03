@@ -47,6 +47,9 @@ echo $this->Html->script('ckeditor/ckeditor');
 echo $this->Html->css('fancybox/jquery.fancybox-1.3.3', null, array('media' => 'screen'));
 echo $this->Html->script('fancybox/jquery.fancybox-1.3.3.pack');
 
+/*for canvasjs charts*/
+echo $this->Html->script('canvasjs/canvasjs.min');
+
 /*for AJAX*/
 echo $this->Html->script('ajax/prototype');
 echo $this->Html->script('ajax/scriptaculous');

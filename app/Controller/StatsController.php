@@ -886,10 +886,15 @@ class StatsController extends AppController {
 		$sel_periods += $last_period;
 		$this->set(compact("sel_periods"));
 
-		$start0 = $periods[0];
-		$end0 = $periods[1];
-		$start1 = $periods[2];
-		$end1 = $periods[3];
+		$start0 = count($periods) > 0 ? $periods[0] : null;
+		$end0 = count($periods) > 1 ? $periods[1] : null;
+		$start1 = count($periods) > 2 ? $periods[2] : null;
+		$end1 = count($periods) > 3 ? $periods[3] : null;
+		
+		$sites  = $this->Site->find('list',
+			array('fields' => array('id', 'sitename'))
+		);
+		
 		$conn = new zmysqlConn();
 		switch ($bywhat) {
 			/*
@@ -933,8 +938,35 @@ class StatsController extends AppController {
 					$this->set(compact("ra1"));
 				} else {
 					/*
-					 * 12 month one by one in the whole year
+					 * 12 month (if exists 12 ones, otherwise the actual months there)
+					 * one by one in the whole year
 					 */
+					$comd = array();
+					$thisyear = date("Y");
+					$sql = "
+						select d.companyid, c.officename, 
+							substring(d.day, 1, 7) as mon, sum(d.total) as total
+						from daily_stats d, companies c
+						where d.companyid = c.id and substring(day, 1, 4) = '$thisyear'
+						group by d.companyid, mon
+						ORDER by c.officename, mon
+					";
+					
+					$rs = mysql_query($sql, $conn->dblink);
+					$rprev = mysql_fetch_assoc($rs);
+					if ($rprev !== false) {
+						$comd[$rprev['officename']][$rprev['mon']] = $rprev['total'];
+						while ($r = mysql_fetch_assoc($rs)) {
+							if ($r['companyid'] == $rprev['companyid']) {
+								$comd[$rprev['officename']][$r['mon']] = $r['total'];
+							} else {
+								$rprev = $r;
+								$comd[$rprev['officename']][$rprev['mon']] = $rprev['total'];
+							}
+						}
+					}
+					$this->set(compact("comd"));
+					$this->set(compact("sql"));
 				}
 				break;
 			default:
