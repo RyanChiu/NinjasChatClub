@@ -220,6 +220,9 @@ if (!empty($notes)) {
 		</table>
 	</td>
 </tr>
+<?php 
+if ($userinfo['role'] == 0) {
+?>
 <tr>
 	<td colspan=2>
 		<table style="width:100%" style="font-size:90%;">
@@ -232,7 +235,7 @@ if (!empty($notes)) {
 			<th>Tr_Sale<br/>All</th>
 			<th>Bonus<br/>All</th>
 			<th>Tr+Bonus<br/>All</th>
-			<?php if ($userinfo['role'] == 0) {?><th>Ratio</th><?php } ?>
+			<th>Ratio</th>
 		</tr>
 		</thead>
 		<?php
@@ -247,15 +250,9 @@ if (!empty($notes)) {
 			<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
 			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
-			<?php 
-			if ($userinfo['role'] == 0) {
-			?>
 			<td align="center">
 			<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales'] * 100)); ?>%
 			</td>
-			<?php 
-			}
-			?>
 		</tr>
 		<?php
 		}
@@ -263,6 +260,9 @@ if (!empty($notes)) {
 		</table>
 	</td>
 </tr>
+<?php 
+}
+?>
 </table>
 
 <!-- ## for accounts overview
