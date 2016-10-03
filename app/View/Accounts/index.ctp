@@ -246,7 +246,7 @@ if (!empty($notes)) {
 			<td align="center"><?php echo $r['TrboTop10']['username'] . '(' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
 			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
-			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales']; ?></td>
+			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
 			<?php 
 			if ($userinfo['role'] == 0) {
 			?>
