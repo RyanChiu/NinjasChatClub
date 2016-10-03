@@ -12,7 +12,8 @@ class AccountsController extends AppController {
 		'Link', 'Clickout', 'AgentSiteMapping', 'Type',
 		'Site', 'SiteExcluding', 'Stats',
 		'ViewAdmin', 'ViewCompany', 'ViewAgent', 'ViewLiteAgent',
-		'ViewStats', 'ViewMapping', 'SiteManual', 'Top10',
+		'ViewStats', 'ViewMapping', 'SiteManual', 
+		'Top10', 'TrboTop10',
 		'FakeContactUs'
 	);
 	var $components = array(
@@ -393,8 +394,8 @@ class AccountsController extends AppController {
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));
-		$monthstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
-		$monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
+		//$monthstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
+		//$monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
 		$conds['startdate'] = $weekstart;
 		$conds['enddate'] = $weekend;
 		$weekrs = $this->Top10->find('all',
@@ -403,6 +404,7 @@ class AccountsController extends AppController {
 				'order' => 'sales desc'
 			)
 		);
+		/*
 		$conds['startdate'] = $monthstart;
 		$conds['enddate'] = $monthend;
 		$monthrs = $this->Top10->find('all',
@@ -410,13 +412,33 @@ class AccountsController extends AppController {
 				'conditions' => array('flag' => 2),
 				'order' => 'sales desc'
 			)
-		);
+		);*/
 		$this->set(compact('weekrs'));
 		$this->set(compact('weekstart'));
 		$this->set(compact('weekend'));
+		/*
 		$this->set(compact('monthrs'));
 		$this->set(compact('monthstart'));
 		$this->set(compact('monthend'));
+		*/
+		
+		/*
+		 * trials and bonus top 10 for new style (2 steps) sales
+		 */
+		$trbors = $this->TrboTop10->find('all',
+			array(
+				'conditions' => array('flag' => 0),
+				'order' => 'sales desc'
+			)
+		);
+		$trboweekrs = $this->TrboTop10->find('all',
+			array(
+				'conditions' => array('flag' => 1),
+				'order' => 'sales desc'
+			)
+		);
+		$this->set(compact('trbors'));
+		$this->set(compact('trboweekrs'));
 				
 		/*prepare the totals demo data*/
 		/*## for accounts overview*/
