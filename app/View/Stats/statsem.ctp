@@ -489,7 +489,7 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type1_3']; ?></td>
 		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['sales_type2_4']; ?></td>
-		<td class="totals" style="color:#aa2200;">-</td>
+		<td class="totals" style="color:#aa2200;"><?php echo sprintf("%.2f", $pagetotals['sales_type2_4'] / $pagetotals['sales_type1_3'] * 100) . "%"; ?></td>
 		<td class="totals"><?php echo $pagetotals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -549,7 +549,7 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type1_3']; ?></td>
 		<td class="totals" style="color:#aa2200;"><?php echo $totals['sales_type2_4']; ?></td>
-		<td class="totals" style="color:#aa2200;">-</td>
+		<td class="totals" style="color:#aa2200;"><?php echo sprintf("%.2f", $totals['sales_type2_4'] / $totals['sales_type1_3'] * 100) . "%"; ?></td>
 		<td class="totals"><?php echo $totals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
