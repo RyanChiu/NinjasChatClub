@@ -240,6 +240,13 @@ if (!empty($rs)) {
 		<?php echo $this->ExPaginator->sort('ViewTStats.sales_type2_4', 'Bonus'); ?>
 		<br/><i style="font-size:12px;">Tot all</i>
 		</th>
+		<th
+		<?php 
+			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
+			// just do show for the site SXUP&NTCP?>>
+		Ratio
+		<br/><i style="font-size:12px;">(Bonus/All)</i>
+		</th>
 		<th 
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? 'class="naClassHide"' : '';
@@ -418,6 +425,7 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type1_3']; ?></td>
 		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type2_4']; ?></td>
+		<td style="color:#aa2200;"><?php echo sprintf("%.2f", $r['ViewTStats']['sales_type2_4'] / ($r['ViewTStats']['sales_type1_3'] + $r['ViewTStats']['sales_type2_4']) * 100) . "%"; ?></td>
 		<td><?php echo $r['ViewTStats']['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -481,6 +489,7 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $pagetotals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $pagetotals['sales_type1_3']; ?></td>
 		<td class="totals" style="color:#aa2200;"><?php echo $pagetotals['sales_type2_4']; ?></td>
+		<td class="totals" style="color:#aa2200;">-</td>
 		<td class="totals"><?php echo $pagetotals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -540,6 +549,7 @@ if (!empty($rs)) {
 		<td class="totals"><?php echo $totals['sales_type10']; ?></td>
 		<td class="totals"><?php echo $totals['sales_type1_3']; ?></td>
 		<td class="totals" style="color:#aa2200;"><?php echo $totals['sales_type2_4']; ?></td>
+		<td class="totals" style="color:#aa2200;">-</td>
 		<td class="totals"><?php echo $totals['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
@@ -612,6 +622,7 @@ if (!empty($rs)) {
 		<td class="totals"></td>
 		<td class="totals"></td>
 		<td class="totals"></td>
+		<td class="totals"></td>
 		<?php
 		if ($_show_pay_) {
 		?>
@@ -664,6 +675,7 @@ if (!empty($rs)) {
 		?>
 		</td>
 		<!--<td class="totals"></td>-->
+		<td class="totals"></td>
 		<td class="totals"></td>
 		<td class="totals"></td>
 		<td class="totals"></td>
