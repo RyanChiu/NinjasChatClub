@@ -251,7 +251,7 @@ if ($userinfo['role'] != -1) {
 			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
 			<td align="center">
-			<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales'] * 100)); ?>%
+			<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales_trial'] * 100)); ?>%
 			</td>
 		</tr>
 		<?php
