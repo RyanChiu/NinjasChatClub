@@ -244,8 +244,7 @@ if (!empty($rs)) {
 		<?php 
 			echo in_array($selsite, array(12, 13)) ? '' : 'class="naClassHide"'; 
 			// just do show for the site SXUP&NTCP?>>
-		Ratio
-		<br/><i style="font-size:12px;">(Bonus/Trial)</i>
+		Bonus Ratio
 		</th>
 		<th 
 		<?php 
