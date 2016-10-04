@@ -76,40 +76,88 @@ if (isset($ra0) && !empty($ra0)) {
 	<?php 
 	foreach ($comd as $ck => $cv) {
 	?>
-		<div id="chartContainer_<?php echo $ck; ?>" style="height:300px;width:100%;margin:2px 0 2px 0;"></div>
+		<div id="chartContainerII_<?php echo $ck; ?>" style="height:300px;width:100%;margin:2px 0 2px 0;"></div>
 	<?php 
 	}
 	?>
 	<script type="text/javascript">
 	window.onload = function () {
 		var chart;
+		
+
 		<?php 
 		foreach ($comd as $ck => $cv) {
 		?>
-		chart = new CanvasJS.Chart("chartContainer_<?php echo $ck; ?>", {
-			title:{
-				text: "Office <?php echo $ck; ?>"              
-			},
-			data: [              
-				{
-					// Change type to "doughnut", "line", "splineArea", etc.
-					type: "column",
-					dataPoints: [
-						<?php 
-						foreach ($cv as $cvk => $cvv) {
-						?>
-						{ label: "<?php echo $cvk; ?>",  y: <?php echo $cvv; ?>  },
-						<?php 
-						}
-						?>
-					]
+		chart = new CanvasJS.Chart("chartContainerII_<?php echo $ck; ?>",
+	    {
+	      title:{
+	        text: "Sales And Progress Monthly Graph, By Office \"<?php echo $ck; ?>\""             
+	      },   
+	      animationEnabled: true,   
+	      toolTip: {
+	        shared: true,
+	        content: function(e){
+	          var body ;
+	          var head ;
+	          head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.x)  + " Mon</strong></span><br/>";
+
+	          body = "<span style= 'color:"+e.entries[0].dataSeries.color + "'> " + e.entries[0].dataSeries.name + "</span>: <strong>"+  e.entries[0].dataPoint.y + "</strong>  <!--m/s--><br/> <span style= 'color:"+e.entries[1].dataSeries.color + "'> " + e.entries[1].dataSeries.name + "</span>: <strong>"+  e.entries[1].dataPoint.y + "</strong>%";
+
+	          return (head.concat(body));
+	        }
+	      },   
+	      axisY:{ 
+	        title: "Sales",
+	        includeZero: false,
+	        suffix : "",
+	        lineColor: "#369EAD"        
+	      },
+	      axisY2:{ 
+	        title: "Progress",
+	        includeZero: false,
+	        suffix : "%",
+	        lineColor: "#C24642"
+	      },
+	      axisX: {
+	        title: "Month",
+	        suffix : " ",
+	      },
+	      data: [
+	      {        
+	        type: "spline",
+	        name: "Sales",
+	        dataPoints: [
+		      	<?php 
+		      	foreach ($cv as $cvk => $cvv) {
+		      	?>
+		      	{x:<?php echo substr($cvk, 5, 2); ?>, y:<?php echo $cvv[0]; ?>},
+		      	<?php 
 				}
-			]
-		});
+		      	?>   
+	        ]
+	      }, 
+	      {        
+	        type: "spline",  
+	        axisYType: "secondary"  ,
+	        name: "Progress",
+	        dataPoints: [
+		        <?php 
+		        foreach ($cv as $cvk => $cvv) {
+		        ?>
+		        {x:<?php echo substr($cvk, 5, 2); ?>, y:<?php echo $cvv[1]; ?>},
+		        <?php 
+				}
+		        ?>     
+	        ]
+	      } 
+	      ]
+	    });
+
 		chart.render();
 		<?php 
 		}
 		?>
+		
 	}
 	</script>
 <?php 

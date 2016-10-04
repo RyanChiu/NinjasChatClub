@@ -955,13 +955,17 @@ class StatsController extends AppController {
 					$rs = mysql_query($sql, $conn->dblink);
 					$rprev = mysql_fetch_assoc($rs);
 					if ($rprev !== false) {
-						$comd[$rprev['officename']][$rprev['mon']] = $rprev['total'];
+						$comd[$rprev['officename']][$rprev['mon']] = array($rprev['total'], 0);
 						while ($r = mysql_fetch_assoc($rs)) {
 							if ($r['companyid'] == $rprev['companyid']) {
-								$comd[$rprev['officename']][$r['mon']] = $r['total'];
+								$totprev = end($comd[$rprev['officename']])[0];
+								$comd[$rprev['officename']][$r['mon']] = array(
+									$r['total'], 
+									sprintf("%.2f", ($r['total'] - $totprev) / $totprev * 100)
+								);
 							} else {
 								$rprev = $r;
-								$comd[$rprev['officename']][$rprev['mon']] = $rprev['total'];
+								$comd[$rprev['officename']][$rprev['mon']] = array($rprev['total'], 0);
 							}
 						}
 					}
