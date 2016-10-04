@@ -221,7 +221,7 @@ if (!empty($notes)) {
 	</td>
 </tr>
 <?php 
-if ($userinfo['role'] == 0) {
+if ($userinfo['role'] != -1) {
 ?>
 <tr>
 	<td colspan=2>
