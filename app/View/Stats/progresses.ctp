@@ -91,7 +91,7 @@ if (isset($ra0) && !empty($ra0)) {
 		chart = new CanvasJS.Chart("chartContainerII_<?php echo $ck; ?>",
 	    {
 	      title:{
-	        text: "Sales And Progress Monthly Graph, By Office \"<?php echo $ck; ?>\""             
+	        text: "By Office \"<?php echo $ck; ?>\""             
 	      },   
 	      animationEnabled: true,   
 	      toolTip: {
@@ -119,32 +119,34 @@ if (isset($ra0) && !empty($ra0)) {
 	        lineColor: "#C24642"
 	      },
 	      axisX: {
-	        title: "Month",
+	        title: "Monthly",
 	        suffix : " ",
 	      },
 	      data: [
 	      {        
-	        type: "spline",
+	        type: "column",
+	        showInLegend: true,
 	        name: "Sales",
 	        dataPoints: [
 		      	<?php 
 		      	foreach ($cv as $cvk => $cvv) {
 		      	?>
-		      	{x:<?php echo substr($cvk, 5, 2); ?>, y:<?php echo $cvv[0]; ?>},
+		      	{label:"<?php echo $cvk; ?>", y:<?php echo $cvv[0]; ?>, indexLabel:"<?php echo $cvv[0]; ?>", indexLabelOrientation:"vertical", indexLabelFontColor:"blue"},
 		      	<?php 
 				}
 		      	?>   
 	        ]
 	      }, 
 	      {        
-	        type: "spline",  
+	        type: "spline",
+	        showInLegend: true,
 	        axisYType: "secondary"  ,
 	        name: "Progress",
 	        dataPoints: [
 		        <?php 
 		        foreach ($cv as $cvk => $cvv) {
 		        ?>
-		        {x:<?php echo substr($cvk, 5, 2); ?>, y:<?php echo $cvv[1]; ?>},
+		        {label:"<?php echo $cvk; ?>", y:<?php echo $cvv[1]; ?>, indexLabel:"<?php echo $cvv[1]; ?>%", indexLabelFontColor:"red"},
 		        <?php 
 				}
 		        ?>     
