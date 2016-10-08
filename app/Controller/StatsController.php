@@ -910,6 +910,7 @@ class StatsController extends AppController {
 						where d.day >= '$start0' and d.day <= '$end0'
 							and d.companyid = c.id
 						group by d.companyid
+						order by c.officename
 					";
 					$rs0 = mysql_query($sql, $conn->dblink);
 					$sql = "select d.companyid, c.officename, sum(d.total) as total
