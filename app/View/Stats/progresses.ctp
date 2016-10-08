@@ -131,7 +131,15 @@ if (isset($ra0) && !empty($ra0)) {
 		      	<?php 
 		      	foreach ($cv as $cvk => $cvv) {
 		      	?>
-		      	{label:"<?php echo $cvk; ?>", y:<?php echo $cvv[0]; ?>, indexLabel:"<?php echo $cvv[0]; ?>", indexLabelOrientation:"vertical", indexLabelFontColor:"blue"},
+		      		{
+			      		label:"<?php echo $cvk; ?>", 
+			      		y:<?php echo $cvv[0]; ?>, 
+					    indexLabel:"<?php echo $cvv[0]; ?>", 
+					    //indexLabelOrientation:"vertical", 
+					    indexLabelPlacement: "inside",
+					    indexLabelFontSize: 20,
+					    indexLabelFontColor: "blue"
+					},
 		      	<?php 
 				}
 		      	?>   
@@ -146,7 +154,12 @@ if (isset($ra0) && !empty($ra0)) {
 		        <?php 
 		        foreach ($cv as $cvk => $cvv) {
 		        ?>
-		        {label:"<?php echo $cvk; ?>", y:<?php echo $cvv[1]; ?>, indexLabel:"<?php echo $cvv[1]; ?>%", indexLabelFontColor:"red"},
+		        	{
+			        	label:"<?php echo $cvk; ?>", 
+			        	y:<?php echo $cvv[1]; ?>, 
+					    //indexLabel:"<?php //echo $cvv[1]; ?>%", 
+					   	indexLabelFontColor:"red"
+					},
 		        <?php 
 				}
 		        ?>     

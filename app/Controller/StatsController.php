@@ -961,7 +961,7 @@ class StatsController extends AppController {
 								$totprev = end($comd[$rprev['officename']])[0];
 								$comd[$rprev['officename']][$r['mon']] = array(
 									$r['total'], 
-									sprintf("%.2f", ($r['total'] - $totprev) / $totprev * 100)
+									sprintf("%.0f", ($r['total'] - $totprev) / $totprev * 100)
 								);
 							} else {
 								$rprev = $r;
