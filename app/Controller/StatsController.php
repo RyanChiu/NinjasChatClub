@@ -917,6 +917,7 @@ class StatsController extends AppController {
 						where d.day >= '$start1' and d.day <= '$end1'
 							and d.companyid = c.id
 						group by d.companyid
+						order by c.officename
 					";
 					$rs1 = mysql_query($sql, $conn->dblink);
 					$ra0 = $ra1 = array();

@@ -50,6 +50,11 @@ echo $this->Html->script('fancybox/jquery.fancybox-1.3.3.pack');
 /*for canvasjs charts*/
 echo $this->Html->script('canvasjs/canvasjs.min');
 
+/*for Mottie-tablesorter*/
+echo $this->Html->css('Mottie-tablesorter/theme.default');
+echo $this->Html->script("Mottie-tablesorter/jquery.tablesorter.min");
+echo $this->Html->script("Mottie-tablesorter/jquery.tablesorter.widgets.min");
+
 /*for AJAX*/
 echo $this->Html->script('ajax/prototype');
 echo $this->Html->script('ajax/scriptaculous');

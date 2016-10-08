@@ -30,7 +30,7 @@ echo $this->element('timezoneblock');
 <?php
 if (isset($ra0) && !empty($ra0)) {
 ?>
-	<table style="width:100%">
+	<table style="width:100%" id="tblSortable">
 		<thead>
 		<tr>
 			<!-- <th>company id</th> -->
@@ -215,5 +215,17 @@ jQuery("#selPeriods").change(function(){
 			);
 		}
 	}
+});
+
+/*
+ * the following imlement with Mottie-tablesorter
+ */
+jQuery(function(){
+	jQuery('#tblSortable').tablesorter({
+		widgets        : ['zebra', 'columns'],
+		usNumberFormat : false,
+		sortReset      : true,
+		sortRestart    : true
+	});
 });
 </script>
