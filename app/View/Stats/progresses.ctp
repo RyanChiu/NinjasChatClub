@@ -90,9 +90,11 @@ if (isset($ra0) && !empty($ra0)) {
 		?>
 		chart = new CanvasJS.Chart("chartContainerII_<?php echo $ck; ?>",
 	    {
+		  theme: "theme3",
 	      title:{
 	        text: "By Office \"<?php echo $ck; ?>\""             
-	      },   
+	      },
+	      dataPointMaxWidth: 39,
 	      animationEnabled: true,   
 	      toolTip: {
 	        shared: true,
