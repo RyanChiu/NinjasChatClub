@@ -449,9 +449,9 @@ echo $scripts_for_layout;
 					}
 					?>
 				</div>
-				<div id="dropmenu_stats" class="dropmenudiv_e" style="width: 80px;">
+				<div id="dropmenu_stats" class="dropmenudiv_e" style="width:200px;">
 					<?php
-					echo $this->Html->link('<font><b>Charts</b></font>',
+					echo $this->Html->link('<font><b>Office performance charts</b></font>',
 						array('controller' => 'stats', 'action' => 'progresses'),
 						array('escape' => false), 
 						false
