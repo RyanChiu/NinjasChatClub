@@ -62,7 +62,7 @@ if (isset($ra0) && !empty($ra0)) {
 			<td>
 			<?php echo $ra1[$k][1]; ?>
 			</td>
-			<td style="color:<?php echo ($ra1[$k][1] < $v[1] ? "red" : "white" ); ?>">
+			<td style="<?php echo ($ra1[$k][1] < $v[1] ? "color:red" : "" ); ?>">
 			<?php echo sprintf("%.2f%%", ($ra1[$k][1] - $v[1]) / $v[1] * 100)?>
 			</td>
 		</tr>
