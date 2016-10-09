@@ -180,7 +180,7 @@ if (isset($ra0) && !empty($ra0)) {
 ?>
 	<script type="text/javascript">
 		jQuery("#tdPeriods").html(
-			"<font style='font-weight:bold;color:red'>Data not prepared, please contact your administrator to fix it.</font>");
+			"<font style='font-weight:bold;color:red'>Please choose pay periods, to compare office performance.</font>");
 	</script>
 <?php 
 }
