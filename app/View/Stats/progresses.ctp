@@ -101,7 +101,7 @@ if (isset($ra0) && !empty($ra0)) {
 	        content: function(e){
 	          var body ;
 	          var head ;
-	          head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.x)  + " Mon</strong></span><br/>";
+	          head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.label)  + "</strong></span><br/>";
 
 	          body = "<span style= 'color:"+e.entries[0].dataSeries.color + "'> " + e.entries[0].dataSeries.name + "</span>: <strong>"+  e.entries[0].dataPoint.y + "</strong>  <!--m/s--><br/> <span style= 'color:"+e.entries[1].dataSeries.color + "'> " + e.entries[1].dataSeries.name + "</span>: <strong>"+  e.entries[1].dataPoint.y + "</strong>%";
 
