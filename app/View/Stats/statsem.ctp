@@ -176,7 +176,7 @@ if (!empty($rs)) {
 		<?php
 		echo $this->ExPaginator->sort('ViewTStats.sales_type2', (count($typesv) > 2 ? $typesv[2] : 'N/A'))
 		?>
-		<br/><i style="font-size:12px;"><?php echo in_array($selsite, array(12, 13)) ? 'Bonus' : 'Sale'; ?></i>
+		<br/><i style="font-size:12px;"><?php echo in_array($selsite, array(12, 13)) ? '' : 'Sale'; ?></i>
 		</th>
 		<th <?php echo count($typesv) > 3 ? '' : 'class="naClassHide"'; ?>>
 		<?php
@@ -188,7 +188,7 @@ if (!empty($rs)) {
 		<?php
 		echo $this->ExPaginator->sort('ViewTStats.sales_type4', (count($typesv) > 4 ? $typesv[4] : 'N/A'))
 		?>
-		<br/><i style="font-size:12px;"><?php echo in_array($selsite, array(12, 13)) ? 'Bonus' : 'Sale'; ?></i>
+		<br/><i style="font-size:12px;"><?php echo in_array($selsite, array(12, 13)) ? '' : 'Sale'; ?></i>
 		</th>
 		<th <?php echo count($typesv) > 5 ? '' : 'class="naClassHide"'; ?>>
 		<?php
