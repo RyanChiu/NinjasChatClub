@@ -570,19 +570,21 @@ if (!empty($rs)) {
 	<tr>
 		<td class="totals"></td>
 		<?php
+		$saleortrial = in_array($selsite, array(12, 13)) ? "Trial" : "Sale";
+		$saleortrial = sprintf("<td class=\"totals\" align=\"right\">Unique to %s Ratio</td>", $saleortrial);
 		switch ($bywhat) {
 			case 0:
-				echo '<td class="totals" align="right">Unique to Sale Ratio</td>';
+				echo $saleortrial;
 				break;
 			case 1:
-				echo '<td class="totals" align="right">Unique to Sale Ratio</td>';
+				echo $saleortrial;
 				break;
 			case 2:
-				echo '<td class="totals" align="right">Unique to Sale Ratio</td>';
+				echo $saleortrial;
 				echo '<td class="totals"></td>';
 				break;
 			case 3:
-				echo '<td class="totals" align="right">Unique to Sale Ratio</td>';
+				echo $saleortrial;
 				echo '<td class="totals"></td>';
 				echo '<td class="totals"></td>';
 				break;
@@ -598,7 +600,7 @@ if (!empty($rs)) {
 			+ $totals['sales_type5'] + $totals['sales_type6'] + $totals['sales_type7'] + $totals['sales_type8']
 			+ $totals['sales_type9'] + $totals['sales_type10'];
 		if ($sales_total) {
-			echo '1:' . sprintf('%.2f', $totals['uniques'] / $sales_total);
+			echo '1:' . sprintf('%.2f', $totals['uniques'] / (in_array($selsite, array(12, 13)) ? $totals['sales_type1_3'] : $sales_total));
 		} else {
 			echo '-';
 		}
