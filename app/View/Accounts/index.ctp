@@ -140,7 +140,7 @@ if (!empty($notes)) {
 	<td width="50%">
 		<table style="width:100%" style="font-size:90%;">
 		<caption style="font-style:italic;">
-		This Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
+		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 AGENTS</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
 		</caption>
 		<thead>
 		<tr>
@@ -181,7 +181,9 @@ if (!empty($notes)) {
 	</td>
 	<td>
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">All the time (Start from 2016-08-14)</caption>
+		<caption style="font-style:italic;">
+		<font style="font-weight:bold;color:#0066dd;">ALL TIME TOP 10 AGENTS</font> (Start from 2016-08-14)
+		</caption>
 		<thead>
 		<tr>
 			<th>Rank</th>
@@ -224,9 +226,11 @@ if (!empty($notes)) {
 if ($userinfo['role'] != -1) {
 ?>
 <tr>
-	<td colspan=2>
+	<td width="50%">
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">Weekly NTCP + SXUP (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)</caption>
+		<caption style="font-style:italic;">
+		<font style="font-weight:bold;color:yellow;">Weekly NTCP + SXUP</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
+		</caption>
 		<thead>
 		<tr>
 			<th>Rank</th>
@@ -259,6 +263,7 @@ if ($userinfo['role'] != -1) {
 		?>
 		</table>
 	</td>
+	<td></td>
 </tr>
 <?php 
 }
