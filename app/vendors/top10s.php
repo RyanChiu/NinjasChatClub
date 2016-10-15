@@ -17,13 +17,16 @@ $weekstart = date("Y-m-d", strtotime($lastday . " - 6 days"));
 
 $monthstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16"); 
 $monthend = date("Y-m-d", strtotime("$monthstart + 1 month - 1 day"));
+$monthstart0 = date("Y-m-d", strtotime($monthstart . ' - 1 month'));
+$monthend0 = date("Y-m-d", strtotime($monthend . ' - 1 month'));
 
 $zconn = new zmysqlConn();
 
 /*
- * flag = 0 ~ till today
- * flag = 1 ~ weekly
- * flag = 2 ~ monthly
+ * flag = 0 ~ till today group by agent
+ * flag = 1 ~ weekly group by agent 
+ * flag = 2 ~ monthly group by agent
+ * flag = 3,4 ~ monthly group by office (3 means this month, 4 means the month before)
  */
 
 /*
@@ -49,14 +52,38 @@ $rs = mysql_query("delete from top10s where flag = 1", $zconn->dblink)
 	or die ("Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into top10s " . $sql, $zconn->dblink)
 	or die ("Something wrong with: " . mysql_error() . "\n");
-/* //disable the monthly for now
+/* //disable the monthly group by agent for now
 $sql = sprintf($_sql_, 2, $today, "convert(trxtime, date) <= '$monthend' AND convert(trxtime, date) >= '$monthstart'");
 $rs = mysql_query("delete from top10s where flag = 2", $zconn->dblink)
 	or die ("Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into top10s " . $sql, $zconn->dblink)
 	or die ("Something wrong with: " . mysql_error() . "\n");
 */
-echo "top10s (all & weekly) generated.(" . date("Y-m-d H:i:s") . ")\n";
+$_sql_ = 
+	"select %d, '%s', null, null, null, companies.officename, sum(sales_number - chargebacks) as sales
+	from stats, accounts, companies
+	where %s
+		and stats.companyid = accounts.id and accounts.id = companies.id
+		and companyid in (4247, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578)
+	group by companyid
+	order by sales desc
+	limit 10";
+$sql = sprintf($_sql_, 3, $today, "convert(trxtime, date) <= '$monthend' AND convert(trxtime, date) >= '$monthstart'");
+mysql_query("delete from top10s where flag = 3", $zconn->dblink)
+	or die ("Something wrong with: " . mysql_error() . "\n");
+mysql_query("insert into top10s " . $sql, $zconn->dblink)
+	or die ("Something wrong with: " . mysql_error() . "\n");
+$sql = sprintf($_sql_, 4, $today, 
+	"convert(trxtime, date) <= '$monthend0' AND convert(trxtime, date) >= '$monthstart0' 
+		and officename in (select officename from top10s where flag = 3 and `date` = '$today') "
+);
+mysql_query("delete from top10s where flag = 4", $zconn->dblink)
+	or die ("Something wrong with: " . mysql_error() . "\n");
+mysql_query("insert into top10s " . $sql, $zconn->dblink)
+	or die ("Something wrong with: " . mysql_error() . "\n");
+	
+
+echo "top10s (all & weekly & monthly, and for some special sites.) generated.(" . date("Y-m-d H:i:s") . ")\n";
 
 /*
  * top10s for NTCP&SXUP

@@ -263,7 +263,46 @@ if ($userinfo['role'] != -1) {
 		?>
 		</table>
 	</td>
-	<td></td>
+	<td>
+		<table style="width:100%" style="font-size:90%;">
+		<caption style="font-style:italic;">
+		<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> (From <?php echo $monthstart; ?> To <?php echo $monthend; ?>)
+		</caption>
+		<thead>
+		<tr>
+			<th>Rank</th>
+			<th>Office</th>
+			<th>Sales</th>
+			<th>Progress(QoQ)</th>
+		</tr>
+		</thead>
+		<?php 
+		$i = 0;
+		foreach ($monthrs as $r) {
+			$i++;
+		?>
+		<tr>
+			<td align="center"><?php echo $i; ?></td>
+			<td align="center"><?php echo $r['Top10']['officename']; ?></td>
+			<td align="center"><?php echo $r['Top10']['sales']; ?></td>
+			<td align="center">
+			<?php
+			$sales0 = 1;
+			foreach ($monthrs0 as $r0) {
+				if ($r0['Top10']['officename'] == $r['Top10']['officename']) {
+					$sales0 = $r0['Top10']['sales'];
+					break;
+				}
+			}
+			echo sprintf("%.2f", ($r['Top10']['sales'] - $sales0) / $sales0 * 100) . "%";
+			?>
+			</td>
+		</tr>
+		<?php 
+		}
+		?>
+		</table>
+	</td>
 </tr>
 <?php 
 }
