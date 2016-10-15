@@ -287,7 +287,7 @@ if ($userinfo['role'] != -1) {
 			<td align="center"><?php echo $r['Top10']['sales']; ?></td>
 			<td align="center">
 			<?php
-			$sales0 = 1;
+			$sales0 = 0;
 			foreach ($monthrs0 as $r0) {
 				if ($r0['Top10']['officename'] == $r['Top10']['officename']) {
 					$sales0 = $r0['Top10']['sales'];
