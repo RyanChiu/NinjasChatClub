@@ -253,7 +253,7 @@ if ($userinfo['role'] != -1) {
 			<th>Rank</th>
 			<th>Office</th>
 			<th>Sales</th>
-			<th>Progress(QoQ)</th>
+			<th>Growth</th>
 		</tr>
 		</thead>
 		<?php 
