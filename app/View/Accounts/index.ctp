@@ -159,18 +159,8 @@ if (!empty($notes)) {
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
 			<td align="center">
-				<font style="font-size: 9pt;">
-				<?php
-				echo $r['Top10']['sales'] > 0 ? $r['Top10']['username'] : $r['Top10']['username'];
-				?>
-				</font>
-				<font style="font-size: 10pt;">(
-				<?php
-				//$showname = $r['Top10']['ag1stname'] . " " . $r['Top10']['aglastname'];
-				$showname = $r['Top10']['ag1stname'];
-				echo strlen($showname) > 20 ? (substr($showname, 0, 17) . "...") : $showname;
-				?>
-				)</font>
+				<font style="font-size: 9pt;"><?php echo $r['Top10']['username']; ?></font>
+				<font style="font-size: 10pt;"> (<?php echo $r['Top10']['ag1stname'] ?>)</font>
 			</td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
 		</tr>
@@ -201,18 +191,8 @@ if (!empty($notes)) {
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
 			<td align="center">
-				<font style="font-size: 9pt;">
-				<?php
-				echo $r['Top10']['sales'] > 0 ? $r['Top10']['username'] : $r['Top10']['username'];
-				?>
-				</font>
-				<font style="font-size: 10pt;">(
-				<?php
-				//$showname = $r['Top10']['ag1stname'] . " " . $r['Top10']['aglastname'];
-				$showname = $r['Top10']['ag1stname'];
-				echo strlen($showname) > 20 ? (substr($showname, 0, 17) . "...") : $showname;
-				?>
-				)</font>
+				<font style="font-size: 9pt;"><?php echo $r['Top10']['username']; ?></font>
+				<font style="font-size: 10pt;"> (<?php echo $r['Top10']['ag1stname'] ?>)</font>
 			</td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['sales'] : '0'; ?></td>
 		</tr>
@@ -250,7 +230,7 @@ if ($userinfo['role'] != -1) {
 		<tr>
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['officename']; ?></td>
-			<td align="center"><?php echo $r['TrboTop10']['username'] . '(' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
+			<td align="center"><?php echo $r['TrboTop10']['username'] . ' (' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
 			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
