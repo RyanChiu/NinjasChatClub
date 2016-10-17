@@ -246,7 +246,7 @@ if ($userinfo['role'] != -1) {
 	<td>
 		<table style="width:100%" style="font-size:90%;">
 		<caption style="font-style:italic;">
-		<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> (From <?php echo $monthstart; ?> To <?php echo $monthend; ?>)
+			<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> (From <?php echo $monthstart; ?> To <?php echo $monthend; ?>) <font style="color:#0066dd">(SALES ARE COMPARED TO PRIOR MONTH)</font>
 		</caption>
 		<thead>
 		<tr>
