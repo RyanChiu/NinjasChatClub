@@ -155,7 +155,7 @@ if (!empty($notes)) {
 		foreach ($weekrs as $r) {
 			$i++;
 		?>
-		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
+		<tr>
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
 			<td align="center">
@@ -197,7 +197,7 @@ if (!empty($notes)) {
 		foreach ($rs as $r) {
 			$i++;
 		?>
-		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
+		<tr>
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['Top10']['sales'] > 0 ? $r['Top10']['officename'] : $r['Top10']['officename']; ?></td>
 			<td align="center">
@@ -247,7 +247,7 @@ if ($userinfo['role'] != -1) {
 		foreach ($trboweekrs as $r) {
 			$i++;
 		?>
-		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
+		<tr>
 			<td align="center"><?php echo $i; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['officename']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['username'] . '(' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
