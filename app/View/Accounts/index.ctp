@@ -207,9 +207,9 @@ if ($userinfo['role'] != -1) {
 ?>
 <tr>
 	<td colspan=2>
-		<table style="border:0">
-		<tr><td style="width:70%">
-		<table style="width:100%" style="">
+		<table style="border:0;width:100%;">
+		<tr><td style="width:65%">
+		<table style="width:100%">
 		<caption style="font-style:italic;">
 		<font style="font-weight:bold;color:yellow;">Weekly NTCP + SXUP</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
 		</caption>
@@ -243,10 +243,10 @@ if ($userinfo['role'] != -1) {
 		<?php
 		}
 		?>
-		</table></td><td style="width:30%">
-		<table style="width:30%" style="float:left;">
+		</table></td><td style="width:35%;">
+		<table style="width:100%">
 		<caption style="font-style:italic;">
-			<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> <br/>(<?php echo $monthstart; ?> To <?php echo $monthend; ?>) <br/><font style="font-size:11px;color:#0066dd">(Sales are compared to prior month to get %)</font>
+			<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> <br/>(From <?php echo $monthstart; ?> To <?php echo $monthend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior month for %)</font>
 		</caption>
 		<thead>
 		<tr>
