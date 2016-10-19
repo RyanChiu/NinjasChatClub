@@ -289,8 +289,8 @@ echo $this->Form->end();
 </div>
 <div style="display:none">
 	<div id="tips_for_creating" 
-		style="width:500px;background-color:#FFFFCC;padding:8px;">
-		<font style="font-weight:bold;color:red;">MANAGER, AFTER AGENT IS CREATED,</font> <b>PLEASE GO TO:</b><br/>
+		style="width:660px;background-color:#FFFFCC;padding:8px;font-size:180%;">
+		<font style="font-weight:bold;color:red;"><b>MANAGER</b>, WHEN DONE, YOU MUST APPROVE NEW AGENT, <b>"GO TO:"</b></font><br/>
 		1. MAIN MENU: <br/>
 		2. APPROVE NEW AGENT; <br/>
 		3. CLICK <?php echo $this->Html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)); ?> TO APROVE <br/>
