@@ -126,7 +126,7 @@ if (!empty($notes)) {
 	<div style="float: right;">
 		<?php
 		if ($userinfo['role'] == 0) {
-			echo $this->Html->link('<font size="1">Choose another pay period or another month</font>',
+			echo $this->Html->link('<font size="1">Choose another pay period...</font>',
 				array('controller' => 'accounts', 'action' => 'top10'),
 				array('escape' => false),
 				false
@@ -246,7 +246,7 @@ if ($userinfo['role'] != -1) {
 		</table></td><td style="width:35%;">
 		<table style="width:100%">
 		<caption style="font-style:italic;">
-			<font style="font-weight:bold;color:#00ff33;">MONTHLY TOP 10 OFFICES</font> <br/>(From <?php echo $monthstart; ?> To <?php echo $monthend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior month for %)</font>
+			<font style="font-weight:bold;color:#00ff33;">BIWEEKLY TOP 10 OFFICES</font> <br/>(From <?php echo $biweekstart; ?> To <?php echo $biweekend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior 2 weeks for %)</font>
 		</caption>
 		<thead>
 		<tr>
@@ -258,7 +258,7 @@ if ($userinfo['role'] != -1) {
 		</thead>
 		<?php 
 		$i = 0;
-		foreach ($monthrs as $r) {
+		foreach ($biweekrs as $r) {
 			$i++;
 		?>
 		<tr>
@@ -268,7 +268,7 @@ if ($userinfo['role'] != -1) {
 			<td align="center">
 			<?php
 			$sales0 = 0;
-			foreach ($monthrs0 as $r0) {
+			foreach ($biweekrs0 as $r0) {
 				if ($r0['Top10']['officename'] == $r['Top10']['officename']) {
 					$sales0 = $r0['Top10']['sales'];
 					break;
