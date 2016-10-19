@@ -456,6 +456,11 @@ echo $scripts_for_layout;
 						array('escape' => false), 
 						false
 					);
+					echo $this->Html->link('<font><b>Top 10 archives</b></font>',
+						array('controller' => 'accounts', 'action' => 'top10'),
+						array('escape' => false),
+						false
+					);
 					?>
 				</div>
 				<div id="dropmenu_admin_agent" class="dropmenudiv_e"
