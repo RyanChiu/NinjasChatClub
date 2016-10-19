@@ -274,8 +274,13 @@ if ($userinfo['role'] != -1) {
 					break;
 				}
 			}
-			echo sprintf("%.2f", ($r['Top10']['sales'] - $sales0) / $sales0 * 100) . "%";
+			$per = ($r['Top10']['sales'] - $sales0) / $sales0 * 100;
 			?>
+			<font style="<?php echo $per < 0 ? 'color:red' : ''; ?>">
+			<?php 
+			echo sprintf("%.2f", $per) . "%";
+			?>
+			</font>
 			</td>
 		</tr>
 		<?php 
