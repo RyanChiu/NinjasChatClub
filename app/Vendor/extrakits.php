@@ -292,15 +292,14 @@
 					}
 					$periods += array($oneweek => $v);
 		}
-		$monthstart = date("Y-m-16");
-		$monthstart = date("Y-m-d", strtotime($monthstart . " + 1 month"));
-		$monthend = date("Y-m-d", strtotime($monthstart . " + 1 month - 1 day"));
-		for ($i = 1; $i <= 12; $i++) {
-			//$mv = date("Y-M", strtotime($monthstart . sprintf(" %d", $i) . "  months"));
-			$onemonth = date("Y-m-16", strtotime($monthstart . sprintf(" - %d", $i) . " months"))
+		$biweekstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
+		$biweekend = date("Y-m-d", strtotime($biweekstart . " + 2 weeks - 1 day"));
+		$periods += array($biweekstart . "," . $biweekend => "[2W]" . $biweekstart . "," . $biweekend);
+		for ($i = 1; $i <= 26; $i++) {
+			$biweek = date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", $i * 2) . " weeks"))
 				. ','
-				. date("Y-m-d", strtotime($monthstart . sprintf(" - %d", $i - 1) . " months - 1 day"));
-			$periods += array($onemonth => "[M]$onemonth");
+				. date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", ($i - 1) * 2) . " weeks - 1 day"));
+			$periods += array($biweek => "[2W]$biweek");
 		}
 		return $periods;
 	}
