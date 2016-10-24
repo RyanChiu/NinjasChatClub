@@ -234,9 +234,9 @@ if ($userinfo['role'] != -1) {
 			<td align="center"><?php echo $r['TrboTop10']['officename']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['username'] . ' (' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
-			<td align="center" style="color:#aa2200;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
+			<td align="center" style="color:red;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
 			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
-			<td align="center" style="color:#aa2200;">
+			<td align="center" style="color:red;">
 			<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales_trial'] * 100)); ?>%
 			</td>
 		</tr>
