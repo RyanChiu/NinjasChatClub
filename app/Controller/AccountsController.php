@@ -210,7 +210,7 @@ class AccountsController extends AppController {
 		return false;
 	}
 	
-	function __top10($conds) {
+	function __top10($conds, $groupby) {
 		/*
 		 * for the "selling contestants" stuff
 		 */
@@ -220,50 +220,86 @@ class AccountsController extends AppController {
 				'fields' => array('id', 'id')
 			)
 		);
-		$rs = $this->Stats->find('all',
-			array(
-				'fields' => array('agentid', 'sum(sales_number - chargebacks) as sales'),
-				'conditions' => array(
-					'convert(trxtime, date) <=' => $conds['enddate'],
-					'convert(trxtime, date) >=' => $conds['startdate'],
-					'typeid' => $tps,
-					'agentid >' => '0',//avoid those data that don't belog to any agent
-					'siteid' => $conds['siteids'],
-					'companyid !=' => '98'//don't show office "TESTING"'s sales
-				),
-				'group' => array('agentid'),
-				'order' => array('sales desc'),
-				'limit' => 10
-			)
-		);
-		$i = 0;
-		foreach ($rs as $r) {
-			$topac = $this->Account->find('first',
+		$rs = null;
+		if ($groupby == 0) {
+			$rs = $this->Stats->find('all',
 				array(
-					'fields' => array('username'),
+					'fields' => array('agentid', 'sum(sales_number - chargebacks) as sales'),
 					'conditions' => array(
-						'id' => $r['Stats']['agentid'],
-						'status' => 1
+						'convert(trxtime, date) <=' => $conds['enddate'],
+						'convert(trxtime, date) >=' => $conds['startdate'],
+						'typeid' => $tps,
+						'agentid >' => '0',//avoid those data that don't belog to any agent
+						'siteid' => $conds['siteids'],
+						'companyid !=' => '98'//don't show office "TESTING"'s sales
+					),
+					'group' => array('agentid'),
+					'order' => array('sales desc'),
+					'limit' => 10
+				)
+			);
+			$i = 0;
+			foreach ($rs as $r) {
+				$topac = $this->Account->find('first',
+					array(
+						'fields' => array('username'),
+						'conditions' => array(
+							'id' => $r['Stats']['agentid'],
+							'status' => 1
+						)
 					)
-				)
-			);
-			$topag = $this->Agent->find('first',
+				);
+				$topag = $this->Agent->find('first',
+					array(
+						'fields' => array('companyid', 'ag1stname', 'aglastname'),
+						'conditions' => array('id' => $r['Stats']['agentid'])
+					)
+				);
+				$topcom = $this->Company->find('first',
+					array(
+						'fields' => array('officename'),
+						'conditions' => array('id' => $topag['Agent']['companyid'])
+					)
+				);
+				if (!empty($topac)) {
+					$rs[$i]['Top10Stats']['officename'] = $topcom['Company']['officename'];
+					$rs[$i]['Top10Stats']['username'] = $topac['Account']['username'];
+					$rs[$i]['Top10Stats']['ag1stname'] = $topag['Agent']['ag1stname'];
+					$rs[$i]['Top10Stats']['aglastname'] = $topag['Agent']['aglastname'];
+					$rs[$i]['Top10Stats']['sales'] = $r[0]['sales'];
+					$i++;
+				}
+			}
+		} else if ($groupby == 1) {
+			$rs = $this->Stats->find('all',
 				array(
-					'fields' => array('companyid', 'ag1stname', 'aglastname'),
-					'conditions' => array('id' => $r['Stats']['agentid'])
+					'fields' => array('companyid', 'sum(sales_number - chargebacks) as sales'),
+					'conditions' => array(
+						'convert(trxtime, date) <=' => $conds['enddate'],
+						'convert(trxtime, date) >=' => $conds['startdate'],
+						'typeid' => $tps,
+						'agentid >' => '0',//avoid those data that don't belog to any agent
+						'companyid >' => '0',
+						'siteid' => $conds['siteids'],
+						'companyid !=' => '98'//don't show office "TESTING"'s sales
+					),
+					'group' => array('companyid'),
+					'order' => array('sales desc'),
+					'limit' => 10
 				)
 			);
-			$topcom = $this->Company->find('first',
-				array(
-					'fields' => array('officename'),
-					'conditions' => array('id' => $topag['Agent']['companyid'])
-				)
-			);
-			if (!empty($topac)) {
+			$i = 0;
+			foreach ($rs as $r) {
+				$topcom = $this->Company->find('first',
+					array(
+						'fields' => array('officename'),
+						'conditions' => array('id' => $r['Stats']['companyid'])
+					)
+				);
 				$rs[$i]['Top10Stats']['officename'] = $topcom['Company']['officename'];
-				$rs[$i]['Top10Stats']['username'] = $topac['Account']['username'];
-				$rs[$i]['Top10Stats']['ag1stname'] = $topag['Agent']['ag1stname'];
-				$rs[$i]['Top10Stats']['aglastname'] = $topag['Agent']['aglastname'];
+				$rs[$i]['Top10Stats']['username'] = null;
+				$rs[$i]['Top10Stats']['ag1stname'] = null;
+				$rs[$i]['Top10Stats']['aglastname'] = null;
 				$rs[$i]['Top10Stats']['sales'] = $r[0]['sales'];
 				$i++;
 			}
@@ -285,6 +321,7 @@ class AccountsController extends AppController {
 			$selsitenum = $this->request->data['Top10']['selsitenum'];
 			$start = $this->request->data['Top10']['start'];
 			$end = $this->request->data['Top10']['end'];
+			$groupby = $this->request->data['Top10']['groupby'];
 			$conds['startdate'] = $start;
 			$conds['enddate'] = $end;
 			if ($selsitenum == 1) {
@@ -292,7 +329,7 @@ class AccountsController extends AppController {
 			} else {
 				$conds['siteids'] = array_keys($sites);
 			}
-			$rs = $this->__top10($conds);
+			$rs = $this->__top10($conds, $groupby);
 		}
 		
 		$this->set(compact('rs'));
@@ -301,6 +338,7 @@ class AccountsController extends AppController {
 		$this->set(compact('periods'));
 		$this->set(compact('sites'));
 		$this->set(compact('conds'));
+		$this->set(compact('groupby'));
 	}
 	
 	function pass() {
