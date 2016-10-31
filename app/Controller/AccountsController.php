@@ -1,8 +1,4 @@
 <?php
-App::import('Vendor', 'extrakits');
-App::import('Vendor', 'zmysqlConn');
-?>
-<?php
 class AccountsController extends AppController {
 	var $name = 'Accounts';
 	var $uses = array(
@@ -432,12 +428,10 @@ class AccountsController extends AppController {
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));
-		$biweekstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
-		$biweekend = date("Y-m-d", strtotime($biweekstart . " + 2 weeks - 1 day"));
-		if ($biweekend <= date("Y-m-d")) {
-			$biweekstart = date("Y-m-d", strtotime($biweekstart . " + 2 weeks"));
-			$biweekend = date("Y-m-d", strtotime($biweekend . " + 2 weeks"));
-		}
+		$curbiweek = __getCurBiweek();
+		$curbiweekse = explode(",", $curbiweek);
+		$biweekstart = $curbiweekse[0];
+		$biweekend = $curbiweekse[1];
 		$conds['startdate'] = $weekstart;
 		$conds['enddate'] = $weekend;
 		$weekrs = $this->Top10->find('all',

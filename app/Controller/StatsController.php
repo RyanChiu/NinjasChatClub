@@ -1,8 +1,4 @@
 <?php
-App::import('Vendor', 'extrakits');
-App::import('Vendor', 'zmysqlConn');
-?>
-<?php
 class StatsController extends AppController {
 	/*properties*/
 	var $name = 'Stats';

@@ -1,7 +1,4 @@
 <?php
-App::import('Vendor', 'extrakits');
-?>
-<?php
 class LinksController extends AppController {
 	/*properties*/
 	var $name = 'Links';

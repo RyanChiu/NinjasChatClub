@@ -1,5 +1,6 @@
 <?php
-App::import('Vendor', 'extrakits');
+include '../vendors/extrakits.inc.php';
+include '../vendors/zmysqlConn.class.php';
 ?>
 <?php
 class AppController extends Controller {
