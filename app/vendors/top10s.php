@@ -17,6 +17,10 @@ $weekstart = date("Y-m-d", strtotime($lastday . " - 6 days"));
 
 $biweekstart = date("d") <= "15" ? date("Y-m-d", strtotime(date("Y-m-16") . " - 1 month")) : date("Y-m-16");
 $biweekend = date("Y-m-d", strtotime($biweekstart . " + 2 weeks - 1 day"));
+if ($biweekend <= date("Y-m-d")) {
+	$biweekstart = date("Y-m-d", strtotime($biweekstart . " + 2 weeks"));
+	$biweekend = date("Y-m-d", strtotime($biweekend . " + 2 weeks"));
+}
 $biweekstart0 = date("Y-m-d", strtotime($biweekstart . " - 2 weeks"));
 $biweekend0 = date("Y-m-d", strtotime($biweekstart0 . " + 2 weeks - 1 day"));
 
