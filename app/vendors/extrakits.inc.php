@@ -288,4 +288,61 @@
 		date_default_timezone_set($timezone); //set time zone back
 		return $dst;
 	}
+	
+	/*
+	 * get the current biweekly "start and and"
+	 */
+	function __getCurBiweek() {
+		$startwith_start = "2016-10-30";
+		$startwith_end = date("Y-m-d", strtotime($startwith_start . " + 2 weeks - 1 day"));
+		$today = date("Y-m-d");
+		while ($today > $startwith_end) {
+			$startwith_start = date("Y-m-d", strtotime($startwith_start . " + 2 weeks"));
+			$startwith_end = date("Y-m-d", strtotime($startwith_start . " + 2 weeks - 1 day"));
+		}
+		return $startwith_start . "," . $startwith_end;
+	}
+	
+	/*
+	 * get the periods in select box for top10s and progresses and etc.
+	 */
+	function __getPeriods() {
+		$lastday = date("Y-m-d", strtotime(date('Y-m-d') . " Sunday"));
+		if (date("w") == 0) {
+			$lastday = date("Y-m-d", strtotime($lastday . " + 6 days"));
+		} else {
+			$lastday = date("Y-m-d", strtotime($lastday . " - 1 days"));
+		}
+		$weekend = $lastday;
+		$weekstart = date("Y-m-d", strtotime($lastday . " - 6 days"));
+		$periods = array();
+		for ($i = 0; $i < 52; $i++) {
+			$oneweek = date("Y-m-d", strtotime($lastday . " - " . (7 * $i + 6) . " days"))
+			. ',' . date("Y-m-d", strtotime($lastday . " - " . (7 * $i) . " days"));
+			$v = "[W]$oneweek";
+			switch ($i) {
+				case 0:
+					$v = 'THIS WEEK';
+					break;
+				case 1:
+					$v = 'LAST WEEK';
+					break;
+				default:
+					break;
+			}
+			$periods += array($oneweek => $v);
+		}
+		$curbiweek = __getCurBiweek();
+		$curbiweekse = explode(",", $curbiweek);
+		$biweekstart = $curbiweekse[0];
+		$biweekend = $curbiweekse[1];
+		$periods += array($biweekstart . "," . $biweekend => "[2W]" . $biweekstart . "," . $biweekend);
+		for ($i = 1; $i <= 26; $i++) {
+			$biweek = date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", $i * 2) . " weeks"))
+			. ','
+					. date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", ($i - 1) * 2) . " weeks - 1 day"));
+					$periods += array($biweek => "[2W]$biweek");
+		}
+		return $periods;
+	}
 ?>
