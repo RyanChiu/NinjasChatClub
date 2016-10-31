@@ -78,7 +78,7 @@ $url = //'http://www.loadedcash.com/api.php?response_type=xml&json={"key":"' .
 /*
  * end of the block that given by loadedcash.com
  */
-//echo "\n" . $url . "\n\n";//debug
+//echo "\n$url\n$date_l\n";//debug
 
 /*
  * the following 3 lines are given by loadedcash.com
