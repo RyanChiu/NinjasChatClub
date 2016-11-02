@@ -49,9 +49,9 @@ while ($day <= $end) {
 			echo "do it group by office.\n";
 			$rs = mysql_query('select id from companies', $zconn->dblink)
 				or die ("Something wrong with: ". mysql_error());
-			echo "for day '$day':";
+			echo "for day '$day': company id ";
 			while ($r = mysql_fetch_array($rs, MYSQL_NUM)) {
-				echo "company id " . $r[0] . ", ";
+				echo $r[0] . ", ";
 				byoffice($r[0], $day, $zconn);
 			}
 			echo "\n";
