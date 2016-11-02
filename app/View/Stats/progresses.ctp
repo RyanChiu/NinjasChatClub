@@ -5,7 +5,7 @@ echo $this->element('timezoneblock');
 
 <table style="background-color:balck;border:0;">
 <tr>
-	<td style="border:0;">
+	<td>
 		<?php
 		echo $this->Form->input(null,
 			array(
@@ -14,6 +14,19 @@ echo $this->element('timezoneblock');
 				'options' => array("-" => "Please choose a peroid...") 
 					+ $sel_periods,
 				'style' => 'width:190px;'
+			)
+		);
+		?>
+	</td>
+	<td>
+		<?php 
+		echo $this->Form->input(null,
+			array(
+				'id' => 'selStatuses',
+				'label' => '', 'type' => 'select',
+				'options' => $offi_statuses,
+				'style' => 'width:86px;',
+				'value' => isset($status) ? $status : 1
 			)
 		);
 		?>
@@ -200,6 +213,7 @@ if (isset($ra0) && !empty($ra0)) {
 
 <script type="text/javascript">
 jQuery("#selPeriods").change(function(){
+	var status = jQuery("#selStatuses").find("option:selected").val();
 	var selv = jQuery("#selPeriods").find("option:selected").val();
 	var seli = jQuery("#selPeriods").get(0).selectedIndex;
 	var selimax = jQuery("#selPeriods option:last").attr("index");
@@ -209,7 +223,10 @@ jQuery("#selPeriods").change(function(){
 	}
 	if (seli > 0 && seli < selimax) {
 		jQuery("#linkGo").text("GO!>>");
-		jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/periods:" + copv + "," + selv);
+		jQuery("#linkGo").attr("href", 
+			"/NinjasChatClub/stats/progresses/bywhat:0/status:" + status 
+				+ "/periods:" + copv + "," + selv
+		);
 		jQuery("#tdPeriods").html(
 			"Get a chart with:"
 			+ "\"" + copv + "\" ~ \"" + selv + "\", "
@@ -221,12 +238,24 @@ jQuery("#selPeriods").change(function(){
 			jQuery("#linkGo").attr("href", "#");
 		} else {
 			jQuery("#linkGo").text("GO>>!");
-			jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/periods:y,e,a,r");
+			jQuery("#linkGo").attr("href", 
+				"/NinjasChatClub/stats/progresses/bywhat:0/status:" + status + "/periods:y,e,a,r"
+			);
 			jQuery("#tdPeriods").html(
 				"Get a chart within a whole year (month by month)."
 			);
 		}
 	}
+});
+
+jQuery("#selStatuses").change(function(){
+	var href = jQuery("#linkGo").attr('href').toString();
+	href = href.replace(
+		/status:-?[0-9]/, 
+		"status:" + jQuery("#selStatuses").find("option:selected").val()
+	);
+	//alert(href);
+	jQuery("#linkGo").attr('href', href);
 });
 
 /*
@@ -303,6 +332,7 @@ jQuery(function(){
 })
 
 function dateSelected() {
+	var status = jQuery("#selStatuses").find("option:selected").val();
 	var start = jQuery('#datepicker_from0').datepicker('getDate');
 	var end =  jQuery('#datepicker_to0').datepicker('getDate');
 	var ss0 = start.getFullYear().toString()
@@ -320,7 +350,9 @@ function dateSelected() {
 	 	+ "-" + (end.getMonth() >= 9 ? (end.getMonth() + 1).toString() : ("0" + (end.getMonth() + 1).toString()))
 	 	+ "-" + (end.getDate() > 9 ? end.getDate().toString() : ("0" + end.getDate().toString()));
 	jQuery("#linkGo").text("GO!>>");
-	jQuery("#linkGo").attr("href", "/NinjasChatClub/stats/progresses/bywhat:0/periods:" + (ss0 + "," + es0) + "," + (ss1 + "," + es1));
+	jQuery("#linkGo").attr("href", 
+		"/NinjasChatClub/stats/progresses/bywhat:0/status:" + status
+			+ "/periods:" + (ss0 + "," + es0) + "," + (ss1 + "," + es1));
 	jQuery("#tdPeriods").html(
 		"Get a chart with:"
 		+ "\"" + (ss0 + "," + es0) + "\" ~ \"" + (ss1 + "," + es1) + "\", "

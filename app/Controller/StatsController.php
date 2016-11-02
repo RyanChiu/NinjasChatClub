@@ -3,6 +3,7 @@ class StatsController extends AppController {
 	/*properties*/
 	var $name = 'Stats';
 	var $uses = array(
+		'Account',
 		'ViewCompany', 'ViewLiteAgent', 'Site', 'Type',
 		'Stats', 'Site', 'Type',
 		'ViewStats', 'TmpStats', 'RunStats', 'ViewTStats'
@@ -869,10 +870,12 @@ class StatsController extends AppController {
 		$this->layout = "defaultlayout";
 		$bywhat = array_key_exists('bywhat', $this->passedArgs) ? $this->passedArgs['bywhat'] : null;
 		$periods = array_key_exists('periods', $this->passedArgs) ? $this->passedArgs['periods'] : null;
+		$status = array_key_exists('status', $this->passedArgs) ? $this->passedArgs['status'] : null;
 		
 		$this->set(compact("bywhat"));		
 		$periods = explode(",", $periods);
 		$this->set(compact("periods"));
+		$this->set(compact("status"));
 		
 		$sel_periods = __getPeriods();
 		$last_period = array_keys($sel_periods);
@@ -890,6 +893,19 @@ class StatsController extends AppController {
 		$sites  = $this->Site->find('list',
 			array('fields' => array('id', 'sitename'))
 		);
+		$statuses = $this->ViewCompany->find('all',
+			array(
+				'fields' => array('status'),
+				'distinct' => 'status',
+				'order' => 'status desc'
+			)
+		);
+		$offi_statuses = array();
+		foreach ($statuses as $s) {
+			$offi_statuses[$s['ViewCompany']['status']] = 
+				$this->Account->status[$s['ViewCompany']['status']];
+		}
+		$this->set(compact('offi_statuses'));
 		
 		$conn = new zmysqlConn();
 		switch ($bywhat) {
@@ -902,17 +918,17 @@ class StatsController extends AppController {
 					 * weekly or monthly, one by one only once
 					 */
 					$sql = "select d.companyid, c.officename, sum(d.total) as total
-						from daily_stats d, companies c
+						from daily_stats d, companies c, accounts a
 						where d.day >= '$start0' and d.day <= '$end0'
-							and d.companyid = c.id
+							and d.companyid = c.id and c.id = a.id and a.status = $status
 						group by d.companyid
 						order by c.officename
 					";
 					$rs0 = mysql_query($sql, $conn->dblink);
 					$sql = "select d.companyid, c.officename, sum(d.total) as total
-						from daily_stats d, companies c
+						from daily_stats d, companies c, accounts a
 						where d.day >= '$start1' and d.day <= '$end1'
-							and d.companyid = c.id
+							and d.companyid = c.id and c.id = a.id and a.status = $status
 						group by d.companyid
 						order by c.officename
 					";
@@ -944,8 +960,9 @@ class StatsController extends AppController {
 					$sql = "
 						select d.companyid, c.officename, 
 							substring(d.day, 1, 7) as mon, sum(d.total) as total
-						from daily_stats d, companies c
-						where d.companyid = c.id and substring(day, 1, 4) = '$thisyear'
+						from daily_stats d, companies c, accounts a
+						where d.companyid = c.id and c.id = a.id and a.status = $status
+							and substring(day, 1, 4) = '$thisyear'
 						group by d.companyid, mon
 						ORDER by c.officename, mon
 					";
