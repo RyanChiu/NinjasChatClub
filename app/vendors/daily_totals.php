@@ -50,11 +50,13 @@ while ($day <= $end) {
 			$rs = mysql_query('select id from companies', $zconn->dblink)
 				or die ("Something wrong with: ". mysql_error());
 			echo "for day '$day': company id ";
+			$i = 0;
 			while ($r = mysql_fetch_array($rs, MYSQL_NUM)) {
 				echo $r[0] . ", ";
 				byoffice($r[0], $day, $zconn);
+				$i++;
 			}
-			echo "(end)\n";
+			echo "(end, with $i office(s).)\n";
 			break;
 		default:
 			echo 'did nothing.\n';
