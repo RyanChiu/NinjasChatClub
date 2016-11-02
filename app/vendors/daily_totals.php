@@ -54,7 +54,7 @@ while ($day <= $end) {
 				echo $r[0] . ", ";
 				byoffice($r[0], $day, $zconn);
 			}
-			echo "\n";
+			echo "(end)\n";
 			break;
 		default:
 			echo 'did nothing.\n';
