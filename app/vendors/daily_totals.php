@@ -10,13 +10,15 @@ include 'extrakits.inc.php';
 
 $zconn = new zmysqlConn();
 
-$day = date("Y-m-d");
+$day = null;
 $bywhat = 0; 
 if (($argc - 1) == 2) {
-	$day = $argv[1];
+	$date_l = $argv[1];
+	$dates = explode(",", $date_l);
+	$day = $dates[0];
 	$bywhat = $argv[2];
 } else {
-	exit("It must take 2 parameters (like 2016-01-01 0), please try again.\n");
+	exit("It must take 2 parameters (like 2016-01-01,12:34:56 0), please try again.\n");
 }
 
 function byoffice($comid, $day, &$dbconn) {
@@ -49,7 +51,7 @@ while ($day <= $end) {
 			echo "do it group by office.\n";
 			$rs = mysql_query('select id from companies', $zconn->dblink)
 				or die ("Something wrong with: ". mysql_error());
-			echo "for day '$day': company id ";
+			echo "for day '$day' (start at '" . date("Y-m-d H:i:s") . "' with param '$date_l'):\n company id ";
 			$i = 0;
 			while ($r = mysql_fetch_array($rs, MYSQL_NUM)) {
 				echo $r[0] . ", ";
