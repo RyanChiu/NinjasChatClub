@@ -300,6 +300,12 @@
 			$startwith_start = date("Y-m-d", strtotime($startwith_start . " + 2 weeks"));
 			$startwith_end = date("Y-m-d", strtotime($startwith_start . " + 2 weeks - 1 day"));
 		}
+		/*
+		 * special trick for $startwith_end in 11/13/2016~11/30/2016
+		 */
+		if ($startwith_end >= '2016-11-21' && $startwith_end <= '2016-11-30') {
+			$startwith_end = '2016-11-30';
+		}
 		return $startwith_start . "," . $startwith_end;
 	}
 	
