@@ -14,6 +14,10 @@
 	define("SXUP_CHS", "15,16,17,18");
 	define("NTCP_CHS", "19,20,21,22");
 	/*
+	 * critical time to change biweek into 1-15 or 16-end of a month
+	 */
+	define("INTOHALFMONTHLYBIWEEKDAY", '2016-11-01');
+	/*
 	 * routines area
 	 */
 	//date_default_timezone_set("Asia/Manila");
@@ -290,7 +294,7 @@
 	}
 	
 	/*
-	 * get the current biweekly "start and and"
+	 * get the current biweek "start and and"
 	 */
 	function __getCurBiweek() {
 		$startwith_start = "2016-10-30";
@@ -306,7 +310,41 @@
 		if ($startwith_end >= '2016-11-21' && $startwith_end <= '2016-11-30') {
 			$startwith_end = '2016-11-30';
 		}
+		/*
+		 * and after 2016-11-30, biweek should be 1-15, and 16-the end of a month
+		 */
+		if ($today >= INTOHALFMONTHLYBIWEEKDAY){
+			$day = date("d");
+			if ($day <= 15) {
+				$startwith_start = date("Y-m-01");
+				$startwith_end = date("Y-m-15");
+			} else {
+				$startwith_start = date("Y-m-16");
+				$startwith_end = date("Y-m-d", strtotime(date("Y-m-01") . " + 1 month - 1 day"));
+			}
+		}
 		return $startwith_start . "," . $startwith_end;
+	}
+	
+	/*
+	 * get the previous biweek "start and and" by given current biweek
+	 * --only suitable when date is after 2016-11-30
+	 */
+	function __getPreBiweek($curbiweek) {
+		$se = explode(",", $curbiweek);
+		$start = $se[0];
+		$end = $se[1];
+		if (date("d", strtotime($start)) == "01") {
+			$e = date("Y-m-d", strtotime($start . " - 1 day"));
+			$s = date("Y-m-16", strtotime($start . " - 1 day"));
+			return $s . "," . $e;
+		} else if (date("d", strtotime($start)) == "16") {
+			$s = date("Y-m-01", strtotime($start));
+			$e = date("Y-m-15", strtotime($start));
+			return $s . "," . $e;
+		} else {
+			return null;
+		}
 	}
 	
 	/*
@@ -343,11 +381,22 @@
 		$biweekstart = $curbiweekse[0];
 		$biweekend = $curbiweekse[1];
 		$periods += array($biweekstart . "," . $biweekend => "[2W]" . $biweekstart . "," . $biweekend);
+		/*
+		 * and after 2016-11-30, biweek should be 1-15, and 16-the end of a month
+		 */
+		
 		for ($i = 1; $i <= 26; $i++) {
-			$biweek = date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", $i * 2) . " weeks"))
-			. ','
+			$biweek = null;
+			if (date("Y-m-d") < INTOHALFMONTHLYBIWEEKDAY) {
+				$biweek = 
+					date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", $i * 2) . " weeks"))
+					. ','
 					. date("Y-m-d", strtotime($biweekstart . sprintf(" - %d", ($i - 1) * 2) . " weeks - 1 day"));
-					$periods += array($biweek => "[2W]$biweek");
+			} else {
+				$biweek = __getPreBiweek($curbiweek);
+				$curbiweek = $biweek;
+			}
+			$periods += array($biweek => "[2W]$biweek");
 		}
 		return $periods;
 	}

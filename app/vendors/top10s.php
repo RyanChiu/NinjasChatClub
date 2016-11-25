@@ -19,8 +19,15 @@ $curbiweek = __getCurBiweek();
 $curbiweekse = explode(",", $curbiweek);
 $biweekstart = $curbiweekse[0];
 $biweekend = $curbiweekse[1];
-$biweekstart0 = date("Y-m-d", strtotime($biweekstart . " - 2 weeks"));
-$biweekend0 = date("Y-m-d", strtotime($biweekstart0 . " + 2 weeks - 1 day"));
+if ($today < INTOHALFMONTHLYBIWEEKDAY) {
+	$biweekstart0 = date("Y-m-d", strtotime($biweekstart . " - 2 weeks"));
+	$biweekend0 = date("Y-m-d", strtotime($biweekstart0 . " + 2 weeks - 1 day"));
+} else {
+	$se = __getPreBiweek($curbiweek);
+	$se = explode(",", $se);
+	$biweekstart0 = $se[0];
+	$biweekend0 = $se[1];
+}
 
 $zconn = new zmysqlConn();
 /*
