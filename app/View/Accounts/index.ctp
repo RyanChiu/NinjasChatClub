@@ -243,7 +243,8 @@ if ($userinfo['role'] != -1) {
 		<?php
 		}
 		?>
-		</table></td><td style="width:35%;">
+		</table></td>
+		<!-- <td style="width:35%;">
 		<table style="width:100%">
 		<caption style="font-style:italic;">
 			<font style="font-weight:bold;color:#00ff33;">BIWEEKLY OFFICE PROGRESS</font> <br/>(From <?php echo $biweekstart; ?> To <?php echo $biweekend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior 2 weeks for %)</font>
@@ -287,7 +288,8 @@ if ($userinfo['role'] != -1) {
 		}
 		?>
 		</table>
-		</td></tr>
+		</td>-->
+		</tr>
 		</table>
 	</td>
 </tr>

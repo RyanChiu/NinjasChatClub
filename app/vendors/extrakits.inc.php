@@ -16,7 +16,7 @@
 	/*
 	 * critical time to change biweek into 1-15 or 16-end of a month
 	 */
-	define("INTOHALFMONTHLYBIWEEKDAY", '2016-11-27');
+	define("INTOHALFMONTHLYBIWEEKDAY", '2016-12-01');
 	/*
 	 * routines area
 	 */
