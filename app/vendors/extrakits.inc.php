@@ -307,7 +307,9 @@
 		/*
 		 * special trick for $startwith_end in 11/13/2016~11/30/2016
 		 */
-		if ($startwith_end >= '2016-11-21' && $startwith_end <= '2016-11-30') {
+		if ($startwith_end >= '2016-11-21' && $startwith_end <= '2016-11-30'
+			|| $startwith_start >= '2016-11-21' && $startwith_start <= '2016-11-30') {
+			$startwith_start = '2016-11-13';
 			$startwith_end = '2016-11-30';
 		}
 		/*

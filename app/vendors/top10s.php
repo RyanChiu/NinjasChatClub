@@ -22,6 +22,10 @@ $biweekend = $curbiweekse[1];
 if ($today < INTOHALFMONTHLYBIWEEKDAY) {
 	$biweekstart0 = date("Y-m-d", strtotime($biweekstart . " - 2 weeks"));
 	$biweekend0 = date("Y-m-d", strtotime($biweekstart0 . " + 2 weeks - 1 day"));
+	if ($biweekend == '2016-11-30') {
+		$biweekstart0 = '2016-10-30';
+		$biweekend0 = '2016-11-12';
+	}
 } else {
 	$se = __getPreBiweek($curbiweek);
 	$se = explode(",", $se);

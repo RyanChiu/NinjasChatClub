@@ -208,87 +208,95 @@ if ($userinfo['role'] != -1) {
 <tr>
 	<td colspan=2>
 		<table style="border:0;width:100%;">
-		<tr><td style="width:65%">
-		<table style="width:100%">
-		<caption style="font-style:italic;">
-		<font style="font-weight:bold;color:yellow;">Weekly NTCP + SXUP</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
-		</caption>
-		<thead>
 		<tr>
-			<th>Rank</th>
-			<th>Office</th>
-			<th>Agent</th>
-			<th>Tr_Sale<br/>All</th>
-			<th>Bonus<br/>All</th>
-			<th>Tr+Bonus<br/>All</th>
-			<th>Bonus Ratio</th>
-		</tr>
-		</thead>
-		<?php
-		$i = 0;
-		foreach ($trboweekrs as $r) {
-			$i++;
-		?>
-		<tr>
-			<td align="center"><?php echo $i; ?></td>
-			<td align="center"><?php echo $r['TrboTop10']['officename']; ?></td>
-			<td align="center"><?php echo $r['TrboTop10']['username'] . ' (' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
-			<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
-			<td align="center" style="color:red;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
-			<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
-			<td align="center" style="color:red;">
-			<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales_trial'] * 100)); ?>%
-			</td>
-		</tr>
-		<?php
-		}
-		?>
-		</table></td>
-		<!-- <td style="width:35%;">
-		<table style="width:100%">
-		<caption style="font-style:italic;">
-			<font style="font-weight:bold;color:#00ff33;">BIWEEKLY OFFICE PROGRESS</font> <br/>(From <?php echo $biweekstart; ?> To <?php echo $biweekend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior 2 weeks for %)</font>
-		</caption>
-		<thead>
-		<tr>
-			<th>Rank</th>
-			<th>Office</th>
-			<th>Sales</th>
-			<th>Growth</th>
-		</tr>
-		</thead>
-		<?php 
-		$i = 0;
-		foreach ($biweekrs as $r) {
-			$i++;
-		?>
-		<tr>
-			<td align="center"><?php echo $i; ?></td>
-			<td align="center"><?php echo $r['Top10']['officename']; ?></td>
-			<td align="center"><?php echo $r['Top10']['sales']; ?></td>
-			<td align="center">
-			<?php
-			$sales0 = 0;
-			foreach ($biweekrs0 as $r0) {
-				if ($r0['Top10']['officename'] == $r['Top10']['officename']) {
-					$sales0 = $r0['Top10']['sales'];
-					break;
+			<td style="width:65%">
+				<table style="width:100%">
+				<caption style="font-style:italic;">
+				<font style="font-weight:bold;color:yellow;">Weekly NTCP + SXUP</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
+				</caption>
+				<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Office</th>
+					<th>Agent</th>
+					<th>Tr_Sale<br/>All</th>
+					<th>Bonus<br/>All</th>
+					<th>Tr+Bonus<br/>All</th>
+					<th>Bonus Ratio</th>
+				</tr>
+				</thead>
+				<?php
+				$i = 0;
+				foreach ($trboweekrs as $r) {
+					$i++;
+				?>
+				<tr>
+					<td align="center"><?php echo $i; ?></td>
+					<td align="center"><?php echo $r['TrboTop10']['officename']; ?></td>
+					<td align="center"><?php echo $r['TrboTop10']['username'] . ' (' . $r['TrboTop10']['ag1stname'] . ')'; ?></td>
+					<td align="center"><?php echo $r['TrboTop10']['sales_trial']; ?></td>
+					<td align="center" style="color:red;"><?php echo $r['TrboTop10']['sales_bonus']; ?></td>
+					<td align="center"><?php echo $r['TrboTop10']['sales']; ?></td>
+					<td align="center" style="color:red;">
+					<?php echo sprintf("%.2f", ($r['TrboTop10']['sales_bonus'] / $r['TrboTop10']['sales_trial'] * 100)); ?>%
+					</td>
+				</tr>
+				<?php
 				}
-			}
-			$per = ($r['Top10']['sales'] - $sales0) / $sales0 * 100;
-			?>
-			<font style="<?php echo $per < 0 ? 'color:red' : ''; ?>">
-			<?php 
-			echo sprintf("%.2f", $per) . "%";
-			?>
-			</font>
+				?>
+				</table>
 			</td>
-		</tr>
-		<?php 
-		}
-		?>
-		</table>
-		</td>-->
+			<?php 
+			if ($userinfo['id'] == 1) {
+			?>
+			<td style="width:35%;">
+			<table style="width:100%">
+			<caption style="font-style:italic;">
+				<font style="font-weight:bold;color:#00ff33;">BIWEEKLY OFFICE PROGRESS</font> <br/>(From <?php echo $biweekstart; ?> To <?php echo $biweekend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior 2 weeks for %)</font>
+			</caption>
+			<thead>
+			<tr>
+				<th>Rank</th>
+				<th>Office</th>
+				<th>Sales</th>
+				<th>Growth</th>
+			</tr>
+			</thead>
+			<?php 
+			$i = 0;
+			foreach ($biweekrs as $r) {
+				$i++;
+			?>
+			<tr>
+				<td align="center"><?php echo $i; ?></td>
+				<td align="center"><?php echo $r['Top10']['officename']; ?></td>
+				<td align="center"><?php echo $r['Top10']['sales']; ?></td>
+				<td align="center">
+				<?php
+				$sales0 = 0;
+				foreach ($biweekrs0 as $r0) {
+					if ($r0['Top10']['officename'] == $r['Top10']['officename']) {
+						$sales0 = $r0['Top10']['sales'];
+						break;
+					}
+				}
+				$per = ($r['Top10']['sales'] - $sales0) / $sales0 * 100;
+				?>
+				<font style="<?php echo $per < 0 ? 'color:red' : ''; ?>">
+				<?php 
+				echo sprintf("%.2f", $per) . "%";
+				?>
+				</font>
+				</td>
+			</tr>
+			<?php 
+			}
+			?>
+			</table>
+			</td>
+			<?php 
+			}
+			?>
 		</tr>
 		</table>
 	</td>
