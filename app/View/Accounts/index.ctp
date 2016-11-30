@@ -119,7 +119,7 @@ if (!empty($notes)) {
 
 <!-- show the top selling list -->
 <br/>
-<table style="width:100%;font-size:10pt;">
+<table style="width:100%;font-size:9pt;">
 <caption><font size="5" color="#bb2222">Best sellers</font></caption>
 <tr>
 	<td colspan=2>
