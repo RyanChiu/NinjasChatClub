@@ -119,7 +119,7 @@ if (!empty($notes)) {
 
 <!-- show the top selling list -->
 <br/>
-<table style="width:100%">
+<table style="width:100%;font-size:10pt;">
 <caption><font size="5" color="#bb2222">Best sellers</font></caption>
 <tr>
 	<td colspan=2>
@@ -138,7 +138,7 @@ if (!empty($notes)) {
 </tr>
 <tr>
 	<td width="50%">
-		<table style="width:100%" style="font-size:90%;">
+		<table style="width:100%">
 		<caption style="font-style:italic;">
 		<font style="font-weight:bold;color:red;">WEEKLY TOP 10 AGENTS</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
 		</caption>
@@ -170,7 +170,7 @@ if (!empty($notes)) {
 		</table>
 	</td>
 	<td>
-		<table style="width:100%" style="font-size:90%;">
+		<table style="width:100%">
 		<caption style="font-style:italic;">
 		<font style="font-weight:bold;color:#0066dd;">ALL TIME TOP 10 AGENTS</font> (Start from 2016-08-14)
 		</caption>
@@ -210,7 +210,7 @@ if ($userinfo['role'] != -1) {
 		<table style="border:0;width:100%;">
 		<tr>
 			<td style="width:65%">
-				<table style="width:100%">
+				<table style="width:100%;">
 				<caption style="font-style:italic;">
 				<font style="font-weight:bold;color:yellow;">Weekly NTCP + SXUP</font> (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)
 				</caption>
@@ -250,7 +250,7 @@ if ($userinfo['role'] != -1) {
 			if ($userinfo['id'] == 1) {
 			?>
 			<td style="width:35%;">
-			<table style="width:100%">
+			<table style="width:100%;">
 			<caption style="font-style:italic;">
 				<font style="font-weight:bold;color:#00ff33;">BIWEEKLY OFFICE PROGRESS</font> <br/>(From <?php echo $biweekstart; ?> To <?php echo $biweekend; ?>) <br/><font style="font-size:12px;color:#00ff33">(Sales compared to prior 2 weeks for %)</font>
 			</caption>
