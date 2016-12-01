@@ -250,9 +250,6 @@ if ($userinfo['role'] != -1) {
 				?>
 				</table>
 			</td>
-			<?php 
-			if ($userinfo['id'] == 1) {
-			?>
 			<td style="width:35%;">
 			<table style="width:100%;">
 			<caption style="font-style:italic;">
@@ -298,9 +295,6 @@ if ($userinfo['role'] != -1) {
 			?>
 			</table>
 			</td>
-			<?php 
-			}
-			?>
 		</tr>
 		</table>
 	</td>
