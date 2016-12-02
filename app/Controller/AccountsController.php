@@ -9,7 +9,7 @@ class AccountsController extends AppController {
 		'Site', 'SiteExcluding', 'Stats',
 		'ViewAdmin', 'ViewCompany', 'ViewAgent', 'ViewLiteAgent',
 		'ViewStats', 'ViewMapping', 'SiteManual', 
-		'Top10', 'TrboTop10',
+		'Top10', 'TrboTop10', 'MustRead',
 		'FakeContactUs'
 	);
 	var $components = array(
@@ -1458,8 +1458,16 @@ class AccountsController extends AppController {
 			//$account['Account']['originalpwd'] = '';
 			$account['Account']['password'] = $account['Account']['originalpwd'];
 			$agent = $this->Agent->read();
+			$mustread = $this->MustRead->find("all",
+				array(
+					'conditions' => array("accountid" => $id),
+					'order' => 'time desc',
+					'limit' => '1'
+				)
+			);
 			$this->request->data['Account'] = $account['Account'];
 			$this->request->data['Agent'] = $agent['Agent'];
+			$this->request->data['MustRead'] = empty($mustread) ? null : $mustread[0]['MustRead'];
 			$this->set('results', $this->request->data);
 		} else {
 			$agent = $this->Agent->read();
@@ -1576,8 +1584,11 @@ class AccountsController extends AppController {
 						}
 					}
 					
+					$this->MustRead->create();
+					$this->request->data['MustRead']['accountid'] = $this->request->data['Agent']['id'];
+					$this->request->data['MustRead']['time'] = date("Y-m-d H:i:s");
+					$this->MustRead->save($this->request->data);
 					
-					 
 					/*redirect to some page*/ 
 					$this->Session->setFlash('Agent "' 
 					  . $this->request->data['Account']['username'] . '" updated.' 

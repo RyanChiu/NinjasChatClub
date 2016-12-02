@@ -4,7 +4,7 @@ include '../vendors/zmysqlConn.class.php';
 ?>
 <?php
 class AppController extends Controller {
-	var $uses = array('Admin', 'Agent', 'Site', 'SiteExcluding', 'TerminalCookie');
+	var $uses = array('Admin', 'Agent', 'Site', 'SiteExcluding', 'TerminalCookie', 'MustRead');
 	var $curuser = null;
 	var $__locatekey = 'GTYHNBvfr4567ujm';
 	/*
@@ -48,6 +48,22 @@ class AppController extends Controller {
 					)
 				)
 			);
+			
+			/*
+			 * prepare the "agent must read" part
+			 */
+			$mustread = $this->MustRead->find("first",
+				array(
+					'conditions' => array(
+						"accountid" => $this->curuser["id"]
+					),
+					'order' => "time desc",
+					'limit' => "1"
+				)
+			);
+			if (!empty($mustread)) {
+				$this->set("mustread", $mustread['MustRead']['content']);
+			}
 		}
 		$this->set(compact("excludedsites"));
 		

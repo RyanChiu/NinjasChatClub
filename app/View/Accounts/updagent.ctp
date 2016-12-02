@@ -1,5 +1,5 @@
 <?php
-//echo print_r($results, true);
+//echo print_r($mr, true);//for debug
 $userinfo = $this->Session->read('Auth.User.Account');
 $action = 'updagent';
 $submittxt = 'Update';
@@ -138,6 +138,14 @@ if ($userinfo['role'] == 1) {
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Must Read :</td>
+		<td>
+		<?php
+		echo $this->Form->input('MustRead.content', array('label' => '', 'rows' => '12', 'cols' => '66'));
+		?>
 		</td>
 	</tr>
 	<tr style="display:none;">

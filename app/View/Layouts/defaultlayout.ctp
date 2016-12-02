@@ -684,6 +684,39 @@ echo $scripts_for_layout;
 	<?php
 	if (in_array($userinfo['role'], array(0, 1, 2)) && !$this->Session->check('switch_pass')) {
 	?>
+	<!-- must read part  -->
+	<div style="display: none">
+		<a id="mustread_link" href="#mustread_for_agents">show attentions</a>
+	</div>
+	<div style="display: none">
+		<div id="mustread_for_agents" style="width:500px;">
+		<?php
+		if (isset($mustread) && !empty($mustread)) {
+			echo $mustread;
+		?>
+			<hr style="margin: 6px 0px 6px 0px" />
+			<hr style="margin: 6px 0px 6px 0px" />
+			<p style="text-align:center;font-size:10pt;margin:9px 0px 0px 9px;">
+			If you have any questions, welcome to email us: SUPPORT@NINJASCHATCLUB.COM.
+			</p>
+			<p style="text-align: center; margin: 9px 0px 0px 9px;">
+			<?php
+			echo $this->Html->link('<font style="font-weight:bold;">I\'ve read it, please let me in.</font>',
+				"#",
+				array('onclick' => 'javascript:jQuery(\'a#mustread_for_agents\').hide();jQuery(\'a#attentions_link\').click();',
+					'escape' => false
+				),
+				false
+			);
+			?>
+			</p>
+		<?php 
+		}
+		?>
+		</div>
+	</div>
+	
+	<!-- popup attention message part -->
 	<div style="display: none">
 		<a id="attentions_link" href="#attentions_for_agents">show attentions</a>
 	</div>
@@ -775,7 +808,24 @@ echo $scripts_for_layout;
 				'overlayColor': '#0A0A0A',
 				'modal': true
 			});
+			
+			<?php 
+			if (isset($mustread) && !empty($mustread)) {
+			?>
+			jQuery("a#mustread_link").fancybox({
+				'type': 'inline',
+				'overlayOpacity': 0.9,
+				'overlayColor': '#0A0A0A',
+				'modal': true
+			});
+			jQuery("a#mustread_link").click();
+			<?php 
+			} else {
+			?>
 			jQuery("a#attentions_link").click();
+			<?php 
+			}
+			?>
 		});
 	</script>
 	<?php
