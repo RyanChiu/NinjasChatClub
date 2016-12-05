@@ -696,8 +696,8 @@ echo $scripts_for_layout;
 		?>
 			<hr style="margin: 6px 0px 6px 0px" />
 			<hr style="margin: 6px 0px 6px 0px" />
-			<p style="text-align:center;font-size:10pt;margin:9px 0px 0px 9px;">
-			If you have any questions, welcome to email us: SUPPORT@NINJASCHATCLUB.COM.
+			<p style="text-align:center;color:red;font-size:10pt;margin:9px 0px 0px 9px;">
+			If you have any questions, "YOU ARE" welcome to email us: Support@NinjasChatClub.Com.
 			</p>
 			<p style="text-align: center; margin: 9px 0px 0px 9px;">
 			<?php
