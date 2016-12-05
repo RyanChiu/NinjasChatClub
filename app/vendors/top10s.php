@@ -76,7 +76,7 @@ $_sql_ =
 	from stats, accounts, companies
 	where %s
 		and stats.companyid = accounts.id and accounts.id = companies.id
-		and companyid in (4247, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578)
+		and companyid in (4568, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578)
 	group by companyid
 	order by sales desc
 	limit 10";
@@ -124,7 +124,7 @@ $_sql_ =
 			+ sum(if(typeid = (SELECT id FROM types WHERE siteid =13 order by id limit 3, 1), sales_number, 0)) 
 			as sales
 	from stats s, companies c, agents g, accounts a
-	where %s and s.siteid in (12, 13) and s.companyid != 98 and s.companyid != 4247
+	where %s and s.siteid in (12, 13) and s.companyid != 98
 		and (s.agentid = g.id and g.id = a.id) and g.companyid = c.id and s.agentid > 0
 	group by s.agentid
 	order by sales desc 
