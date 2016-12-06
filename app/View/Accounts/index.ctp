@@ -285,7 +285,7 @@ if ($userinfo['role'] != -1) {
 				?>
 				<font style="<?php echo $per < 0 ? 'color:red' : ''; ?>">
 				<?php 
-				echo sprintf("%.2f", $per) . "%";
+				echo ($per > 0 ? "+" : "") . sprintf("%.2f", $per) . "%";
 				?>
 				</font>
 				</td>
