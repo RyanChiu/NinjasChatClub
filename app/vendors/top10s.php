@@ -56,14 +56,14 @@ $_sql_ =
 	GROUP BY agentid ORDER BY `sales` desc LIMIT 10";
 $sql = sprintf($_sql_, 0, $today, "convert(trxtime, date) >= '2016-08-14' and convert(trxtime, date) <= '$today'");
 $rs = mysql_query("delete from top10s where flag = 0", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(8)Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(9)Something wrong with: " . mysql_error() . "\n");
 $sql = sprintf($_sql_, 1, $today, "convert(trxtime, date) <= '$weekend' AND convert(trxtime, date) >= '$weekstart'");
 $rs = mysql_query("delete from top10s where flag = 1", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(10)Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(11)Something wrong with: " . mysql_error() . "\n");
 /* //disable the monthly group by agent for now
 $sql = sprintf($_sql_, 2, $today, "convert(trxtime, date) <= '$monthend' AND convert(trxtime, date) >= '$monthstart'");
 $rs = mysql_query("delete from top10s where flag = 2", $zconn->dblink)
@@ -76,25 +76,25 @@ $_sql_ =
 	from stats, accounts, companies
 	where %s
 		and stats.companyid = accounts.id and accounts.id = companies.id
-		and companyid in (4568, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578)
+		and accounts.status = 1
 	group by companyid
 	order by sales desc
-	limit 10";
+	#limit 10";
 $sql = sprintf($_sql_, 3, $today, 
 	"convert(trxtime, date) <= '$biweekend' AND convert(trxtime, date) >= '$biweekstart'"
 );
 mysql_query("delete from top10s where flag = 3", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(0)Something wrong with: " . mysql_error() . "\n");
 mysql_query("insert into top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(1)Something wrong with: " . mysql_error() . "\n");
 $sql = sprintf($_sql_, 4, $today, 
 	"convert(trxtime, date) <= '$biweekend0' AND convert(trxtime, date) >= '$biweekstart0' 
 		and officename in (select officename from top10s where flag = 3 and `date` = '$today') "
 );
 mysql_query("delete from top10s where flag = 4", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(2)Something wrong with: " . mysql_error() . "\n");
 mysql_query("insert into top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(3)Something wrong with: " . mysql_error() . "\n");
 	
 
 echo "top10s (all & weekly & biweekly) generated.(" . date("Y-m-d H:i:s") . ")\n";
@@ -131,13 +131,13 @@ $_sql_ =
 	limit 10";
 $sql = sprintf($_sql_, 0, $today, "convert(trxtime, date) >= '2016-08-14' and convert(trxtime, date) <= '$today'");
 $rs = mysql_query("delete from trbo_top10s where flag = 0", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(4)Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into trbo_top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(5)Something wrong with: " . mysql_error() . "\n");
 $sql = sprintf($_sql_, 1, $today, "convert(trxtime, date) <= '$weekend' AND convert(trxtime, date) >= '$weekstart'");
 $rs = mysql_query("delete from trbo_top10s where flag = 1", $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(6)Something wrong with: " . mysql_error() . "\n");
 $rs = mysql_query("insert into trbo_top10s " . $sql, $zconn->dblink)
-	or die ("Something wrong with: " . mysql_error() . "\n");
+	or die ("(7)Something wrong with: " . mysql_error() . "\n");
 echo "new top10s (all, only for SXUP&NTCP) generated.(" . date("Y-m-d H:i:s") . ")\n";
 ?>
