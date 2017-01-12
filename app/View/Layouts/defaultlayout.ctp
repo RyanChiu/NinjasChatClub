@@ -486,14 +486,29 @@ echo $scripts_for_layout;
 				<div id="dropmenu_toolbox_admin" class="dropmenudiv_e"
 					style="width: 180px;">
 					<?php
-					echo $this->Html->link('<font><b>Update Cams-2</b></font>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 7),
+					echo $this->Html->link('<font><b>Update Site-3</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<font><b>Update LC-Dating</b></font>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 2),
+					echo $this->Html->link('<font><b>Update BBR-LDS</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 11),
 						array('escape' => false), 
+						false
+					);
+					echo $this->Html->link('<font><b>Update LCD</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 2),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<font><b>Update SXUP</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 12),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<font><b>Update NTCP</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 13),
+						array('escape' => false),
 						false
 					);
 					?>
@@ -531,14 +546,29 @@ echo $scripts_for_layout;
 				<div id="dropmenu_toolbox_normal" class="dropmenudiv_e"
 					style="width: 120px;">
 					<?php
-					echo $this->Html->link('<font><b>Cams-2</b></font>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 7),
+					echo $this->Html->link('<font><b>Site-3</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<font><b>LC-Dating</b></font>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 2),
+					echo $this->Html->link('<font><b>BBR-LDS</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 11),
 						array('escape' => false), 
+						false
+					);
+					echo $this->Html->link('<font><b>LCD</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 2),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<font><b>SXUP</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 12),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<font><b>NTCP</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 13),
+						array('escape' => false),
 						false
 					);
 					?>

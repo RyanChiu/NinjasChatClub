@@ -1991,11 +1991,11 @@ class AccountsController extends AppController {
 			$ids_str = implode(",", $ids);
 			if ($from == 0) {
 				$sql = "update
-				accounts a, companies c, agents g
-				set a.status = $status
-				WHERE a.id = g.id
-				AND g.companyid = c.id
-				AND c.id in ($ids_str)";
+					accounts a, companies c, agents g
+					set a.status = $status
+					WHERE a.id = g.id
+					AND g.companyid = c.id
+					AND c.id in ($ids_str)";
 				$result = mysql_query($sql, $conn->dblink);
 			}
 			$this->Session->setFlash('The selected all have been ' . $this->Account->status[$status] . '.');
