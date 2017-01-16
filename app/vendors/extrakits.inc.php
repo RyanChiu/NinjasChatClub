@@ -13,6 +13,7 @@
 	define("BLDS_CHS", "11,12,13,14");
 	define("SXUP_CHS", "15,16,17,18");
 	define("NTCP_CHS", "19,20,21,22");
+	define("CD02_CHS", "25,26");
 	/*
 	 * critical time to change biweek into 1-15 or 16-end of a month
 	 */
