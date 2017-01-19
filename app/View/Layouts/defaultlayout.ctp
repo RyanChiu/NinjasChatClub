@@ -511,6 +511,11 @@ echo $scripts_for_layout;
 						array('escape' => false),
 						false
 					);
+					echo $this->Html->link('<font><b>Update Cam Dating-2</b></font>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 14),
+						array('escape' => false),
+						false
+					);
 					?>
 				</div>
 				<?php
@@ -568,6 +573,11 @@ echo $scripts_for_layout;
 					);
 					echo $this->Html->link('<font><b>NTCP</b></font>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 13),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<font><b>Cam Dating-2</b></font>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 14),
 						array('escape' => false),
 						false
 					);
