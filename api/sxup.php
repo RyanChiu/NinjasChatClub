@@ -1,6 +1,6 @@
 <?php 
 /**
- * this driver is for the new site, it'll be abbrivated with "blds" (keep diff from the others)
+ * this driver is for the new site, it'll be abbrivated with "sxup" (keep diff from the others)
  */
 
 include "../app/vendors/extrakits.inc.php";
@@ -70,7 +70,7 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 			and a.agentid = n.id and n.username = '$agent'
 		ORDER BY typeid";
 	$rs = mysql_query($sql, $conn->dblink);
-	$chsfrombbr = explode(",", SXUP_CHS);;// !!! MUST MAKE SURE ABOUT THIS ARRAY WITH BBR
+	$chsfrombbr = explode(",", SXUP_CHS);;// !!! MUST MAKE SURE ABOUT THIS ARRAY WITH Jesse
 	$i = 0;
 	$chs_exist = false;
 	while ($r = mysql_fetch_assoc($rs)) {
