@@ -168,6 +168,7 @@ if (!empty($rs)) {
 		?>
 		<th <?php echo count($typesv) > 1 ? '' : 'class="naClassHide"'; ?>>
 		<?php
+		echo $selsite == 2 ? $this->Html->image('main/new-3_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $selsite == 8 ? $this->Html->image('main/new-8_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $selsite == 14 ? $this->Html->image('main/new-3_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $this->ExPaginator->sort('ViewTStats.sales_type1', (count($typesv) > 1 ? $typesv[1] : 'N/A'));
