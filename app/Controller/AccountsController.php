@@ -2291,14 +2291,14 @@ class AccountsController extends AppController {
 		if (array_key_exists('to', $this->passedArgs)) {
 			$to = $this->passedArgs['to'];
 		}
-		
+
 		$ids = explode(',', __codec($to, 'D'));//$ids[0] will be the link id, and $ids[1] should be the agent id
 		$linkid = $ids[0];
 		$agentid = $ids[1];
 		$this->Link->id = $linkid;
 		$this->request->data = $this->Link->read();
 		$siteid = $this->request->data['Link']['siteid'];
-		
+
 		$r = $this->Site->find('first',
 			array(
 				'conditions' => array(
@@ -2347,7 +2347,7 @@ class AccountsController extends AppController {
 			return;
 		}
 		*/
-		
+
 		$this->__go($siteid, -1, '', $this->request->data['Link']['url'], '', $agentid, date('Y-m-d H:i:s'), $linkid);
 	}
 	
