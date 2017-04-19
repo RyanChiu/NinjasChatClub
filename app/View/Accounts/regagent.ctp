@@ -42,7 +42,7 @@ if ($userinfo['role'] == 1) {
 			echo $this->Form->input('Agent.companyshadow',
 				array(
 					'label' => '',
-					'style' => 'width:390px;border:0px;background:transparent;',
+					'style' => 'width:390px;border:0px;background:transparent;color:white;',
 					'readonly' => 'readonly',
 					'value' => $cps[$userinfo['id']]
 				)
@@ -284,6 +284,9 @@ echo $this->Form->end();
 ?>
 
 <!-- fancybox popup tips -->
+<?php
+if ($userinfo['role'] == 0) {
+?>
 <div style="display:none">
 	<a id="tips_link" href="#tips_for_creating">show tips</a>
 </div>
@@ -312,3 +315,6 @@ jQuery(document).ready(function() {
 	jQuery("a#tips_link").click();
 })
 </script>
+<?php
+}
+?>
