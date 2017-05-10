@@ -126,7 +126,9 @@ if (!empty($rs)) {
 				. $ags[$r['AgentSiteMapping']['agentid']];
 			echo $this->Html->url(array('controller' => 'accounts'), true)
 				. "go/idx.php?to=" 
-				. encrypt($u, LINKGENKEY); 
+				. encrypt($u, LINKGENKEY)
+				. "&ag="
+				. $ags[$r['AgentSiteMapping']['agentid']];
 			echo '</b>';
 			?>
 			</td>
