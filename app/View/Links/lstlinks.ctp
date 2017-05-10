@@ -121,12 +121,14 @@ if (!empty($rs)) {
 				. $type['Type']['id']. '/'
 				. $ags[$r['AgentSiteMapping']['agentid']];
 			*/
-			$u = $r['AgentSiteMapping']['siteid'] . '/'
-				. $type['Type']['id']. '/'
+			$u = $r['AgentSiteMapping']['siteid'] . '/' 
+				. $type['Type']['id']. '/' 
 				. $ags[$r['AgentSiteMapping']['agentid']];
-			echo $this->Html->url(array('controller' => 'accounts'), true) 
-				. "go/idx.php?to="
-				. encrypt($u, LINKGENKEY);
+			echo $this->Html->url(array('controller' => 'accounts'), true)
+				. "go/idx.php?to=" 
+				. encrypt($u, LINKGENKEY)
+				. "&ag="
+				. $ags[$r['AgentSiteMapping']['agentid']];
 			echo '</b>';
 			?>
 			</td>

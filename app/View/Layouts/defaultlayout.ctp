@@ -70,7 +70,7 @@ echo $scripts_for_layout;
 			<!-- Start Header -->
 			<div class="header">
 				<div style="width:100%;margin-left:10px;">
-					<?php echo $this->Html->image('main/topbanner.png', array('style' => 'border:0px;width:100%;'));?>
+					<?php echo $this->Html->image('main/topbanner-awl.png', array('style' => 'border:0px;width:100%;'));?>
 				</div>
 			</div>
 			<!-- End Header -->
@@ -714,7 +714,7 @@ echo $scripts_for_layout;
 		<!-- End Border -->
 		<!-- Start Footer -->
 		<div id="footer">
-			<font size="2" color="#b80f16"><b>Copyright &copy; 2015 www.NinjasChatClub.com All
+			<font size="2" color="#b80f16"><b>Copyright &copy; 2015 www.AmericasWebLink.com All
 					Rights Reserved.&nbsp;&nbsp;</b> </font>
 		</div>
 		<!-- End Footer -->

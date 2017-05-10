@@ -105,8 +105,8 @@
  * thus not recommended for production applications.
  */
 	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
-	Configure::write('App.base', '/NinjasChatClub');
-	Configure::write('App.baseUrl', '/NinjasChatClub');
+	Configure::write('App.base', '/ncc');
+	Configure::write('App.baseUrl', '/ncc');
 
 /**
  * To configure CakePHP to use a particular domain URL
