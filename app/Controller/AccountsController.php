@@ -19,7 +19,7 @@ class AccountsController extends AppController {
 				'userModel' => 'Account',
 				'userScope' => array('Account.status' => '1')
 			),
-			'loginRedirect' => array('controller' => 'accounts', 'action' => 'index'),
+			'loginRedirect' => array('controller' => 'links', 'action' => 'lstlinks'),
 			'logoutRedirect' => array('controller' => 'accounts', 'action' => 'login')
 		),
 		'RequestHandler',
@@ -56,10 +56,29 @@ class AccountsController extends AppController {
 	
 	function __accessDenied() {
 		$this->Session->setFlash('Sorry, you are not authorized to visit that location, so you\'ve been relocated here.');
-		$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+		$this->redirect(array('controller' => 'links', 'action' => 'lstlinks'));
 	}
 	
-	function __handleAccess() {		
+	function __handleAccess() {
+		switch ($this->request->params['action']) {
+			case 'phpcaptcha':
+			case 'playPhpcaptcha':
+			case 'pass':
+			case 'contactus':
+			case 'toolbox':
+			case 'lstchatlogs':
+			case 'lstlogins':
+			case 'login':
+			case 'logout':
+			case 'forgotpwd':
+				return;
+			default:
+				$this->__accessDenied();
+				return;
+		}
+		/*
+		 the following lines are totally disabled actully by the above lines
+		 */
 		if ($this->Auth->user('Account.role') == 0) {//means an administrator
 			switch ($this->request->params['action']) {
 				case 'addnews':
@@ -714,7 +733,8 @@ class AccountsController extends AppController {
 		/*logout part*/
 		$this->Session->destroy();
 		$this->Auth->logout();
-		$this->redirect($this->Auth->redirect());
+		//$this->redirect($this->Auth->redirect());
+		$this->redirect('/accounts/login');
 		
 	}
 	
