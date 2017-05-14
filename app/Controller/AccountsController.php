@@ -64,6 +64,7 @@ class AccountsController extends AppController {
 			case 'phpcaptcha':
 			case 'playPhpcaptcha':
 			case 'pass':
+			case 'go':
 			case 'contactus':
 			case 'toolbox':
 			case 'lstchatlogs':
