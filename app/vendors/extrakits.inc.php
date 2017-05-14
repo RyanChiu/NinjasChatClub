@@ -157,6 +157,23 @@
 			$siteid = $row['siteid'];
 		}
 	}
+
+	function __stats_get_type_srcdriver_site(&$typeid, &$siteid, &$srcdriver, $abbr, $dblink) {
+		/*find out the typeids and siteid from db by the abbreviation of the site*/
+		$sql = sprintf(
+			'select a.id as typeid, a.siteid, b.srcdriver from types a, sites b'
+			. ' where a.siteid = b.id and b.abbr = "%s"'
+			. ' order by a.id',
+			$abbr
+		);
+		$rs = mysql_query($sql, $dblink)
+			or die ("Something wrong with: " . mysql_error());
+		$siteid = null;
+		$row = mysql_fetch_assoc($rs);
+		$typeid = $row['typeid'];
+		$siteid = $row['siteid'];
+		$srcdriver = $row['srcdriver'];
+	}
 	
 	/*
 	 * try to send an email
