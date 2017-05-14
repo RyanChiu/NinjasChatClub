@@ -20,7 +20,7 @@ class LinksController extends AppController {
 	
 	/*callbacks*/
 	function beforeFilter() {
-		$this->set('title_for_layout', 'Ninja\'s Chat Club.[LINKS]');
+		$this->set('title_for_layout', 'AMERICA\'S "WEB LINK".[LINKS]');
 		if ($this->Session->check("Auth")) {
 			$u = $this->Session->read("Auth");
 			$u = array_values($u);
@@ -41,12 +41,12 @@ class LinksController extends AppController {
 	
 	function __accessDenied() {
 		$this->Session->setFlash('Sorry, you are not authorized to visit that location, so you\'ve been relocated here.');
-		$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+		$this->redirect(array('controller' => 'links', 'action' => 'lstlinks'));
 	}
 	
 	function __handleAccess() {
 		if ($this->curuser == null) {
-			$this->__accessDenied();
+			$this->redirect(array('controller' => 'accounts', 'action' => 'login'));
 			return;
 		}
 		

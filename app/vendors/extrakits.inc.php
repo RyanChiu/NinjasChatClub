@@ -23,7 +23,7 @@
 	/*
 	 * key string that will be used for encrypt and decrypt
 	 */
-	define("LINKGENKEY", "ohmyOHMY123$%^");
+	define("LINKGENKEY", "ohmyOHMY890$%^");
 
 	/*
 	 * routines area
