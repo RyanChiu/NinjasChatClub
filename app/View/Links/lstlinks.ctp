@@ -141,3 +141,13 @@ if (!empty($rs)) {
 <?php
 }
 ?>
+
+<script type="text/javascript">
+jQuery('b').each(function() {
+	var url = jQuery(this).html();
+	if (url.indexOf('http:') > -1) {
+		url = url.replace('http:', 'https:');
+		jQuery(this).html(url);
+	}
+});
+</script>
