@@ -720,10 +720,10 @@ echo $scripts_for_layout;
 		<!-- End Footer -->
 	</div>
 
-	<!-- for "agent must read" -->
 	<?php
 	if (in_array($userinfo['role'], array(0, 1, 2)) && !$this->Session->check('switch_pass')) {
 	?>
+	<!-- for "agent must read" -->
 	<!-- must read part  -->
 	<div style="display: none">
 		<a id="mustread_link" href="#mustread_for_agents">show attentions</a>
@@ -848,7 +848,6 @@ echo $scripts_for_layout;
 				'overlayColor': '#0A0A0A',
 				'modal': true
 			});
-			
 			<?php 
 			if (isset($mustread) && !empty($mustread)) {
 			?>

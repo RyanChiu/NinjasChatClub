@@ -35,21 +35,21 @@ echo $this->Form->create(null, array('url' => array('controller' => 'links', 'ac
 	</font>
 </caption>
 <tr>
-	<td width="31%" align="right">
+	<td width="40%" align="right">
 	<?php
 	echo $this->Form->input('Site.id',
-		array('options' => $sites, 'style' => 'width:170px;', 'label' => 'Site:', 'type' => 'select')
+		array('options' => $sites, 'style' => 'width:260px;', 'label' => 'Site:', 'type' => 'select')
 	);
 	?>
 	</td>
-	<td width="40%" align="center">
+	<td width="30%" align="center">
 	<?php
 	echo $this->Form->input('ViewAgent.id',
-		array('options' => $ags, 'style' => 'width:290px;', 'label' => 'Agent:', 'type' => 'select')
+		array('options' => $ags, 'style' => 'width:170px;', 'label' => 'Agent:', 'type' => 'select')
 	);
 	?>
 	</td>
-	<td width="29%">
+	<td width="30%">
 	<?php
 	echo $this->Form->submit('Generate Link Codes', array('style' => 'width:180px;'));
 	?>

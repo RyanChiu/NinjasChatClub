@@ -260,7 +260,7 @@ class LinksController extends AppController {
 			$sites = $this->Site->find('list',
 				array(
 					'fields' => array('id', 'sitename'),
-					'order' => 'id'
+					'order' => 'sitename'
 				)
 			);
 		} else if ($this->curuser['role'] == 1) {//means an office

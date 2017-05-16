@@ -60,8 +60,8 @@ echo $scripts_for_layout;
 		</div>
 		<!-- End Footer -->
 	</div>
-	
-	<!-- To avoid delays, initialize Cufón before other scripts at the bottom -->
+
+	<!-- To avoid delays, initialize Cufon before other scripts at the bottom -->
 	<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>

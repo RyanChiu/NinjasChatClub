@@ -309,7 +309,9 @@ class AccountsController extends AppController {
 		$periods = __getPeriods();
 		
 		$sites = $this->Site->find('list',
-			array('fields' => array('id', 'sitename'))
+			array(
+				'fields' => array('id', 'sitename')
+			)
 		);
 		$rs = array();
 		if (!empty($this->request->data)) {
@@ -974,7 +976,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$exsites = array_unique($exsites);
@@ -1125,7 +1128,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$exsites = array_unique($exsites);
@@ -1287,7 +1291,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$exsites = array_unique($exsites);
@@ -1436,7 +1441,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$exsites = array_unique($exsites);
@@ -1712,7 +1718,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$sites = array('-1' => '-----------------------') + $sites;
@@ -2016,7 +2023,8 @@ class AccountsController extends AppController {
 					$sites = $this->Site->find('list',
 						array(
 							'fields' => array('id', 'abbr'),
-							'conditions' => array('id' => $data['SiteExcluding']['siteid'])
+							'conditions' => array('id' => $data['SiteExcluding']['siteid']),
+							'order' => 'sitename'
 						)
 					);
 					
@@ -2122,7 +2130,8 @@ class AccountsController extends AppController {
 		$sites = $this->Site->find('list',
 			array(
 				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
+				'conditions' => array('status' => 1),
+				'order' => 'sitename'
 			)
 		);
 		$this->set(compact("sites"));
@@ -2220,7 +2229,8 @@ class AccountsController extends AppController {
 		if (count($ags) > 1) $ags = array('0' => 'All') + $ags;
 		$sites = $this->Site->find('list',
 			array(
-				'fields' => array('id', 'sitename')
+				'fields' => array('id', 'sitename'),
+				'order' => 'sitename'
 			)
 		);
 		$sites = array('0' => 'All') + $sites;
