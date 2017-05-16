@@ -418,9 +418,9 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['frauds']; ?></td>
 		<td><?php echo $r['ViewTStats']['chargebacks']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type1']; ?></td>
-		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type2']; ?></td>
+		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#ff3300;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type2']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type3']; ?></td>
-		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#aa2200;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type4']; ?></td>
+		<td <?php echo in_array($selsite, array(12, 13)) ? 'style="color:#ff3300;"' : ''; ?>><?php echo $r['ViewTStats']['sales_type4']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type5']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type6']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type7']; ?></td>
@@ -428,16 +428,16 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['sales_type9']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type10']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type1_3']; ?></td>
-		<td style="color:#aa2200;"><?php echo $r['ViewTStats']['sales_type2_4']; ?></td>
-		<td style="color:#aa2200;"><?php echo sprintf("%.2f", $r['ViewTStats']['sales_type2_4'] / $r['ViewTStats']['sales_type1_3'] * 100) . "%"; ?></td>
+		<td style="color:#ff3300;"><?php echo $r['ViewTStats']['sales_type2_4']; ?></td>
+		<td style="color:#ff3300;"><?php echo sprintf("%.2f", $r['ViewTStats']['sales_type2_4'] / $r['ViewTStats']['sales_type1_3'] * 100) . "%"; ?></td>
 		<td><?php echo $r['ViewTStats']['net']; ?></td>
 		<?php
 		if ($_show_pay_) {
 		?>
 		<td><?php echo '$' . $r['ViewTStats']['sales_type1_3_earning']; ?></td>
-		<td style="color:#aa2200;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_earning']; ?></td>
+		<td style="color:#ff3300;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_earning']; ?></td>
 		<td><?php echo '$' . $r['ViewTStats']['sales_type1_3_payout']; ?></td>
-		<td style="color:#aa2200;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_payout']; ?></td>
+		<td style="color:#ff3300;"><?php echo '$' . $r['ViewTStats']['sales_type2_4_payout']; ?></td>
 		<td><?php echo '$' . $r['ViewTStats']['earnings']; ?></td>
 		<td><?php echo '$' . $r['ViewTStats']['payouts']; ?></td>
 		<?php
