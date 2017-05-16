@@ -68,8 +68,8 @@ if (!empty($rs)) {
 	?>
 	&nbsp;&nbsp;&nbsp;
 	<?php
-	echo '(';
-	echo 'Site:' . $sites[$selsite];
+	echo '[ ';
+	echo /*'Site:' . */$sites[$selsite];
 	echo ', Type:' . $types[$seltype];
 	if ($userinfo['role'] == 0) {//means an administrator
 		echo ', Office:';
@@ -83,7 +83,7 @@ if (!empty($rs)) {
 		echo ', Agent:' . $ags[$selagent];
 	} else if ($userinfo['role'] == 2) {//means an agent
 	}
-	echo ')';
+	echo ' ]';
 	?>
 	<?php
 	if ($selsite != 1) {

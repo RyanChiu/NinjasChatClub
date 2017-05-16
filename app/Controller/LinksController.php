@@ -134,13 +134,12 @@ class LinksController extends AppController {
 	function lstsites() {
 		$this->layout = "defaultlayout";
 		
-		/*
 		$this->paginate = array(
 			'ViewSite' => array(
-				'limit' => $this->__limit
+				//'limit' => $this->__limit
+				'order' => 'sitename'
 			)
 		);
-		*/
 		$this->set('status', $this->Site->status);
 		$this->set('rs', $this->paginate('ViewSite'));
 	}
