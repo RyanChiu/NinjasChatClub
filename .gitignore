@@ -1,5 +1,7 @@
 /tmp
 /cache
+/app/tmp
+/api/logs
 /app/tmp/cache
 /app/tmp/sessions
 /app/vendors/cache
