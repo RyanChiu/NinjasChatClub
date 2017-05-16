@@ -115,18 +115,18 @@ if (!empty($rs)) {
 			echo $sites[$r['AgentSiteMapping']['siteid']] . '_' . $type['Type']['typealias'] 
 				. $typealias . ':&nbsp;&nbsp;&nbsp;';
 			echo '<b>';
-			/*
 			echo $this->Html->url(array('controller' => 'accounts', 'action' => 'go'), true) . '/'
 				. $r['AgentSiteMapping']['siteid'] . '/'
 				. $type['Type']['id']. '/'
 				. $ags[$r['AgentSiteMapping']['agentid']];
-			*/
+			/*
 			$u = $r['AgentSiteMapping']['siteid'] . '/'
 				. $type['Type']['id']. '/'
 				. $ags[$r['AgentSiteMapping']['agentid']];
 			echo $this->Html->url(array('controller' => 'accounts'), true) 
 				. "go/idx.php?to="
 				. encrypt($u, LINKGENKEY);
+			*/
 			echo '</b>';
 			?>
 			</td>
