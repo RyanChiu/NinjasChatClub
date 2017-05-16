@@ -50,7 +50,11 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 	$type = (isset($_GET['type']) ? trim($_GET['type']) : (isset($_POST['type']) ? trim($_POST['type']) : 'ill'));//not for sure
 	$type = strtolower($type);
 	$agent = (isset($_GET['agent']) ? trim($_GET['agent']) : (isset($_POST['agent']) ? trim($_POST['agent']) : ''));
- if($agent !== mysql_escape_string($agent)) { file_put_contents('./logs/inject.log',"SQL INJECT '$agent from {$_SERVER['REMOTE_ADDR']}'.\n",FILE_APPEND); echo "Invalid Agent"; exit;}
+	if($agent !== mysql_escape_string($agent)) { 
+ 		file_put_contents('./logs/inject.log',"SQL INJECT '$agent from {$_SERVER['REMOTE_ADDR']}'.\n",FILE_APPEND);
+ 		echo "Invalid Agent";
+ 		exit;
+	}
 	$unique = (isset($_GET['unique']) ? trim($_GET['unique']) : (isset($_POST['unique']) ? trim($_POST['unique']) : ''));//not for sure
 	$unique = strtolower($unique);
 	$ch = (isset($_GET['site_id']) ? trim($_GET['site_id']) : (isset($_POST['site_id']) ? trim($_POST['site_id']) : ''));
