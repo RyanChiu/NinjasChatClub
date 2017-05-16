@@ -10,7 +10,7 @@
 	define("CAMS3_CHS", "4,5,6,7,23,24");
 	define("BBRD_CHS", "5,6");
 	define("ADC_CHS", "10");
-	define("BLDS_CHS", "11,12,13,14");
+	define("BLDS_CHS", "11,12,13,14,28,29");
 	define("SXUP_CHS", "15,16,17,18");
 	define("NTCP_CHS", "19,20,21,22");
 	define("CD02_CHS", "25,26");
