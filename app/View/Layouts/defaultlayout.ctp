@@ -827,7 +827,7 @@ echo $scripts_for_layout;
 
 			<p style="text-align: center; margin: 9px 0px 0px 9px;">
 				<?php
-				echo $this->Html->link('<font style="font-weight:bold;">Enter</font>',
+				echo $this->Html->link('<font style="font-weight:bold;font-size:24px;color:red;">ENTER</font>',
 					"#",
 					array('onclick' => 'javascript:jQuery.fancybox.close();jQuery.post(\'' 
 						. $this->Html->url(array("controller" => "accounts", "action" => "pass")) 
