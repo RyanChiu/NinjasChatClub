@@ -14,7 +14,7 @@ class AppController extends Controller {
 		if ($this->Session->check("Auth")) {
 			$u = $this->Session->read("Auth");
 			$u = array_values($u);
-			if (count($u) == 0) {
+			if (count($u) == 0 || !isset($u[0]['Account'])) {
 				$this->curuser = null;
 			} else {
 				$this->curuser = $u[0]['Account'];
