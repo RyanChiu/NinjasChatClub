@@ -169,7 +169,6 @@ if (!empty($rs)) {
 		<th <?php echo count($typesv) > 1 ? '' : 'class="naClassHide"'; ?>>
 		<?php
 		echo $selsite == 2 ? $this->Html->image('main/new-3_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
-		echo $selsite == 8 ? $this->Html->image('main/new-8_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $selsite == 14 ? $this->Html->image('main/new-3_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $this->ExPaginator->sort('ViewTStats.sales_type1', (count($typesv) > 1 ? $typesv[1] : 'N/A'));
 		?>
@@ -177,7 +176,6 @@ if (!empty($rs)) {
 		</th>
 		<th <?php echo count($typesv) > 2 ? '' : 'class="naClassHide"'; ?>>
 		<?php
-		echo $selsite == 8 ? $this->Html->image('main/new-8_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $selsite == 14 ? $this->Html->image('main/new-3_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $this->ExPaginator->sort('ViewTStats.sales_type2', (count($typesv) > 2 ? $typesv[2] : 'N/A'));
 		?>
@@ -185,6 +183,7 @@ if (!empty($rs)) {
 		</th>
 		<th <?php echo count($typesv) > 3 ? '' : 'class="naClassHide"'; ?>>
 		<?php
+		echo $selsite == 8 ? $this->Html->image('main/graphics-arrows-940869.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $this->ExPaginator->sort('ViewTStats.sales_type3', (count($typesv) > 3 ? $typesv[3] : 'N/A'))
 		?>
 		<br/><i style="font-size:12px;">Sale</i>
@@ -204,6 +203,7 @@ if (!empty($rs)) {
 		</th>
 		<th <?php echo count($typesv) > 6 ? '' : 'class="naClassHide"'; ?>>
 		<?php
+		echo $selsite == 8 ? $this->Html->image('main/graphics-arrows-940869.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $selsite == 11 ? $this->Html->image('main/new-8_e0.gif', array('style' => 'border:0px;width:32px;')) : "";
 		echo $this->ExPaginator->sort('ViewTStats.sales_type6', (count($typesv) > 6 ? $typesv[6] : 'N/A'))
 		?>
