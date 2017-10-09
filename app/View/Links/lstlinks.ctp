@@ -100,7 +100,7 @@ if (!empty($rs)) {
 				if ($i == 0) {
 					$typealias = "(Straight)";
 				} else if ($i == 1) {
-					$typealias = "(Gay)";
+					//$typealias = "(Gay)";
 				} else if ($i == 2) {
 					$typealias = "(Straight)";
 				} else if ($i == 3) {
