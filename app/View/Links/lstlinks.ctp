@@ -98,13 +98,13 @@ if (!empty($rs)) {
 			$typealias = "";
 			if ($r['AgentSiteMapping']['siteid'] == 7) {
 				if ($i == 0) {
-					$typealias = "(Straight)";
+					//$typealias = "(Straight)";
 				} else if ($i == 1) {
 					//$typealias = "(Gay)";
 				} else if ($i == 2) {
-					$typealias = "(Straight)";
+					//$typealias = "(Straight)";
 				} else if ($i == 3) {
-					$typealias = "(Straight)";
+					//$typealias = "(Straight)";
 				}
 			}
 			
