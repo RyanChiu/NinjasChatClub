@@ -46,7 +46,7 @@ $err = "";
 $s = "";
 /*actually save the data into stats*/
 if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
-	$stamp = (isset($_GET['date']) ? trim($_GET['date']) : (isset($_POST['date']) ? trim($_POST['date']) : ''));
+	$stamp = (isset($_GET['stamp']) ? trim($_GET['stamp']) : (isset($_POST['stamp']) ? trim($_POST['stamp']) : ''));
 	$stamp = strtolower($stamp);
 	$type = (isset($_GET['type']) ? trim($_GET['type']) : (isset($_POST['type']) ? trim($_POST['type']) : 'ill'));//not for sure
 	$type = strtolower($type);
@@ -60,20 +60,15 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 	$unique = strtolower($unique);
 	$ch = (isset($_GET['ch']) ? trim($_GET['ch']) : (isset($_POST['ch']) ? trim($_POST['ch']) : ''));
 	$ch = intval($ch);
-	$trxid = (isset($_GET['client_id']) ? trim($_GET['client_id']) : (isset($_POST['client_id']) ? trim($_POST['client_id']) : ''));
+	$trxid = (isset($_GET['transactionid']) ? trim($_GET['transactionid']) : (isset($_POST['transactionid']) ? trim($_POST['transactionid']) : ''));
 	$trxid = intval($trxid);
-	$affid = (isset($_GET['affid']) ? trim($_GET['affid']) : (isset($_POST['affid']) ? trim($_POST['affid']) : ''));
-	if (!empty($trxid)) {
-		$type = 'sale';
-		$agent = $affid;
-	}
 	$conn = new zmysqlConn();
 	$sql = "select a.*, g.companyid, b.id as 'typeid' 
 		from agent_site_mappings a, sites s, accounts n, types b, agents g, companies m 
 		where a.siteid = s.id and a.siteid = b.siteid and s.abbr = '$bname' 
 			and a.agentid = g.id and g.companyid = m.id
 			and a.agentid = n.id and n.username = '$agent'
-		ORDER BY typeid";
+		ORDER BY typeid"; 
 	$rs = mysql_query($sql, $conn->dblink);
 	$chsfrombbr = explode(",", LCS_CHS);;// !!! MUST MAKE SURE ABOUT THIS ARRAY WITH Jesse
 	$i = 0;
@@ -93,9 +88,9 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 			$donothing = false;
 			if ($type == 'sale') {
 				if (!empty($stamp)) {
-					$ts = DateTime::createFromFormat("Y-m-d", $stamp);
+					$ts = DateTime::createFromFormat("Ymd_His00", $stamp);
 					if ($ts !== false) {
-						$trxtime = $ts->format("Y-m-d 00:00:11");
+						$trxtime = $ts->format("Y-m-d H:i:s");
 					} else {
 						$trxtime = $now->format("Y-m-d 00:00:22");
 					}
@@ -127,7 +122,6 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 				$sql = "insert into stats (agentid, companyid, raws, uniques, chargebacks, signups, frauds, sales_number, typeid, siteid, campaignid, trxtime, transactionid)"
 					. " values ($agid, $comid, $clicks, $uniques, 0, 0, 0, $sales, $typeid, $siteid, '$campid', '$trxtime', $trxid)";
 				//echo "$sql($i/$ch)\n"; continue; //for debug;
-	
 				if (mysql_query($sql, $conn->dblink) === false) {
 					$err = mysql_error();
 				}
