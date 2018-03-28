@@ -60,6 +60,7 @@ class AccountsController extends AppController {
 	}
 	
 	function __handleAccess() {
+		/*
 		switch ($this->request->params['action']) {
 			case 'phpcaptcha':
 			case 'playPhpcaptcha':
@@ -76,7 +77,7 @@ class AccountsController extends AppController {
 			default:
 				$this->__accessDenied();
 				return;
-		}
+		}*/
 		/*
 		 the following lines are totally disabled actully by the above lines
 		 */
@@ -1888,7 +1889,7 @@ class AccountsController extends AppController {
 		
 		$conditions = array('1' => '1');
 		if ($this->Auth->user('Account.role') == 1) {
-			$conditions = array('id' => $this->Auth->user("Account.id"));
+			$conditions = array('companyid' => $this->Auth->user("Account.id"));
 		}
 		$coms = $this->ViewCompany->find('list',
 			array(
@@ -2221,7 +2222,7 @@ class AccountsController extends AppController {
 		
 		$conditions = array('1' => '1');
 		if ($this->Auth->user('Account.role') == 1) {
-			$conditions = array('id' => $this->Auth->user('Account.id'));
+			$conditions = array('companyid' => $this->Auth->user('Account.id'));
 		}
 		$coms = $this->ViewCompany->find('list',
 			array(
