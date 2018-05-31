@@ -16,6 +16,7 @@
 	define("CD02_CHS", "25,26");
 	define("SCL_CHS", "27");
 	define("LCS_CHS", "30,31");
+	define("AGC1_CHS", "32,33");
 	/*
 	 * critical time to change biweek into 1-15 or 16-end of a month
 	 */
