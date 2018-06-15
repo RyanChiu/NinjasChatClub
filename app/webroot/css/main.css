@@ -6,7 +6,7 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #666666;
-	background-color: #000000;
+	background-color: #003300;
 	font-size: 15px;
 	/*background-image:url(../img/main/bg-tile.gif);
  background-repeat:repeat;*/
@@ -20,7 +20,7 @@ body {
 #border {
 	border: 0px solid #8ECE5F;
 	margin: 20px 0px 0px 0px;
-	background-color: #000000;
+	background-color: #003300;
 	min-height: 123px; /**/
 	float: right;
 	width: 955px; /**/
@@ -33,7 +33,7 @@ body {
 .header {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 24px 0px 0px;
-	background-image: url(../img/main/header.png);
+	background-color: #003300;
 	min-height: 115px;
 }
 /* ------------------------ End Header -----------------*/
@@ -45,7 +45,7 @@ body {
 	margin: 0px 0px 0px 0px;
 	background-image: /*url(../img/main/nav-bar.png)*/;
 	background-repeat: no-repeat;
-	background-color: #000000;
+	background-color: #003300;
 	min-height: 15px;
 	padding: 4px 0px 0px 5px;
 }
@@ -162,7 +162,7 @@ img.float {
 	background-image: url(../img/main/content-top.gif);
 	background-repeat: no-repeat;
 	*/
-    background: black;
+    background: #003300;
     height: 8px;
 }
 
@@ -171,7 +171,7 @@ img.float {
 	background-image: url(../img/main/content-mid.gif);
 	background-repeat: repeat;
 	*/
-	background: black;
+	background: #003300;
 	padding: 5px 14px 5px 14px;
 }
 
@@ -180,7 +180,7 @@ img.float {
 	background-image: url(../img/main/content-bottom.gif);
 	background-repeat: no-repeat;
 	*/
-    background: black;
+    background: #003300;
     height: 8px;
 }
 
@@ -236,7 +236,7 @@ select {
 	text-align: right;
 	vertical-align: middle;
 	line-height: 33px;
-	background-image: url(../img/main/footer.png);
+	background-color: #003300;
 	min-height: 33px;
 }
 
@@ -330,7 +330,7 @@ a:hover {
 /*for search label*/
 .search-label {
 	background: /*#E6EDF5*/ #d3a006;
-	color: /*#4F76A3*/ black;
+	color: /*#4F76A3*/ #003300;
 	font-size: 100% !important;
 	font-weight: bold;
 }
@@ -375,7 +375,7 @@ table thead tr th a.desc {
 .button {
 	background: url(../img/btn_bg.png);
 	font-weight: bold;
-	color: black;
+	color: #003300;
 	height: 23px;
 	border-style: outset;
 	border-color: gray;
