@@ -3,7 +3,7 @@ float:left;
 width:100%;
 font-size: 14px;
 line-height:normal;
-border-bottom: 0px solid #dcc208; /*Add border strip to bottom of menu*/
+border-bottom: 0px solid #cccc99; /*Add border strip to bottom of menu*/
 }
 
 .glowingtabs ul{
@@ -67,7 +67,7 @@ background-position:100% -82px; /*Shift background image up to start of 2nd tab 
 .dropmenudiv_d{
 position:absolute;
 top: 0;
-border: 1px solid #dcc208; /*THEME CHANGE HERE*/
+border: 1px solid #cccc99; /*THEME CHANGE HERE*/
 border-width: 0 1px;
 font:normal 14px Verdana;
 line-height:18px;
@@ -82,7 +82,7 @@ visibility: hidden;
 width: auto;
 display: block;
 text-indent: 5px;
-border: 0 solid #dcc208; /*THEME CHANGE HERE*/
+border: 0 solid #cccc99; /*THEME CHANGE HERE*/
 border-bottom-width: 1px;
 padding: 2px 0;
 text-decoration: none;

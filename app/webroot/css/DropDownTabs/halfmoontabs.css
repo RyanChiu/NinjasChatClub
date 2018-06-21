@@ -34,7 +34,7 @@ color: black;
 }
 
 .halfmoon li a:hover, .halfmoon li.selected a{
-background-color: /*#464F26*/#d3a006;
+background-color: /*#464F26 #d3a006*/#cccc99;
 color: black;
 }
 
