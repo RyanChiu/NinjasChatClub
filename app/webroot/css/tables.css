@@ -23,7 +23,7 @@ td, th {
 
 thead th {
 	text-align: center;
-	background: /*#E6EDF5*/#bd8f04;
+	background: /*#E6EDF5 #bd8f04*/#cccc99;
 	color: /*#4F76A3*/#000033;
 	font-size: 100% !important;
 }
