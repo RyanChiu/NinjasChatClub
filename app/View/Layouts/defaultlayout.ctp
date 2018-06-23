@@ -90,7 +90,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>HOME</font></span>',
+						echo $this->Html->link('<span>HOME</span>',
 							array('controller' => 'accounts', 'action' => 'index'),
 							array('escape' => false), 
 							false
@@ -431,7 +431,7 @@ echo $scripts_for_layout;
 				</div>
 				<div id="dropmenu_links" class="dropmenudiv_e" style="width: 120px;">
 					<?php
-					echo $this->Html->link('<font><b>Link</b></font>',
+					echo $this->Html->link('Link',
 						array('controller' => 'links', 'action' => 'lstlinks'),
 						array('escape' => false), 
 						false
@@ -441,7 +441,7 @@ echo $scripts_for_layout;
 					 * avoid admin whose id is not 1 nor 2 to access the item
 					 */
 					if (in_array($userinfo['id'], array(1, 2))) {
-						echo $this->Html->link('<font><b>Config Site</b></font>',
+						echo $this->Html->link('Config Site',
 							array('controller' => 'links', 'action' => 'lstsites'),
 							array('escape' => false), 
 							false
