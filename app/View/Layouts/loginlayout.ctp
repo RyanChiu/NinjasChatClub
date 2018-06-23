@@ -55,7 +55,7 @@ echo $scripts_for_layout;
 		<!-- End Border -->
 		<!-- Start Footer -->
 		<div id="footer">
-			<font size="2" color="#b80f16"><b>Copyright &copy; 2015 www.AmericasWebLink.com All
+			<font size="2" color="#b80f16"><b>Copyright &copy; 2018 www.AmericasWebLink.com All
 					Rights Reserved.&nbsp;&nbsp;</b> </font>
 		</div>
 		<!-- End Footer -->

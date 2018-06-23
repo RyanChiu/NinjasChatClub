@@ -15,7 +15,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 		</td>
 	</tr>
 	<tr>
-		<td align="right"><b><font style="color:#b80f16;margin-right:6px;" size="2">User name:</font> </b>
+		<td align="right"><b><font style="color:white;margin-right:6px;" size="2">User name:</font> </b>
 		</td>
 		<td align="left">
 			<?php
@@ -32,7 +32,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td align="right">
-			<b><font style="color:#b80f16;margin-right:6px;" size="2">Password:</font></b>
+			<b><font style="color:white;margin-right:6px;" size="2">Password:</font></b>
 		</td>
 		<td align="left">
 			<?php
@@ -46,7 +46,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td align="right">
-			<b><font style="color:#b80f16;margin-right:6px;" size="2">Captcha:</font></b>
+			<b><font style="color:white;margin-right:6px;" size="2">Captcha:</font></b>
 		</td>
 		<td align="left">
 			<div style="float: left; margin-right: 10px;">
@@ -98,7 +98,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td style="color:#b80f16;">Example: 3x3=9, Captcha answer is 9.</td>
+		<td style="color:white;">Example: 3x3=9, Captcha answer is 9.</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
@@ -121,9 +121,9 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			);
 			?>
 			<br/><br/>
-			<font color="#b80f16">Contact your account manager, to retrieve your password,</font>
+			<font color="white">Contact your account manager, to retrieve your password,</font>
 			<br/>
-			<font color="#b80f16">we do not have agent's REAL email address.</font>
+			<font color="white">we do not have agent's REAL email address.</font>
 		</td>
 	</tr>
 </table>
