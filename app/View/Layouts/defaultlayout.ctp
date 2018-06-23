@@ -90,7 +90,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('HOME',
+						echo $this->Html->link('<span>HOME</span>',
 							array('controller' => 'accounts', 'action' => 'index'),
 							array('escape' => false), 
 							false
@@ -112,7 +112,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('NEWS',
+						echo $this->Html->link('<span>NEWS</span>',
 							array('controller' => 'accounts', 'action' => 'addnews'),
 							array('rel' => 'dropmenu_admin_news', 'escape' => false),
 							false
@@ -135,7 +135,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('OFFICE',
+						echo $this->Html->link('<span>OFFICE</span>',
 							array('controller' => 'accounts', 'action' => 'lstcompanies', 'id' => -1),
 							array('rel' => 'dropmenu_admin_company', 'escape' => false),
 							false
@@ -157,7 +157,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('AGENT',
+						echo $this->Html->link('<span>AGENT</span>',
 							array('controller' => 'accounts', 'action' => 'lstagents', 'id' => -1),
 							array('rel' => 'dropmenu_admin_agent', 'escape' => false),
 							false
@@ -181,7 +181,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('AGENT',
+						echo $this->Html->link('<span>AGENT</span>',
 							array('controller' => 'accounts', 'action' => 'lstagents', 'id' => $userinfo['id']),
 							array('rel' => 'dropmenu_com_agent', 'escape' => false),
 							false);
@@ -201,7 +201,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('APPROVE NEW AGENT',
+						echo $this->Html->link('<span>APPROVE NEW AGENT</span>',
 							array('controller' => 'accounts', 'action' => 'lstnewmembers'),
 							array('escape' => false), 
 							false);
@@ -224,7 +224,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('LINKS',
+						echo $this->Html->link('<span>LINKS</span>',
 							array('controller' => 'links', 'action' => 'lstlinks'),
 							array('rel' => ($role == 0 ? 'dropmenu_links' : ''), 'escape' => false),
 							false
@@ -245,7 +245,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('STATS',
+						echo $this->Html->link('<span>STATS</span>',
 							array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
 							array('rel' => ($role == 0 ? 'dropmenu_stats' : ''), 'escape' => false), 
 							false
@@ -270,7 +270,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('LOGS',
+						echo $this->Html->link('<span>LOGS</span>',
 							"#",
 							array('rel' => 'dropmenu_logs', 'escape' => false),
 							false
@@ -292,7 +292,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('GET HELP',
+						echo $this->Html->link('<span>GET HELP</span>',
 							array('controller' => 'accounts', 'action' => 'contactus'),
 							array('escape' => false), 
 							false
@@ -313,7 +313,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('PROFILE',
+						echo $this->Html->link('<span>PROFILE</span>',
 							array('controller' => 'accounts', 'action' => 'updadmin'),
 							array('escape' => false), 
 							false
@@ -334,7 +334,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('PROFILE',
+						echo $this->Html->link('<span>PROFILE</span>',
 							array('controller' => 'accounts', 'action' => 'updcompany', 'id' => $userinfo['id']),
 							array('escape' => false), 
 							false
@@ -355,7 +355,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('PROFILE',
+						echo $this->Html->link('<span>PROFILE</span>',
 							array('controller' => 'accounts', 'action' => 'updagent', 'id' => $userinfo['id']),
 							array('escape' => false), 
 							false
@@ -376,7 +376,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php 
-						echo $this->Html->link('HOW TO SELL',
+						echo $this->Html->link('<span>HOW TO SELL</span>',
 							"#",
 							array('rel' => 'dropmenu_toolbox_admin', 'escape' => false),
 							false
@@ -394,7 +394,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php 
-						echo $this->Html->link('HOW TO SELL',
+						echo $this->Html->link('<span>HOW TO SELL</span>',
 							"#",
 							array('rel' => 'dropmenu_toolbox_normal', 'escape' => false),
 							false
@@ -406,7 +406,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('LOGOUT',
+						echo $this->Html->link('<span>LOGOUT</span>',
 							array('controller' => 'accounts', 'action' => 'logout'),
 							array('escape' => false), 
 							false
@@ -422,7 +422,7 @@ echo $scripts_for_layout;
 				<div id="dropmenu_admin_news" class="dropmenudiv_e"
 					style="width: 70px;">
 					<?php
-					echo $this->Html->link('Alerts',
+					echo $this->Html->link('<span>Alerts</span>',
 						array('controller' => 'accounts', 'action' => 'updalerts'),
 						array('escape' => false), 
 						false
@@ -431,7 +431,7 @@ echo $scripts_for_layout;
 				</div>
 				<div id="dropmenu_links" class="dropmenudiv_e" style="width: 120px;">
 					<?php
-					echo $this->Html->link('Link',
+					echo $this->Html->link('<span>Link</span>',
 						array('controller' => 'links', 'action' => 'lstlinks'),
 						array('escape' => false), 
 						false
@@ -441,7 +441,7 @@ echo $scripts_for_layout;
 					 * avoid admin whose id is not 1 nor 2 to access the item
 					 */
 					if (in_array($userinfo['id'], array(1, 2))) {
-						echo $this->Html->link('Config Site',
+						echo $this->Html->link('<span>Config Site</span>',
 							array('controller' => 'links', 'action' => 'lstsites'),
 							array('escape' => false), 
 							false
@@ -451,12 +451,12 @@ echo $scripts_for_layout;
 				</div>
 				<div id="dropmenu_stats" class="dropmenudiv_e" style="width:200px;">
 					<?php
-					echo $this->Html->link('Office Performance Charts',
+					echo $this->Html->link('<span>Office Performance Charts</span>',
 						array('controller' => 'stats', 'action' => 'progresses'),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('Top 10 Archives',
+					echo $this->Html->link('<span>Top 10 Archives</span>',
 						array('controller' => 'accounts', 'action' => 'top10'),
 						array('escape' => false),
 						false
@@ -466,7 +466,7 @@ echo $scripts_for_layout;
 				<div id="dropmenu_admin_agent" class="dropmenudiv_e"
 					style="width: 130px;">
 					<?php
-					echo $this->Html->link('Manage Agent',
+					echo $this->Html->link('<span>Manage Agent</span>',
 						array('controller' => 'accounts', 'action' => 'lstagents', 'id' => -1),
 						array('escape' => false), 
 						false
@@ -476,7 +476,7 @@ echo $scripts_for_layout;
 				<div id="dropmenu_admin_company" class="dropmenudiv_e"
 					style="width: 135px;">
 					<?php
-					echo $this->Html->link('Manage Office',
+					echo $this->Html->link('<span>Manage Office</span>',
 						array('controller' => 'accounts', 'action' => 'lstcompanies', 'id' => -1),
 						array('escape' => false), 
 						false
@@ -486,32 +486,32 @@ echo $scripts_for_layout;
 				<div id="dropmenu_toolbox_admin" class="dropmenudiv_e"
 					style="width: 180px;">
 					<?php
-					echo $this->Html->link('Update Site-3',
+					echo $this->Html->link('<span>Update Site-3</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('Update BBR-LDS',
+					echo $this->Html->link('<span>Update BBR-LDS</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 11),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('Update LCD',
+					echo $this->Html->link('<span>Update LCD</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 2),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('Update SXUP',
+					echo $this->Html->link('<span>Update SXUP</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 12),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('Update NTCP',
+					echo $this->Html->link('<span>Update NTCP</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 13),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('Update Cam Dating-2',
+					echo $this->Html->link('<span>Update Cam Dating-2</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 14),
 						array('escape' => false),
 						false
@@ -528,7 +528,7 @@ echo $scripts_for_layout;
 				<div id="dropmenu_com_agent" class="dropmenudiv_e"
 					style="width: 130px;">
 					<?php
-					echo $this->Html->link('Manage Agent',
+					echo $this->Html->link('<span>Manage Agent</span>',
 						array('controller' => 'accounts', 'action' => 'lstagents', 'id' => $userinfo['id']),
 						array('escape' => false), 
 						false
@@ -551,32 +551,32 @@ echo $scripts_for_layout;
 				<div id="dropmenu_toolbox_normal" class="dropmenudiv_e"
 					style="width: 120px;">
 					<?php
-					echo $this->Html->link('Site-3',
+					echo $this->Html->link('<span>Site-3</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('BBR-LDS',
+					echo $this->Html->link('<span>BBR-LDS</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 11),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('LCD',
+					echo $this->Html->link('<span>LCD</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 2),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('SXUP',
+					echo $this->Html->link('<span>SXUP</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 12),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('NTCP',
+					echo $this->Html->link('<span>NTCP</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 13),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('Cam Dating-2',
+					echo $this->Html->link('<span>Cam Dating-2</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 14),
 						array('escape' => false),
 						false
@@ -591,24 +591,24 @@ echo $scripts_for_layout;
 				<div id="dropmenu_logs" class="dropmenudiv_e" style="width: 135px;">
 					<?php
 					if ($role == 2) {
-						echo $this->Html->link('Submit Chat Log',
+						echo $this->Html->link('<span>Submit Chat Log</span>',
 							array('controller' => 'accounts', 'action' => 'addchatlogs'),
 							array('escape' => false), 
 							false
 						);
 					}
-					echo $this->Html->link('Chat Log',
+					echo $this->Html->link('<span>Chat Log</span>',
 						array('controller' => 'accounts', 'action' => 'lstchatlogs', 'id' => -1),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('Click Log',
+					echo $this->Html->link('<span>Click Log</span>',
 						array('controller' => 'links', 'action' => 'lstclickouts', 'id' => -1),
 						array('escape' => false), 
 						false
 					);
 					if ($role != 2) {
-						echo $this->Html->link('Login Log',
+						echo $this->Html->link('<span>Login Log</span>',
 							array('controller' => 'accounts', 'action' => 'lstlogins', 'id' => -1),
 							array('escape' => false), 
 							false

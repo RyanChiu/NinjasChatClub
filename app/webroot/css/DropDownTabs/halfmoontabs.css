@@ -14,7 +14,7 @@ border-bottom: 0px solid #929492;
 }
 
 .halfmoon li{
-display: inline;
+display: inline-block;
 margin: 0;
 }
 
@@ -31,6 +31,12 @@ background: /*#808040*/#000000 url(../../img/DropDownTabs/halfmoontab.png) top r
 
 .halfmoon li.selected a{
 background-color: #cccc99;
+text-decoration-color: black;
+color: black;
+}
+
+.halfmoon li.selected span{
+text-decoration-color: black;
 color: black;
 }
 
@@ -40,9 +46,14 @@ color: black;
 
 .halfmoon li a:hover{
 background-color: /*#464F26 #d3a006*/#cccc99;
+text-decoration-color: black;
 color: black;
 }
 
+.halfmoon li span:hover{
+text-decoration-color: black;
+color: black;
+}
 /* ######### Style for Drop Down Menu ######### */
 
 .dropmenudiv_e{
@@ -77,5 +88,11 @@ width: 100%;
 
 .dropmenudiv_e a:hover{ /*THEME CHANGE HERE*/
 background-color: /*#c8e181 #a37e09*/#cccc99;
+text-decoration-color: black;
+color:black;
+}
+
+.dropmenudiv_e span:hover{ /*THEME CHANGE HERE*/
+text-decoration-color: black;
 color:black;
 }
