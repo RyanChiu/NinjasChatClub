@@ -19,7 +19,7 @@ margin: 0;
 }
 
 .halfmoon li a{
-text-decoration: none;
+/*text-decoration: none;*/
 padding: 3px 9px 2px 5px;
 margin: 0;
 margin-right: 1px; /*distance between each tab*/
@@ -29,11 +29,16 @@ font-size: 13px;
 background: /*#808040*/#000000 url(../../img/DropDownTabs/halfmoontab.png) top right no-repeat;
 }
 
+.halfmoon li.selected a{
+background-color: #cccc99;
+color: black;
+}
+
 .halfmoon li a:visited{
 color: black;
 }
 
-.halfmoon li a:hover span:hover, .halfmoon li.selected a{
+.halfmoon li a:hover{
 background-color: /*#464F26 #d3a006*/#cccc99;
 color: black;
 }
@@ -62,7 +67,7 @@ font-weight: bold;
 border: 0 solid #5c5c5c; /*THEME CHANGE HERE*/
 border-bottom-width: 1px;
 padding: 2px 0;
-text-decoration: none;
+/*text-decoration: none;*/
 /*color: white;*/
 }
 

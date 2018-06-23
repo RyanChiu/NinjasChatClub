@@ -40,7 +40,7 @@ body {
 
 /* ------------------------ Start Navigation Bar -----------------*/
 #nav-bar {
-	color: #fff;
+	/*color: #fff;*/
 	font-weight: bold;
 	margin: 0px 0px 0px 0px;
 	background-image: /*url(../img/main/nav-bar.png)*/;
