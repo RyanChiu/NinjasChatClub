@@ -484,35 +484,35 @@ echo $scripts_for_layout;
 					?>
 				</div>
 				<div id="dropmenu_toolbox_admin" class="dropmenudiv_e"
-					style="width: 180px;">
+					style="width: 330px;">
 					<?php
-					echo $this->Html->link('<span>Update Site-3</span>',
+					echo $this->Html->link('<span>Update (1) Brand NEW Cam</span>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 17),
+						array('escape' => false), 
+						false
+					);
+					echo $this->Html->link('<span>Update (2) XCR=Cam-3 (X-ChatRooms)</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<span>Update BBR-LDS</span>',
+					echo $this->Html->link('<span>Update (3) BBR-lds=Date (Cam-Date)</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 11),
-						array('escape' => false), 
-						false
-					);
-					echo $this->Html->link('<span>Update LCD</span>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 2),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('<span>Update SXUP</span>',
+					echo $this->Html->link('<span>Update (4) AVG=Animated (Adult Video Games)</span>',
+						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 18),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<span>Update (5) SXUP=Date (+Bonus)</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 12),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('<span>Update NTCP</span>',
+					echo $this->Html->link('<span>Update (6) NTCP=Cam-4 (+Bonus)</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 13),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>Update Cam Dating-2</span>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 14),
 						array('escape' => false),
 						false
 					);
@@ -549,35 +549,35 @@ echo $scripts_for_layout;
 				if ($role == 1 || $role == 2 || !in_array($userinfo['id'], array(1, 2))) {
 				?>
 				<div id="dropmenu_toolbox_normal" class="dropmenudiv_e"
-					style="width: 120px;">
+					style="width: 300px;">
 					<?php
-					echo $this->Html->link('<span>Site-3</span>',
+					echo $this->Html->link('<span>(1) Brand NEW Cam</span>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 17),
+						array('escape' => false), 
+						false
+					);
+					echo $this->Html->link('<span>(2) XCR=Cam-3 (X-ChatRooms)</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 8),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<span>BBR-LDS</span>',
+					echo $this->Html->link('<span>(3) BBR-lds=Date (Cam-Date)</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 11),
-						array('escape' => false), 
-						false
-					);
-					echo $this->Html->link('<span>LCD</span>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 2),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('<span>SXUP</span>',
+					echo $this->Html->link('<span>(4) AVG=Animated (Adult Video Games)</span>',
+						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 18),
+						array('escape' => false),
+						false
+					);
+					echo $this->Html->link('<span>(5) SXUP=Date (+Bonus)</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 12),
 						array('escape' => false),
 						false
 					);
-					echo $this->Html->link('<span>NTCP</span>',
+					echo $this->Html->link('<span>(6) NTCP=Cam-4 (+Bonus)</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 13),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>Cam Dating-2</span>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 14),
 						array('escape' => false),
 						false
 					);
