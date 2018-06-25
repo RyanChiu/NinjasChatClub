@@ -484,7 +484,7 @@ echo $scripts_for_layout;
 					?>
 				</div>
 				<div id="dropmenu_toolbox_admin" class="dropmenudiv_e"
-					style="width: 330px;">
+					style="width: 350px;">
 					<?php
 					echo $this->Html->link('<span>Update (1) Brand NEW Cam</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 17),
@@ -503,16 +503,6 @@ echo $scripts_for_layout;
 					);
 					echo $this->Html->link('<span>Update (4) AVG=Animated (Adult Video Games)</span>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 18),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>Update (5) SXUP=Date (+Bonus)</span>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 12),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>Update (6) NTCP=Cam-4 (+Bonus)</span>',
-						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 13),
 						array('escape' => false),
 						false
 					);
@@ -568,16 +558,6 @@ echo $scripts_for_layout;
 					);
 					echo $this->Html->link('<span>(4) AVG=Animated (Adult Video Games)</span>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 18),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>(5) SXUP=Date (+Bonus)</span>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 12),
-						array('escape' => false),
-						false
-					);
-					echo $this->Html->link('<span>(6) NTCP=Cam-4 (+Bonus)</span>',
-						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 13),
 						array('escape' => false),
 						false
 					);
