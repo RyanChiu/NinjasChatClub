@@ -93,10 +93,29 @@ echo $this->element('timezoneblock');
 	<?php
 	//echo $this->Html->image('iconTopnotes.png');
 	//echo '<b><font size="3">News</font></b>';
-	echo /*'<br/>' . */$topnotes;
+	//echo /*'<br/>' . */$topnotes;
+	$topnotes = explode($separator, $topnotes);
+	if (isset($topnotes[0])) {
+		echo $topnotes[0];
+	}
 	?>
-	<div style="height:6px"></div>
 	</div>
+	<div style="width:100%;text-align:center;">
+	<a href="#divInfomore" id="lnkReadmore">Read more...</a>
+	</div>
+	<div style="margin:0 20px 5px 20px;display:none;" id="divInfomore">
+	<?php
+	if (isset($topnotes[1])) {
+		echo $topnotes[1];
+	}
+	?>
+	</div>
+	<script type="text/javascript">
+	jQuery("#lnkReadmore").click(function() {
+		jQuery("#lnkReadmore").hide();
+		jQuery("#divInfomore").show();
+	});
+	</script>
 	</td>
 </tr>
 <?php

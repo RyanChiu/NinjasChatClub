@@ -1,39 +1,39 @@
-<h1>Update Alerts</h1>
+<h1>Update News</h1>
 <?php
 //echo print_r($results, true);
 $userinfo = $this->Session->read('Auth.User.Account');
-echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 'action' => 'updalerts')));
+echo $this->Form->create(null, array('url' =>  array('controller' => 'accounts', 'action' => 'updnews')));
 ?>
 <table style="width:100%">
 	<tr>
 		<td>
 		<div style="float:left">
-			<div id="alertsTabs">
+			<div id="newsTabs">
 			<ul>
-				<li><a href="#tab-alerts" id="lnkAlerts">First Page</a></li>
-				<li><a href="#tab-alerts-more" id="lnkAlertsMore">More</a></li>
+				<li><a href="#tabs-news" id="lnkNews">First Page</a></li>
+				<li><a href="#tabs-news-more" id="lnkNewsMore">More</a></li>
 			</ul>
-			<div id="tab-alerts">
+			<div id="tabs-news">
 			<?php
-			echo $this->Form->input('Admin.notes', array('div' => null, 'label' => '', 'rows' => '60', 'cols' => '80'));
+			echo $this->Form->input('Bulletin.info', array('div' => null, 'label' => '', 'rows' => '60', 'cols' => '80'));
 			?>
 			</div>
-			<div id="tab-alerts-more">
+			<div id="tabs-news-more">
 			<?php
-			echo $this->Form->input('Admin.notesmore', array('div' => null, 'label' => '', 'rows' => '60', 'cols' => '80'));
+			echo $this->Form->input('Bulletin.infomore', array('div' => null, 'label' => '', 'rows' => '60', 'cols' => '80'));
 			?>
 			</div>
 			</div>
 			<script type="text/javascript">
-                        jQuery("#alertsTabs").tabs();
-                        <?php
-                        if (isset($id) && !empty($id)) {
-                        ?>
-                        jQuery("#lnkAlertsMore").click();
-                        <?php
-                        }
-                        ?>
-                        </script>
+			jQuery("#newsTabs").tabs();
+			<?php
+			if (isset($id) && !empty($id)) {
+			?>
+			jQuery("#lnkNewsMore").click();
+			<?php
+			}
+			?>
+			</script>
 		</div>
 		</td>
 	</tr>
@@ -42,12 +42,12 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 </table>
 <?php
-echo $this->Form->input('Admin.id', array('type' => 'hidden'));
+echo $this->Form->input('Bulletin.id', array('type' => 'hidden'));
 echo $this->Form->end();
 ?>
 
 <script type="text/javascript">
-	CKEDITOR.replace('AdminNotes',
+	CKEDITOR.replace('BulletinInfo',
 		{
 	        filebrowserUploadUrl : '/ncc/accounts/upload',
 	        filebrowserWindowWidth : '640',
@@ -72,7 +72,7 @@ echo $this->Form->end();
 		    ['Styles','Format','Font','FontSize'],
 		    ['TextColor','BGColor']
 		];
-	CKEDITOR.replace('AdminNotesmore',
+	CKEDITOR.replace('BulletinInfomore',
 		{
 	        filebrowserUploadUrl : '/ncc/accounts/upload',
 	        filebrowserWindowWidth : '640',

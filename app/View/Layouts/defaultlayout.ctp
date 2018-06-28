@@ -20,6 +20,9 @@ echo $this->Html->css('main');
 /*for tables*/
 echo $this->Html->css('tables');
 
+/*for jQueryUI*/
+echo $this->Html->css('jQuery/jquery-ui');
+
 /*for jQuery datapicker*/
 echo $this->Html->css('jQuery/Datepicker/green');
 echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
@@ -104,7 +107,7 @@ echo $scripts_for_layout;
 						if ($role == 0) {//means an administrator
 							$menuitemscount++;
 							//if cur route matches this menu item, then set the number to inform the js code
-							if (strpos($this->request->here, 'addnews') === false
+							if (strpos($this->request->here, 'updnews') === false
 									&& strpos($this->request->here, 'updalerts') === false) {
 							} else {
 								$curmenuidx = $menuitemscount - 1;
@@ -113,7 +116,7 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $this->Html->link('<span>NEWS</span>',
-							array('controller' => 'accounts', 'action' => 'addnews'),
+							array('controller' => 'accounts', 'action' => 'updnews'),
 							array('rel' => 'dropmenu_admin_news', 'escape' => false),
 							false
 						);
@@ -420,10 +423,24 @@ echo $scripts_for_layout;
 				if ($role == 0) {//means an administrator
 				?>
 				<div id="dropmenu_admin_news" class="dropmenudiv_e"
-					style="width: 70px;">
+					style="width: 100px;">
 					<?php
 					echo $this->Html->link('<span>Alerts</span>',
 						array('controller' => 'accounts', 'action' => 'updalerts'),
+						array('escape' => false), 
+						false
+					);
+					?>
+					<?php
+					echo $this->Html->link('<span>More News</span>',
+						array('controller' => 'accounts', 'action' => 'updnews', 1),
+						array('escape' => false), 
+						false
+					);
+					?>
+					<?php
+					echo $this->Html->link('<span>More Alerts</span>',
+						array('controller' => 'accounts', 'action' => 'updalerts', 1),
 						array('escape' => false), 
 						false
 					);
@@ -771,9 +788,33 @@ echo $scripts_for_layout;
 			*/
 			</script>
 			<p style="padding: 3px 3px 3px 3px;">
+				<div>
 				<?php
-				echo !empty($alerts) ? $alerts : '';
+				$notes = array();
+				if (!empty($alerts)) {
+					$notes = explode($separator, $alerts);
+				}
+				if (isset($notes[0])) {
+					echo $notes[0];
+				}
 				?>
+				</div>
+				<div style="width:100%;text-align:center;">
+				<a href="#divNotesmore" id="lnkReadmore">Read more...</a>
+				</div>
+				<div style = "display:none;" id = "divNotesmore">
+				<?php
+				if (isset($notes[1])) {
+					echo $notes[1];
+				}
+				?>
+				</div>
+				<script type="text/javascript">
+				jQuery("#lnkReadmore").click(function() {
+					jQuery("#lnkReadmore").hide();
+					jQuery("#divNotesmore").show();
+				});
+				</script>
 			</p>
 
 			<hr style="margin: 6px 0px 6px 0px" />

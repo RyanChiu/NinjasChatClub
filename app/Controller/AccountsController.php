@@ -83,7 +83,7 @@ class AccountsController extends AppController {
 		 */
 		if ($this->Auth->user('Account.role') == 0) {//means an administrator
 			switch ($this->request->params['action']) {
-				case 'addnews':
+				case 'updnews':
 				case 'updalerts':
 					if ($this->Auth->user("Account.id") != 1
 						&& $this->Auth->user("Account.id") != 2) {
@@ -96,7 +96,7 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 1) {//means an office
 			switch ($this->request->params['action']) {
 				case 'updadmin':
-				case 'addnews':
+				case 'updnews':
 				case 'updalerts':
 				case 'regcompany':
 				case 'lstnewmembers':
@@ -130,7 +130,7 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 2) {//means an agent
 			switch ($this->request->params['action']) {
 				case 'updadmin':
-				case 'addnews':
+				case 'updnews':
 				case 'updalerts':
 				case 'regcompany':
 				case 'regagent':
@@ -874,22 +874,30 @@ class AccountsController extends AppController {
 		}
 	}
 	
-	function addnews() {
-		$this->layout = 'defaultlayout';
+	function updnews($id = null) {
+		$this->layout = 'defaultlayout'; 
+		$this->set(compact('id'));
 		
 		if (empty($this->request->data)) {
 			/*prepare the notes for the current logged in user*/
-			$info = $this->Bulletin->find('first',
+			$infodata = $this->Bulletin->find('first',
 				array(
 					'fields' => array('id', 'info'),
 					'conditions' => array('archdate' => null)
 				)
 			);
-			$this->request->data = $info;
+			$info = $infodata['Bulletin']['info'];
+			$infos = explode($this->__separator, $info);
+			$infodata['Bulletin']['info'] = isset($infos[0]) ? $infos[0] : '';
+			$infodata['Bulletin']['infomore'] = isset($infos[1]) ? $infos[1] : '';
+			$this->request->data = $infodata;
 		} else {
 			$this->Bulletin->id = $this->request->data['Bulletin']['id'];
-			if ($this->Bulletin->saveField('info', $this->request->data['Bulletin']['info'])) {
-				//$this->Session->setFlash('ALERTS updated.');
+			$info = $this->request->data['Bulletin']['info'] 
+				. $this->__separator
+				. $this->request->data['Bulletin']['infomore'];
+			if ($this->Bulletin->saveField('info', $info)) {
+				$this->Session->setFlash('News updated.');
 				$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash("Something wrong, please contact your administrator.");
@@ -897,8 +905,9 @@ class AccountsController extends AppController {
 		}
 	}
 	
-	function updalerts() {
+	function updalerts($id = null) {
 		$this->layout = 'defaultlayout';
+		$this->set(compact('id'));
 		
 		if (empty($this->request->data)) {
 			/*prepare the notes for the current logged in user*/
@@ -907,10 +916,19 @@ class AccountsController extends AppController {
 			if (empty($this->request->data)) {
 				$this->Session->setFlash('Please create your first admin account, so we could continue the alerts setup.');
 				$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
+			} else {
+				$notesdata = $this->request->data;
+				$notes = explode($this->__separator, $notesdata['Admin']['notes']);
+				$notesdata['Admin']['notes'] = isset($notes[0]) ? $notes[0] : '';
+				$notesdata['Admin']['notesmore'] = isset($notes[1]) ? $notes[1] : '';
+				$this->request->data = $notesdata;
 			}
 		} else {
 			$this->Admin->id = $this->request->data['Admin']['id'];
-			if ($this->Admin->saveField('notes', $this->request->data['Admin']['notes'])) {
+			$notes = $this->request->data['Admin']['notes']
+				. $this->__separator
+				. $this->request->data['Admin']['notesmore'];
+			if ($this->Admin->saveField('notes', $notes)) {
 				$this->Session->setFlash('Alerts updated.');
 				$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
 			} else {

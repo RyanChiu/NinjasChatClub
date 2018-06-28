@@ -7,10 +7,12 @@ class AppController extends Controller {
 	var $uses = array('Admin', 'Agent', 'Site', 'SiteExcluding', 'TerminalCookie', 'MustRead');
 	var $curuser = null;
 	var $__locatekey = 'GTYHNBvfr4567ujm';
+	var $__separator = "__news&alerts_separator__";
 	/*
 	 * callbacks
 	 */
 	function beforeFilter() {
+		$this->set("separator", $this->__separator);
 		if ($this->Session->check("Auth")) {
 			$u = $this->Session->read("Auth");
 			$u = array_values($u);
