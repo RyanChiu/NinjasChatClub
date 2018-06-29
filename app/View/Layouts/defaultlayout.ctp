@@ -20,14 +20,10 @@ echo $this->Html->css('main');
 /*for tables*/
 echo $this->Html->css('tables');
 
-/*for jQueryUI*/
-echo $this->Html->css('jQuery/jquery-ui');
-
 /*for jQuery datapicker*/
 echo $this->Html->css('jQuery/Datepicker/green');
 echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 echo $this->Html->script('jQuery/Datepicker/jquery-ui-1.7.custom.min');
-
 ?>
 
 <?php 
