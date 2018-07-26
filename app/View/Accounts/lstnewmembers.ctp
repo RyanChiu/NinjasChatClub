@@ -4,7 +4,7 @@ $userinfo = $this->Session->read('Auth.User.Account');
 ?>
 <br/>
 
-<?php
+<?php //echo print_r($rs, true);
 /*showing the results*/
 ?>
 <script type="text/javascript">
@@ -41,6 +41,7 @@ function __checkAll() {
 	);
 	?>
 	</b></th>
+	<th><b><?php echo 'Company'; ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('Account.username4m', 'Username'); ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('Account.role', 'Role'); ?></b></th>
 	<th><b><?php echo $this->ExPaginator->sort('Account.regtime', 'Registered'); ?></b></th>
@@ -64,6 +65,7 @@ foreach ($rs as $r):
 	echo '<font size="1">' . ($i + 1 + $limit * ($this->Paginator->current() - 1)) . '</font>';
 	?>
 	</td>
+	<td><?php echo $r['Account']['companyname']; ?></td>
 	<td><?php echo $r['Account']['username']; ?></td>
 	<td><?php echo $r['Account']['role'] == 1 ? "Office manager" : "Agent"; ?></td>
 	<td><?php echo $r['Account']['regtime']; ?></td>

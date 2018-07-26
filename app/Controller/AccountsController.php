@@ -1671,11 +1671,23 @@ class AccountsController extends AppController {
 					'order' => 'username4m'
 				)
 			);
+			$rs = $this->paginate('Account');
+			$members = array();
+			foreach ($rs as $r) {
+				$member = $r;
+				if ($r['Account']['role'] == 2) {
+					$this->ViewAgent->id = $r['Account']['id'];
+					$ag = $this->ViewAgent->read();
+					$member['Account']['companyname'] = $ag['ViewAgent']['officename'];
+				}  else {
+					$member['Account']['companyname'] = "-";
+				}
+				array_push($members, $member);
+			}
 			$this->set('status', $this->Account->status);
 			$this->set('limit', $this->__limit);
-			$this->set('rs',
-				$this->paginate('Account')
-			);
+			$this->set('rs', $members);
+			//$this->set(compact("members"));
 		}
 	}
 		
