@@ -446,7 +446,7 @@ class LinksController extends AppController {
 			array(
 				'fields' => array('companyid', 'officename'),
 				'conditions' =>  array(
-					($selcom == 0 ? array('1' => '1') : array('id' => $selcom)),
+					($selcom == 0 ? array('1' => '1') : array('companyid' => $selcom)),
 					'status >= 0'
 				),
 				'order' => array('officename')
