@@ -689,8 +689,8 @@ echo $scripts_for_layout;
 					        };
 			        		
 				        	var nowStr = now.toUTCString();
-				        	nowStr = nowStr.replace("GMT", "EST"); //for firefox browser
-				        	nowStr = nowStr.replace("UTC", "EST"); //for IE browser
+				        	nowStr = nowStr.replace("GMT", "EDT"); //for firefox browser
+				        	nowStr = nowStr.replace("UTC", "EDT"); //for IE browser
 
 							//nowStr += ("(" + secSundayInMar.toUTCString() + "_" + frtSundayInNov.toUTCString() + ")");
 				        	
