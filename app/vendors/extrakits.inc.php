@@ -31,7 +31,7 @@
 	 * routines area
 	 */
 	//date_default_timezone_set("Asia/Manila");
-	date_default_timezone_set("EST5EDT");
+	date_default_timezone_set("EST");
 	
 	/*
 	 * functions area
